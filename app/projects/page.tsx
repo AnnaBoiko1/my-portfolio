@@ -1,14 +1,22 @@
 "use client";
-import * as React from 'react';
-import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import * as React from 'react';
+import { Typography, Container, Box} from '@mui/material';
 
-export default function Home() {
-  const [value, setValue] = React.useState(0);
-  return (
-    <Box sx={{ width: 500, bottom: 0, position: "fixed" }}>
-      <BottomNavigation
+
+export default function ProjectsPage() {
+    const [value, setValue] = React.useState(2);
+    return (
+        <div>
+        <Container maxWidth="md">
+            <Box sx={{ my: 4 }}>
+                <Typography variant="h4" component="h1" gutterBottom>
+                    Projects
+                </Typography>
+            </Box>
+        </Container>
+              <BottomNavigation
         showLabels
         value={value}
         onChange={(event, newValue) => {
@@ -20,6 +28,6 @@ export default function Home() {
         <BottomNavigationAction label="Projects" href='/projects' />
         <BottomNavigationAction label="Contact" href='/contact'/>
       </BottomNavigation>
-    </Box>
-  );
+      </div>
+    );
 }
