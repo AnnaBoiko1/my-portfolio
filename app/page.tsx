@@ -8,7 +8,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 export default function Home() {
   const [value, setValue] = React.useState(0);
   return (
-    <Box sx={{ width: 500, bottom: 0, position: "fixed" }}>
+    <Box sx={{ width: 500, bottom: 0, position: "fixed"  }}>
       <BottomNavigation
         showLabels
         value={value}

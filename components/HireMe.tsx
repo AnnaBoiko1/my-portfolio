@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import "../app/globals.css"
-import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCommentDots } from '@fortawesome/free-regular-svg-icons'
 
 export default function HireMe() {
   const [isVisible, setIsVisible] = useState<boolean>(true);
@@ -22,10 +23,11 @@ export default function HireMe() {
         title="Hire Me" 
         
       >
-      <span className="text-gray-800 font-semibold text-sm whitespace-nowrap center">
+      <span className="text-gray-800 font-semibold text-sm whitespace-nowrap center ">
         Hire Me
       </span>
-        <Image src= '/hire-me-icon.png' alt="" width={40} height={40}></Image>
+        <FontAwesomeIcon icon={faCommentDots}  size="2x" 
+        className="w-8 h-8 bg-(--blue) rounded-[45%] text-(--purple) shadow-md hover:bg-(--purple) hover:text-(--blue) transition-colors duration-300" />
       </button>
 
       <button
