@@ -7,6 +7,7 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Button from '@mui/material/Button';
 
 export default function Home() {
   const pathname = usePathname();
@@ -41,6 +42,73 @@ export default function Home() {
           I&apos;m an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, based in Toronto.
         </Typography>
       </Container>
+
+
+
+      
+      <Container>
+        <Typography variant='h3' sx={{}}>
+          Let&apos;s work together<span style={{ color: 'var(--blue)' }}>.</span>
+        </Typography>
+        <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1    }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
+        <Typography variant='h5' sx={{}}>
+          From crafting intuitive user experiences to building scalable web systems and dynamic single-page applications, I collaborate with passionate people <strong>to bring ambitious ideas to life</strong>, ensuring they are both innovative and accessible.
+        </Typography>
+        
+        <Button
+          href="/cv.pdf"
+          download="Anna-Boiko-CV.pdf"
+          sx={{
+            mt: 4,
+            px: 6,      
+            py: 0.5,
+            mb: 15,
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            color: 'var(--purple)',
+            bgcolor: 'transparent',
+            textTransform: 'none',
+            display: 'inline-flex',
+            
+            
+            backgroundImage: `linear-gradient(
+              45deg, 
+              transparent 25%, 
+              var(--blue) 25%, 
+              var(--blue)50%, 
+              transparent 50%, 
+              transparent 75%, 
+              var(--blue) 75%
+            )`,
+
+            backgroundSize: '20px 20px',  // Розмір рисочки
+            
+
+            border: '3px solid transparent',
+            backgroundOrigin: 'border-box',
+            backgroundClip: ['border-box, border-box, padding-box'],
+            
+
+            borderImage: 'linear-gradient(45deg, #9333ea, #8e24aa) 1',
+            borderRadius: 2,
+            
+            // Hover
+            '&:hover': { 
+              transform: 'translateY(-2px)',
+              boxShadow: '0 10px 30px var(--red)',
+              bgcolor: 'var(--red)',
+            }
+          }}
+        >
+          Download résumé 
+        </Button>
+
+
+
+      </Container>
+
+
+
 
       {}
       <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0 }}>
