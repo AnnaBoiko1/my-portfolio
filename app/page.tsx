@@ -69,6 +69,10 @@ export default function Home() {
             bgcolor: 'transparent',
             textTransform: 'none',
             display: 'inline-flex',
+            textShadow: `
+              1px 1px 1px rgba(0,0,0,0.3),        
+              0 0 3px rgba(255,255,255,0.4)
+              `,
             
             
             backgroundImage: `linear-gradient(
@@ -81,7 +85,7 @@ export default function Home() {
               var(--blue) 75%
             )`,
 
-            backgroundSize: '20px 20px',  // Розмір рисочки
+            backgroundSize: '15px 15px',  
             
 
             border: '3px solid transparent',
@@ -92,7 +96,6 @@ export default function Home() {
             borderImage: 'linear-gradient(45deg, #9333ea, #8e24aa) 1',
             borderRadius: 2,
             
-            // Hover
             '&:hover': { 
               transform: 'translateY(-2px)',
               boxShadow: '0 10px 30px var(--red)',
@@ -124,7 +127,7 @@ export default function Home() {
           fontSize: '1.2rem', 
           letterSpacing: '0.05em',
           paddingBottom: 10,
-          color: 'inherit'    // Спадкує колір від root
+          color: 'inherit'
         }
       },
       '& .MuiBottomNavigationAction-root.Mui-selected': {
