@@ -9,8 +9,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 
-
-
 const NavigationSeparator = ({ sx }: { sx?: any }) => (
   <Typography sx={sx} component="span">|</Typography>
 );
@@ -37,7 +35,8 @@ export default function Home() {
           display: 'flex', 
           flexDirection: 'column', 
           justifyContent: 'center',
-          gap: 4
+          gap: 4,
+          pb: 20 // Shift content up visually
         }}>
 
           {/* === MOBILE LAYOUT (Original) === */}
@@ -117,7 +116,7 @@ export default function Home() {
           alignItems: 'flex-start'
         }}>
           <Typography variant='h3' sx={{}}>
-            Let&apos;s work together<span style={{ color: 'var(--blue)' }}>.</span>
+            <strong>Let&apos;s work together</strong><span style={{ color: 'var(--blue)' }}>.</span>
           </Typography>
           <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1    }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
           <Typography variant='h5' sx={{}}>
@@ -130,9 +129,9 @@ export default function Home() {
             sx={{
               mt: 4,
               px: 6,      
-              py: 0.5,
+              py: 1,
               mb: 15,
-              fontSize: '1.1rem',
+              fontSize: '1.3rem',
               fontWeight: 600,
               color: 'var(--purple)',
               bgcolor: 'transparent',
@@ -161,13 +160,13 @@ export default function Home() {
               position: 'relative',
               backgroundOrigin: 'padding-box',
               
-              borderRadius: 50,
+              borderRadius: 3, // Adjusted roundness
               
               '&::before': {
                 content: '""',
                 position: 'absolute',
                 inset: 0,
-                borderRadius: 50, 
+                borderRadius: 3, // Match parent border-radius
                 padding: '3px', 
                 background: 'linear-gradient(45deg, #9333ea, #8e24aa)', 
                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
@@ -231,41 +230,14 @@ export default function Home() {
       </Box>
 
       {/* Navigation (Mobile) */}
-      <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'block', md: 'none' } }}>
-        <BottomNavigation 
-          value={pathname} 
-          onChange={(e, newValue) => router.push(newValue)} 
-          showLabels 
-          sx={{ 
-            bgcolor: 'transparent', 
-            '& .MuiBottomNavigationAction-root': {
-              color: 'var(--text)',  // Сірий для неактивних (включає текст та іконку)
-              '& .MuiBottomNavigationAction-label': {
-                fontSize: '1.2rem', 
-                letterSpacing: '0.05em',
-                paddingBottom: 10,
-                color: 'inherit'
-              }
-            },
-            '& .MuiBottomNavigationAction-root.Mui-selected': {
-              color: 'purple !important',  // Фіолетовий для активної (текст + іконка)
-              '& .MuiBottomNavigationAction-label': {
-                color: 'purple !important'
-              },
-              '& svg': {
-                color: 'var(--purple) !important'  // Окремо для іконки
-              }
-            }
-          }}
-        >
-          <BottomNavigationAction label="Home" value="/" />
-          <NavigationSeparator sx={{fontSize: '1.2rem', pb: 10}} />
-          <BottomNavigationAction label="About" value="/about" />
-          <NavigationSeparator sx={{fontSize: '1.2rem', pb: 10}} />
-          <BottomNavigationAction label="Projects" value="/projects" />
-          <NavigationSeparator sx={{}} />
-          <BottomNavigationAction label="Contact" value="/contact" /> 
-        </BottomNavigation>
+      <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', pb: 6, alignItems: 'center', gap: 2 }}>
+        <Button onClick={() => router.push('/')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Home</Button>
+        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>About me</Button>
+        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Projects</Button>
+        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Contacts</Button>
       </Box>
     </>
   );
