@@ -9,6 +9,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 
+
 export default function Home() {
   const pathname = usePathname();
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function Home() {
   return (
     <>
       
-      <Container maxWidth="md" sx={{ py:8, mt: 4}}>
+      <Container maxWidth="md" sx={{ py:8, mt: 4, minHeight:"100vh"}}>
 
         <Container maxWidth="md" sx={{ display:'flex', alignItems: 'flex-end'}}>
           <Typography variant="h1" sx={{ fontSize: { xs: '3rem', md: '3.5rem' }, fontWeight: 500, mb: 2, lineHeight: 1.3 }}>
