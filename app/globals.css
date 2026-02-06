@@ -6,7 +6,7 @@
   --text: #161645;
   --purple: #A749D6;
   --blue: #60E7F1;
-  --red: #FFA2B4; 
+  --red: #FFA2B4;
 
 }
 
@@ -30,6 +30,12 @@ body {
   background: transparent;
   color: #161645;
   font-family: Roboto, Helvetica, sans-serif;
+  border: 12px solid white;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+  /* Prevent body scroll, let React component handle it */
 }
 
 .fade-in {
