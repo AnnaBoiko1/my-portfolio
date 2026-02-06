@@ -5,13 +5,14 @@ export default function BackgroundCanva({ children }: { children: React.ReactNod
   return (
     <Box 
       sx={{ 
-        minHeight: '100vh',
+        height: '100%', // Fit within body
+        width: '100%',
         bgcolor: 'rgba(31, 167, 188, 0.15)',  
-        py: { xs: 2, md: 4 },                
-        px: { xs: 2, md: 3 },                  
+        overflow: 'hidden', // Ensure it contains its children
+        position: 'relative'
       }}
     >
-      <Container maxWidth="lg" sx={{ py: 2 }}>
+      <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         {children}
       </Container>
     </Box>

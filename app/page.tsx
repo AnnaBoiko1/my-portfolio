@@ -22,13 +22,14 @@ export default function Home() {
   return (
     <>
       <Box sx={{ 
-        height: '100vh', 
+        height: '100%', // Fit parent (BackgroundCanva -> Body)
         overflowY: 'scroll', 
         scrollSnapType: 'y mandatory',
         scrollBehavior: 'smooth',
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
-        scrollbarWidth: 'none'
+        scrollbarWidth: 'none',
+        pb: 5 // Optional padding at bottom for content
       }}>
         <Container maxWidth="md" sx={{ 
           py:8, 
@@ -41,7 +42,7 @@ export default function Home() {
         }}>
 
           <Container maxWidth="md" sx={{ display:'flex', alignItems: 'flex-end'}}>
-            <Typography variant="h1" sx={{ fontSize: { xs: '3rem', md: '3.5rem' }, fontWeight: 500, mb: 2, lineHeight: 1.3 }}>
+            <Typography variant="h1" sx={{ fontSize: { xs: '3rem', md: '3.5rem' }, fontWeight: 350, mb: 2, lineHeight: 1.3 }}>
               Hi, my 
             </Typography>
             <Box sx={{ mb: 4 }}>
