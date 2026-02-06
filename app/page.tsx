@@ -31,39 +31,81 @@ export default function Home() {
         scrollbarWidth: 'none',
         pb: 5 // Optional padding at bottom for content
       }}>
-        <Container maxWidth="md" sx={{ 
-          py:8, 
-          mt: 4, 
-          minHeight:"100vh", 
+        <Container maxWidth="lg" sx={{ 
           scrollSnapAlign: 'start',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center' 
+          minHeight: '100vh',
+          display: 'flex', 
+          flexDirection: 'column', 
+          justifyContent: 'center',
+          gap: 4
         }}>
 
-          <Container maxWidth="md" sx={{ display:'flex', alignItems: 'flex-end'}}>
-            <Typography variant="h1" sx={{ fontSize: { xs: '3rem', md: '3.5rem' }, fontWeight: 350, mb: 2, lineHeight: 1.3 }}>
-              Hi, my 
-            </Typography>
-            <Box sx={{ mb: 4 }}>
-              <Image 
-                src="/annaboiko.png"  
-                alt="Anna Boiko"
-                width={300}
-                height={300}
-                className=""
-                priority
-              />
+          {/* === MOBILE LAYOUT (Original) === */}
+          <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+            <Box sx={{ display:'flex', alignItems: 'flex-end', mb: 2 }}>
+              <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, lineHeight: 1.3, mr: 2 }}>
+                Hi, my 
+              </Typography>
+              <Box sx={{ mb: 1 }}>
+                 <Image 
+                  src="/annaboiko.png"  
+                  alt="Anna Boiko"
+                  width={250} // Increased size
+                  height={250}
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              </Box>
             </Box>
-          </Container>
-        
-          <Typography variant="h1" sx={{ fontSize: { xs: '3rem', md: '3.5rem' }, fontWeight: 20, mb: 10, lineHeight: 0.5, px:2 }}>
-            name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
-          </Typography>
+          
+            <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, mb: 6, lineHeight: 1 }}>
+                name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
+            </Typography>
 
-          <Typography variant="h3" sx={{ fontSize: { xs: '1.5rem', md: '1.25rem' }, color: 'text', mb: 2, maxWidth: 600,px:2 }}>
-            I&apos;m an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, based in Toronto.
-          </Typography>
+            <Typography variant="h3" sx={{ fontSize: '1.5rem', color: 'text', mb: 2, maxWidth: 600 }}>
+              I&apos;m an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, currently based in Germany.
+            </Typography>
+          </Box>
+
+
+          {/* === DESKTOP LAYOUT (New Request) === */}
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', width: '100%', gap: 8 }}>
+            
+            {/* Top Row: Name + Image */}
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              
+              {/* Left Names */}
+              <Box>
+                <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, mb: 1, lineHeight: 1.2 }}>
+                  Hi, my 
+                </Typography>
+                <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, lineHeight: 1, whiteSpace: 'nowrap' }}>
+                  name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
+                </Typography>
+              </Box>
+
+              {/* Right Image */}
+              <Box>
+                <Image 
+                  src="/annaboiko.png"  
+                  alt="Anna Boiko"
+                  width={600} 
+                  height={600}
+                  style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
+                  priority
+                />
+              </Box>
+            </Box>
+
+            {/* Bottom Row: Bio */}
+            <Box>
+              <Typography variant="h3" sx={{ fontSize: '1.5rem', color: 'text', maxWidth: 800 }}>
+                I&apos;m an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, currently based in Germany.
+              </Typography>
+            </Box>
+            
+          </Box>
+
         </Container>
 
         <Container sx={{ 
@@ -153,18 +195,39 @@ export default function Home() {
         left: 0, 
         right: 0, 
         zIndex: 10,
-        display: { xs: 'none', md: 'flex' },
-        justifyContent: 'flex-end',
+        display: { xs: 'none', md: 'grid' },
+        gridTemplateColumns: '1fr auto 1fr',
+        alignItems: 'center',
         p: 4,
-        gap: 4
+        pt: 6 // Extra top padding
       }}>
-        <Button onClick={() => router.push('/')} sx={{ fontSize: '1.2rem', color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Home</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', color: 'var(--text)' }} />
-        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.2rem', color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>About</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', color: 'var(--text)' }} />
-        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.2rem', color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Projects</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', color: 'var(--text)' }} />
-        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.2rem', color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Contact</Button>
+        {/* Left Spacer */}
+        <Box />
+
+        {/* Center Links */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
+          <Button onClick={() => router.push('/')} sx={{ fontSize: '1.4rem', color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Home</Button>
+          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+          <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.4rem', color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>About me</Button>
+          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+          <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.4rem', color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Projects</Button>
+          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+          <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.4rem', color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Contacts</Button>
+        </Box>
+
+        {/* Right Icons */}
+        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'flex-end', alignItems: 'center' }}>
+          {/* User Icon Placeholder */}
+          <Box sx={{ width: 32, height: 32, border: '2px solid currentColor', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--blue)' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 18, height: 18 }}>
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </Box>
+           {/* Theme Toggle Placeholder */}
+           <Typography sx={{ fontSize: '1.4rem', fontWeight: 'bold' }}>☀</Typography>
+           <Typography sx={{ fontSize: '1.4rem', fontWeight: '900', display: 'flex', alignItems: 'center', gap: 0.5 }}>EN <span style={{ fontSize: '0.8em' }}>▼</span></Typography>
+        </Box>
       </Box>
 
       {/* Navigation (Mobile) */}
