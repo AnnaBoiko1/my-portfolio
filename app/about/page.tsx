@@ -19,27 +19,27 @@ export default function AboutPage() {
   return (
     <>
       {/* Головний scroll container з snap */}
-      <Box sx={{ 
-        height: '100%', 
-        overflowY: 'scroll', 
+      <Box sx={{
+        height: '100%',
+        overflowY: 'scroll',
         scrollSnapType: 'y mandatory',
         scrollBehavior: 'smooth',
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
-        pb: 5 
+        pb: 5
       }}>
         {/* Секція "About me" - перша snap точка */}
-        <Container maxWidth="lg" sx={{ 
+        <Container maxWidth="lg" sx={{
           scrollSnapAlign: 'start',
           minHeight: '100vh',
-          display: 'flex', 
-          flexDirection: 'column', 
+          display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           gap: 2,
           pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
         }}>
-          <Typography variant='h3' sx={{marginTop: '-8px'}}>
+          <Typography variant='h3' sx={{ marginTop: '-8px' }}>
             <strong>About me</strong>
           </Typography>
           <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: -30, lineHeight: 1 }}>
@@ -54,85 +54,235 @@ export default function AboutPage() {
         </Container>
 
         {/* Секція TOOLBELT - друга snap точка */}
-        <Container maxWidth="md" sx={{ 
-          minHeight: '100vh', 
-          scrollSnapAlign: 'start', 
+        <Container maxWidth="lg" sx={{
+          scrollSnapAlign: 'start',
+          minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'flex-start'
+          gap: 4,
+          pb: 20
         }}>
-          <Box sx={{ my: 4 }}>
-            <Typography variant='h3' sx={{}}>
-              <strong>TOOLBELT</strong>
-            </Typography>
-            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}>
-              <span style={{ color: 'var(--blue)' }}>____</span>
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: {
-                xs: '1fr',           
-                sm: 'repeat(2, 1fr)', 
-                md: 'repeat(3, 1fr)'  
-              },
-              gap: '5%',               
-              maxWidth: '100%',
-              mb: 4
-            }}
-          >
-            {/* Ваші бокси TOOLBELT - копіюйте сюди повний grid */}
-            {/* Бокс 1: Languages */}
-            <Box
-              sx={{
-                p: { xs: 3, md: 4 },
-                height: 200,             
-                bgcolor: 'var(--red)',
-                borderRadius: 3,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: 1.5,
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)'
-                }
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 700, color: 'var(--text)' }}>
-                Languages
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography variant="body2" sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: '1.5rem', border: '3px solid var(--purple)' }}>HTML</Typography>
-                <Typography variant="body2" sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: '1.5rem', border: '3px solid var(--purple)' }}>CSS</Typography>
-                <Typography variant="body2" sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: '1.5rem', border: '3px solid var(--purple)' }}>JavaScript</Typography>
-                <Typography variant="body2" sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: '1.5rem', border: '3px solid var(--purple)' }}>Ruby</Typography>
-                <Typography variant="body2" sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: '1.5rem', border: '3px solid var(--purple)' }}>Python</Typography>
-                <Typography variant="body2" sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: '1.5rem', border: '3px solid var(--purple)' }}>SQL</Typography>
+          <Typography variant='h3' sx={{ marginTop: 4 }}>
+            <strong>TOOLBELT</strong>
+          </Typography>
+          <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: -50, lineHeight: 1 }}>
+            <span style={{ color: 'var(--blue)' }}>____</span>
+          </Typography>
+
+          {/* ✅ Ряд 1: Бокси 1-2 */}
+          <Box sx={{
+            scrollSnapAlign: 'start',
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+            gap: 4, mb: 2
+          }}>
+            {/* Languages */}
+            <Box sx={{
+              p: { xs: 2, md: 4 }, height: 350, width: 375, bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
+              transition: 'all 0.3s ease',
+              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
+            }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Languages</Typography>
+              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
               </Box>
             </Box>
 
-            {/* Додайте інші бокси сюди аналогічно */}
+            {/* Languages */}
+            <Box sx={{
+              p: { xs: 2, md: 4 }, height: 350, width: 375, bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
+              transition: 'all 0.3s ease',
+              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
+            }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Languages</Typography>
+              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
+              </Box>
+            </Box>
+            {/* Languages */}
+            <Box sx={{
+              p: { xs: 2, md: 4 }, height: 350, width: 375, bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
+              transition: 'all 0.3s ease',
+              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
+            }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Languages</Typography>
+              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
+              </Box>
+            </Box>
+            {/* Languages */}
+            <Box sx={{
+              p: { xs: 2, md: 4 }, height: 350, width: 375, bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
+              transition: 'all 0.3s ease',
+              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
+            }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Languages</Typography>
+              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
+              </Box>
+            </Box>
+            {/* Languages */}
+            <Box sx={{
+              p: { xs: 2, md: 4 }, height: 350, width: 375, bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
+              transition: 'all 0.3s ease',
+              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
+            }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Languages</Typography>
+              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
+              </Box>
+            </Box>
+            {/* Languages */}
+            <Box sx={{
+              p: { xs: 2, md: 4 }, height: 350, width: 375, bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
+              transition: 'all 0.3s ease',
+              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
+            }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Languages</Typography>
+              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
+                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1.5rem', md: '1rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
+              </Box>
+            </Box>
           </Box>
         </Container>
+      
+
+      <Container sx={{
+        minHeight: '100vh',
+        scrollSnapAlign: 'start',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-start'
+      }}>
+        <Typography variant='h3' sx={{ mt: -6 }}>
+          <strong>Let&apos;s Create Something Meaningful</strong><span style={{ color: 'var(--blue)' }}>.</span>
+        </Typography>
+        <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
+        <Typography variant='h5' sx={{ mt: -3 }}>
+          As a developer and designer, I believe that the products we create should contribute positively to the world. I aim to work on projects that align with ethical values and have a lasting impact. If your project involves industries such as online gambling, high-interest loans, or companies that harm the environment through pollution like irresponsible corporations, corporate criminals, corporate predators, or greenwashers I may not be the right fit for your team.
+          However, if your project focuses on sustainability, diversity, or aims to drive positive change, I would love to collaborate with you.
+          Feel free to reach out, and let&apos;s build something impactful together!
+        </Typography>
+        <Button
+          onClick={() => {
+            window.location.href = 'mailto:annaboiko1@icloud.com?subject=Let%27s%20work%20together&body=Hi%20Anna,%0A%0AI%20am%20interested%20in%20working%20together.%0A%0ABest%20regards';
+          }}
+          sx={{
+            mt: 1,
+            px: 6,
+            py: 1,
+            mb: 15,
+            fontSize: '1.3rem',
+            fontWeight: 550,
+            width: 300,
+            height: 40,
+            color: 'var(--purple)',
+            bgcolor: 'transparent',
+            textTransform: 'none',
+            display: 'inline-flex',
+            textShadow: `
+                1px 1px 1px rgba(0,0,0,0.3),        
+                0 0 3px rgba(255,255,255,0.4)
+                `,
+
+
+            backgroundImage: `linear-gradient(
+                45deg, 
+                transparent 25%, 
+                var(--blue) 25%, 
+                var(--blue)50%, 
+                transparent 50%, 
+                transparent 75%, 
+                var(--blue) 75%
+              )`,
+
+            backgroundSize: '15px 15px',
+
+
+
+            position: 'relative',
+            backgroundOrigin: 'padding-box',
+
+            borderRadius: 3, // Adjusted roundness
+
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              borderRadius: 3, // Match parent border-radius
+              padding: '3px',
+              background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
+              WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              WebkitMaskComposite: 'xor',
+              maskComposite: 'exclude',
+              pointerEvents: 'none',
+            },
+
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 10px 30px var(--red)',
+              bgcolor: 'var(--red)',
+            }
+          }}
+        >
+          Get in touch
+        </Button>
+      </Container>
       </Box>
 
+
+
+
       {/* ✅ Desktop Navbar (Top fixed) - ІДЕНТИЧНИЙ з Home */}
-      <Box sx={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
         zIndex: 10,
         display: { xs: 'none', md: 'grid' },
         gridTemplateColumns: '1fr auto 1fr',
         alignItems: 'center',
         p: 4,
-        pt: 6 
+        pt: 6
       }}>
         <Box />
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
