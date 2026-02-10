@@ -3,13 +3,13 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
 
-const NavigationSeparator = ({ sx }: { sx?: any }) => (
+import { SxProps, Theme } from '@mui/material/styles';
+
+const NavigationSeparator = ({ sx }: { sx?: SxProps<Theme> }) => (
   <Typography sx={sx} component="span">|</Typography>
 );
 
@@ -19,9 +19,9 @@ export default function Home() {
 
   return (
     <>
-      <Box sx={{ 
+      <Box sx={{
         height: '100%', // Fit parent (BackgroundCanva -> Body)
-        overflowY: 'scroll', 
+        overflowY: 'scroll',
         scrollSnapType: 'y mandatory',
         scrollBehavior: 'smooth',
         '&::-webkit-scrollbar': { display: 'none' },
@@ -29,11 +29,11 @@ export default function Home() {
         scrollbarWidth: 'none',
         pb: 5 // Optional padding at bottom for content
       }}>
-        <Container maxWidth="lg" sx={{ 
+        <Container maxWidth="lg" sx={{
           scrollSnapAlign: 'start',
           minHeight: '100vh',
-          display: 'flex', 
-          flexDirection: 'column', 
+          display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           gap: 4,
           pb: 20 // Shift content up visually
@@ -41,13 +41,13 @@ export default function Home() {
 
           {/* === MOBILE LAYOUT (Original) === */}
           <Box sx={{ display: { xs: 'block', md: 'none' } }}>
-            <Box sx={{ display:'flex', alignItems: 'flex-end', mb: 2 }}>
+            <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: 2 }}>
               <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, lineHeight: 1.3, mr: 2 }}>
-                Hi, my 
+                Hi, my
               </Typography>
               <Box sx={{ mb: 1 }}>
-                 <Image 
-                  src="/annaboiko.png"  
+                <Image
+                  src="/annaboiko.png"
                   alt="Anna Boiko"
                   width={250} // Increased size
                   height={250}
@@ -56,9 +56,9 @@ export default function Home() {
                 />
               </Box>
             </Box>
-          
+
             <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, mb: 6, lineHeight: 1 }}>
-                name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
+              name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
             </Typography>
 
             <Typography variant="h3" sx={{ fontSize: '1.5rem', color: 'text', mb: 2, maxWidth: 600 }}>
@@ -69,14 +69,14 @@ export default function Home() {
 
           {/* === DESKTOP LAYOUT (New Request) === */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', width: '100%', gap: 8 }}>
-            
+
             {/* Top Row: Name + Image */}
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              
+
               {/* Left Names */}
               <Box>
                 <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, mb: 1, lineHeight: 1.2 }}>
-                  Hi, my 
+                  Hi, my
                 </Typography>
                 <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, lineHeight: 1, whiteSpace: 'nowrap' }}>
                   name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
@@ -85,10 +85,10 @@ export default function Home() {
 
               {/* Right Image */}
               <Box>
-                <Image 
-                  src="/annaboiko.png"  
+                <Image
+                  src="/annaboiko.png"
                   alt="Anna Boiko"
-                  width={600} 
+                  width={600}
                   height={600}
                   style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
                   priority
@@ -102,33 +102,33 @@ export default function Home() {
                 I&apos;m an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, currently based in Germany.
               </Typography>
             </Box>
-            
+
           </Box>
 
         </Container>
 
-        <Container sx={{ 
-          minHeight: '100vh', 
-          scrollSnapAlign: 'start', 
-          display: 'flex', 
-          flexDirection: 'column', 
+        <Container sx={{
+          minHeight: '100vh',
+          scrollSnapAlign: 'start',
+          display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-start'
         }}>
           <Typography variant='h3' sx={{}}>
             <strong>Let&apos;s work together</strong><span style={{ color: 'var(--blue)' }}>.</span>
           </Typography>
-          <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1    }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
+          <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
           <Typography variant='h5' sx={{}}>
             From crafting intuitive user experiences to building scalable web systems and dynamic single-page applications, I collaborate with passionate people <strong>to bring ambitious ideas to life</strong>, ensuring they are both innovative and accessible.
           </Typography>
-          
+
           <Button
             href="/cv.pdf"
             download="Anna-Boiko-CV.pdf"
             sx={{
               mt: 4,
-              px: 6,      
+              px: 6,
               py: 1,
               mb: 15,
               fontSize: '1.3rem',
@@ -141,8 +141,8 @@ export default function Home() {
                 1px 1px 1px rgba(0,0,0,0.3),        
                 0 0 3px rgba(255,255,255,0.4)
                 `,
-              
-              
+
+
               backgroundImage: `linear-gradient(
                 45deg, 
                 transparent 25%, 
@@ -153,46 +153,46 @@ export default function Home() {
                 var(--blue) 75%
               )`,
 
-              backgroundSize: '15px 15px',  
-              
+              backgroundSize: '15px 15px',
+
 
 
               position: 'relative',
               backgroundOrigin: 'padding-box',
-              
+
               borderRadius: 3, // Adjusted roundness
-              
+
               '&::before': {
                 content: '""',
                 position: 'absolute',
                 inset: 0,
                 borderRadius: 3, // Match parent border-radius
-                padding: '3px', 
-                background: 'linear-gradient(45deg, #9333ea, #8e24aa)', 
+                padding: '3px',
+                background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                 WebkitMaskComposite: 'xor',
                 maskComposite: 'exclude',
                 pointerEvents: 'none',
               },
 
-              '&:hover': { 
+              '&:hover': {
                 transform: 'translateY(-2px)',
                 boxShadow: '0 10px 30px var(--red)',
                 bgcolor: 'var(--red)',
               }
             }}
           >
-            Download résumé 
+            Download résumé
           </Button>
         </Container>
       </Box>
 
       {/* Top Navbar (Desktop) */}
-      <Box sx={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
         zIndex: 10,
         display: { xs: 'none', md: 'grid' },
         gridTemplateColumns: '1fr auto 1fr',
@@ -223,9 +223,9 @@ export default function Home() {
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </Box>
-           {/* Theme Toggle Placeholder */}
-           <Typography sx={{ fontSize: '1.4rem', fontWeight: 'bold' }}>☀</Typography>
-           <Typography sx={{ fontSize: '1.4rem', fontWeight: '900', display: 'flex', alignItems: 'center', gap: 0.5 }}>EN <span style={{ fontSize: '0.8em' }}>▼</span></Typography>
+          {/* Theme Toggle Placeholder */}
+          <Typography sx={{ fontSize: '1.4rem', fontWeight: 'bold' }}>☀</Typography>
+          <Typography sx={{ fontSize: '1.4rem', fontWeight: '900', display: 'flex', alignItems: 'center', gap: 0.5 }}>EN <span style={{ fontSize: '0.8em' }}>▼</span></Typography>
         </Box>
       </Box>
 
