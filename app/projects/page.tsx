@@ -12,6 +12,60 @@ const NavigationSeparator = ({ sx }: { sx?: any }) => (
   <Typography sx={sx} component="span">|</Typography>
 );
 
+const StarRating = () => {
+  const [rating, setRating] = React.useState(0);
+  const [hoverRating, setHoverRating] = React.useState(0);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => setIsVisible(false), 2000); // Start fading after 2s
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+
+  const handleRating = (i: number) => {
+    setRating(i);
+    setIsVisible(true);
+  };
+
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      <Box sx={{ display: 'flex', gap: 0.5 }}>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <svg
+            key={i}
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            fill={i <= (hoverRating || rating) ? '#9333ea' : '#22d3ee'}
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: 'pointer', transition: 'fill 0.2s' }}
+            onMouseEnter={() => setHoverRating(i)}
+            onMouseLeave={() => setHoverRating(0)}
+            onClick={() => handleRating(i)}
+          >
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+        ))}
+      </Box>
+      <Box sx={{ minWidth: '60px' }}>
+        <Typography sx={{
+          color: 'var(--blue)',
+          fontWeight: 500,
+          fontSize: '1.2rem',
+          whiteSpace: 'nowrap',
+          opacity: isVisible ? 1 : 0,
+          transition: isVisible ? 'none' : 'opacity 0.1s ease-in-out',
+          pointerEvents: 'none'
+        }}>
+          Thank you!
+        </Typography>
+      </Box>
+    </Box>
+  );
+};
+
 export default function ProjectsPage() {
   const pathname = usePathname();
   const router = useRouter();
@@ -77,11 +131,77 @@ export default function ProjectsPage() {
               <Typography variant='h5' sx={{ mt: 2 }}>
                 A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time. <br />Built with <strong>React</strong> and <strong>Ruby on Rails</strong>, it integrates <strong>APIs</strong> for live map updates and seamless match coordination. I implemented user <strong>authentication</strong>, <strong>UI/UX improvements</strong>, and <strong>mobile-first design</strong> to enhance accessibility and user engagement.
               </Typography>
+
+              {/* Feedback Stars Section */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
+                  Feedback
+                </Typography>
+                <StarRating />
+              </Box>
+
+              {/* feedback */}
+              <Button
+                sx={{
+                  mt: 4,
+                  px: 6,
+                  py: 1,
+                  mb: 15,
+                  fontSize: '1.3rem',
+                  fontWeight: 600,
+                  color: 'var(--purple)',
+                  bgcolor: 'transparent',
+                  textTransform: 'none',
+                  display: 'inline-flex',
+                  textShadow: `
+              1px 1px 1px rgba(0,0,0,0.3),        
+              0 0 3px rgba(255,255,255,0.4)
+              `,
+
+
+                  backgroundImage: `linear-gradient(
+                45deg, 
+                transparent 25%, 
+                var(--blue) 25%, 
+                var(--blue)50%, 
+                transparent 50%, 
+                transparent 75%, 
+                var(--blue) 75%
+                )`,
+
+                  backgroundSize: '15px 15px',
+
+
+
+                  position: 'relative',
+                  backgroundOrigin: 'padding-box',
+
+                  borderRadius: 3, // Adjusted roundness
+
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    borderRadius: 3, // Match parent border-radius
+                    padding: '3px',
+                    background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
+                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                    pointerEvents: 'none',
+                  },
+
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 10px 30px var(--red)',
+                    bgcolor: 'var(--red)',
+                  }
+                }}
+              >
+                Link to project
+              </Button>
             </Box>
           </Box>
-
-          {/* feedback */}
-          {/* btn link */}
 
         </Container>
         {/* Секція  - 2 snap точка */}
@@ -112,8 +232,53 @@ export default function ProjectsPage() {
             Info
           </Typography>
 
-          {/* feedback */}
-          {/* btn link */}
+          {/* Feedback Stars Section */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+            <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
+              Feedback
+            </Typography>
+            <StarRating />
+          </Box>
+
+          <Button
+            sx={{
+              mt: 4,
+              px: 6,
+              py: 1,
+              mb: 15,
+              fontSize: '1.3rem',
+              fontWeight: 600,
+              color: 'var(--purple)',
+              bgcolor: 'transparent',
+              textTransform: 'none',
+              display: 'inline-flex',
+              textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+              backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+              backgroundSize: '15px 15px',
+              position: 'relative',
+              backgroundOrigin: 'padding-box',
+              borderRadius: 3,
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                inset: 0,
+                borderRadius: 3,
+                padding: '3px',
+                background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+                pointerEvents: 'none',
+              },
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 10px 30px var(--red)',
+                bgcolor: 'var(--red)',
+              }
+            }}
+          >
+            Link to project
+          </Button>
 
         </Container>
         {/* Секція  - 3 snap точка */}
@@ -138,14 +303,59 @@ export default function ProjectsPage() {
           </Box>
 
           <Typography variant='h5' sx={{}}>
-            <strong>projrct3</strong>
+            <strong>Project 3</strong>
           </Typography>
           <Typography variant='h5' sx={{}}>
             Info
           </Typography>
 
-          {/* feedback */}
-          {/* btn link */}
+          {/* Feedback Stars Section */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+            <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
+              Feedback
+            </Typography>
+            <StarRating />
+          </Box>
+
+          <Button
+            sx={{
+              mt: 4,
+              px: 6,
+              py: 1,
+              mb: 15,
+              fontSize: '1.3rem',
+              fontWeight: 600,
+              color: 'var(--purple)',
+              bgcolor: 'transparent',
+              textTransform: 'none',
+              display: 'inline-flex',
+              textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+              backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+              backgroundSize: '15px 15px',
+              position: 'relative',
+              backgroundOrigin: 'padding-box',
+              borderRadius: 3,
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                inset: 0,
+                borderRadius: 3,
+                padding: '3px',
+                background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+                pointerEvents: 'none',
+              },
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 10px 30px var(--red)',
+                bgcolor: 'var(--red)',
+              }
+            }}
+          >
+            Link to project
+          </Button>
 
         </Container>
         {/* Секція  - 4 snap точка */}
@@ -172,14 +382,59 @@ export default function ProjectsPage() {
           </Box>
 
           <Typography variant='h5' sx={{}}>
-            <strong>projrct3</strong>
+            <strong>Project 4</strong>
           </Typography>
           <Typography variant='h5' sx={{}}>
             Info
           </Typography>
 
-          {/* feedback */}
-          {/* btn link */}
+          {/* Feedback Stars Section */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+            <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
+              Feedback
+            </Typography>
+            <StarRating />
+          </Box>
+
+          <Button
+            sx={{
+              mt: 4,
+              px: 6,
+              py: 1,
+              mb: 15,
+              fontSize: '1.3rem',
+              fontWeight: 600,
+              color: 'var(--purple)',
+              bgcolor: 'transparent',
+              textTransform: 'none',
+              display: 'inline-flex',
+              textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+              backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+              backgroundSize: '15px 15px',
+              position: 'relative',
+              backgroundOrigin: 'padding-box',
+              borderRadius: 3,
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                inset: 0,
+                borderRadius: 3,
+                padding: '3px',
+                background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+                pointerEvents: 'none',
+              },
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 10px 30px var(--red)',
+                bgcolor: 'var(--red)',
+              }
+            }}
+          >
+            Link to project
+          </Button>
 
         </Container>
       </Box>
