@@ -158,7 +158,14 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
       >
         <MenuItem
           onClick={() => { window.open(figmaUrl, '_blank'); setAnchorEl(null); }}
-          sx={{ color: 'var(--text)', gap: 2, '&:hover': { color: 'var(--purple)' } }}
+          sx={{
+            color: 'var(--text)',
+            gap: 2,
+            '&:hover': {
+              color: 'var(--purple)',
+              bgcolor: 'transparent'
+            }
+          }}
         >
           <svg width="24" height="24" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 28.5C19 25.8478 20.0536 23.3043 21.9289 21.4289C23.8043 19.5536 26.3478 18.5 29 18.5C31.6522 18.5 34.1957 19.5536 36.0711 21.4289C37.9464 23.3043 39 25.8478 39 28.5C39 31.1522 37.9464 33.6957 36.0711 35.5711C34.1957 37.4464 31.6522 38.5 29 38.5C26.3478 38.5 23.8043 37.4464 21.9289 35.5711C20.0536 33.6957 19 31.1522 19 28.5Z" fill="#1ABCFE" />
@@ -174,7 +181,10 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
           sx={{
             color: 'var(--text)',
             gap: 2,
-            '&:hover': { color: 'var(--purple)' },
+            '&:hover': {
+              color: 'var(--purple)',
+              bgcolor: 'transparent'
+            },
             '&:hover svg': { fill: 'var(--purple)' }
           }}
         >
