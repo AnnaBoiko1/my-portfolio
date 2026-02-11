@@ -292,9 +292,30 @@ export default function ProjectsPage() {
           justifyContent: 'center',
           gap: 2,
           pb: 20,
-          }}>
+        }}>
 
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Typography variant='h4' sx={{ mt: 5 }}>
+                <strong>Lingoda copy cat</strong>
+              </Typography>
+              <Typography variant='h5' sx={{ mt: 2 }}>
+                A user-friendly web platform for discovering and booking language courses with ease. Learners can filter, view, and reserve lessons in just a few clicks while managing their bookings effortlessly.
+              </Typography>
+              <Typography variant='h5' sx={{ mt: 2 }}>
+                Built with <strong>   Ruby on Rails</strong>, <strong>JavaScript (ES6)</strong>, and <strong>SCSS</strong>, the app features <strong> a responsive UI</strong>, <strong>secure user authentication (Devise)</strong>, and <strong>PostgreSQL</strong> for reliable data management. Integrated <strong>Cloudinary</strong> ensures smooth and scalable media storage.
+              </Typography>
+              {/* Feedback Stars Section */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
+                  Feedback
+                </Typography>
+                <StarRating />
+              </Box>
+
+              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/LoJSPqtZcWbeKD6hcOdo0x/Lingoda-Copycat?node-id=1-34&p=f&t=EYlDmZRuMQeVE1Hs-0" githubUrl="https://github.com/S00J1NK1M/lingoda_copycat" />
+            </Box>
+
             <Box sx={{ flex: 1, maxWidth: { md: 600 } }}>
               <Grid container spacing={0} columns={6}>
                 {[
@@ -317,18 +338,46 @@ export default function ProjectsPage() {
                 ))}
               </Grid>
             </Box>
+          </Box>
+        </Container>
 
+        {/* Watch List Project */}
+        <Container maxWidth="lg" sx={{
+          scrollSnapAlign: 'start',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          gap: 2,
+          pb: 20,
+        }}>
 
-            {/* Текст ПРАВОРУЧ */}
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
+            <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: 7 }}>
+
+              <Image
+                src="/watch_list.png"
+                alt="Watch List Project"
+                width={300} height={300}  // Більші фото вертикально
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block'
+                }}
+                priority
+              />
+
+            </Box>
             <Box sx={{ flex: 1, minWidth: 0 }}>
-              <Typography variant='h4'sx={{ mt: 5 }}>
-                <strong>Lingoda copy cat</strong>
+              <Typography variant='h4' >
+                <strong>Watch List</strong>
               </Typography>
               <Typography variant='h5' sx={{ mt: 2 }}>
                 A user-friendly web platform for discovering and booking language courses with ease. Learners can filter, view, and reserve lessons in just a few clicks while managing their bookings effortlessly.
               </Typography>
               <Typography variant='h5' sx={{ mt: 2 }}>
-                Built with Ruby on Rails, JavaScript (ES6), and SCSS, the app features a responsive UI, secure user authentication (Devise), and PostgreSQL for reliable data management. Integrated Cloudinary ensures smooth and scalable media storage.
+                Built with <strong> Ruby on Rails</strong>, <strong>JavaScript (ES6)</strong>, and <strong>SCSS</strong>, the app features <strong> a responsive UI</strong>, <strong>secure user authentication (Devise)</strong>, and <strong>PostgreSQL</strong> for reliable data management. Integrated <strong>Cloudinary</strong> ensures smooth and scalable media storage.
               </Typography>
               {/* Feedback Stars Section */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
@@ -337,56 +386,71 @@ export default function ProjectsPage() {
                 </Typography>
                 <StarRating />
               </Box>
+              <Button
+                href="https://github.com/AnnaBoiko1/rails-watch-list"  // ✅ GitHub посилання
+                target="_blank"  // ✅ Нова вкладка
+                rel="noopener noreferrer"  // ✅ Безпека
+                sx={{
+                  mt: 1,
+                  px: 6,
+                  py: 1,
+                  mb: 15,
+                  fontSize: '1.3rem',
+                  fontWeight: 550,
+                  width: 300,
+                  height: 40,
+                  color: 'var(--purple)',
+                  bgcolor: 'transparent',
+                  textTransform: 'none',
+                  display: 'inline-flex',
+                  textShadow: `
+      1px 1px 1px rgba(0,0,0,0.3),        
+      0 0 3px rgba(255,255,255,0.4)
+    `,
+                  backgroundImage: `linear-gradient(
+        45deg, 
+        transparent 25%, 
+        var(--blue) 25%, 
+        var(--blue)50%, 
+        transparent 50%, 
+        transparent 75%, 
+        var(--blue) 75%
+      )`,
+                  backgroundSize: '15px 15px',
+                  position: 'relative',
+                  backgroundOrigin: 'padding-box',
+                  borderRadius: 3,
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    borderRadius: 3,
+                    padding: '3px',
+                    background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
+                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                    pointerEvents: 'none',
+                  },
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 10px 30px var(--red)',
+                    bgcolor: 'var(--blue)',
+                  }
+                }}
+              >
+                Link to project
+              </Button>
 
-              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/LoJSPqtZcWbeKD6hcOdo0x/Lingoda-Copycat?node-id=1-34&p=f&t=EYlDmZRuMQeVE1Hs-0" githubUrl="https://github.com/S00J1NK1M/lingoda_copycat" />
             </Box>
+
           </Box>
-
-        </Container>
-        {/* Секція  - 3 snap точка */}
-        <Container maxWidth="lg" sx={{
-          scrollSnapAlign: 'start',
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 2,
-          pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
-        }}>
-          <Box>
-            <Image
-              src="/annaboiko.png"
-              alt="Anna Boiko"
-              width={600}
-              height={600}
-              style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
-              priority
-            />
-          </Box>
-
-          <Typography variant='h5' sx={{}}>
-            <strong>Project 3</strong>
-          </Typography>
-          <Typography variant='h5' sx={{}}>
-            Info
-          </Typography>
-
-          {/* Feedback Stars Section */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
-            <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
-              Feedback
-            </Typography>
-            <StarRating />
-          </Box>
-
-          <ProjectLinksDropdown figmaUrl="#" githubUrl="#" />
-
         </Container>
 
-      </Box>
+      </Box >
 
       {/* ✅ Desktop Navbar (Top fixed) - ІДЕНТИЧНИЙ з Home */}
-      <Box sx={{
+      < Box sx={{
         position: 'fixed',
         top: 0,
         left: 0,
@@ -397,7 +461,8 @@ export default function ProjectsPage() {
         alignItems: 'center',
         p: 4,
         pt: 6
-      }}>
+      }
+      }>
         <Box />
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
           <Button onClick={() => router.push('/')} sx={{ fontSize: '1.4rem', color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Home</Button>
@@ -418,10 +483,10 @@ export default function ProjectsPage() {
           <Typography sx={{ fontSize: '1.4rem', fontWeight: 'bold' }}>☀</Typography>
           <Typography sx={{ fontSize: '1.4rem', fontWeight: '900', display: 'flex', alignItems: 'center', gap: 0.5 }}>EN <span style={{ fontSize: '0.8em' }}>▼</span></Typography>
         </Box>
-      </Box>
+      </Box >
 
       {/* Mobile Navigation (Bottom) - з pb:6 */}
-      <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', pb: 6, alignItems: 'center', gap: 2 }}>
+      < Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', pb: 6, alignItems: 'center', gap: 2 }}>
         <Button onClick={() => router.push('/')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Home</Button>
         <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
         <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>About me</Button>
@@ -429,7 +494,7 @@ export default function ProjectsPage() {
         <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Projects</Button>
         <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
         <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Contact</Button>
-      </Box>
+      </Box >
     </>
   );
 }
