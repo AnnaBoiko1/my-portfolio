@@ -239,8 +239,6 @@ export default function ContactPage() {
             </Box>
           </Grid>
         </Grid>
-
-
       </Container>
     </Box>
     
