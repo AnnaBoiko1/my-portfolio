@@ -1,6 +1,6 @@
 "use client";
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -13,6 +13,7 @@ const NavigationSeparator = ({ sx }: { sx?: any }) => (
 );
 
 export default function ContactPage() {
+  const [copied, setCopied] = useState(false);
   return (
     <Box sx={{
       height: '100%',
@@ -34,26 +35,63 @@ export default function ContactPage() {
         gap: 2,
         pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
       }}>
-        <Typography variant='h3' sx={{ marginTop: { xs: '-8px', md: 15 } }}>
-          <strong>Contact</strong>
-        </Typography>
-        <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: { xs: -30, md: -20 }, lineHeight: 1 }}>
-          <span style={{ color: 'var(--blue)' }}>____</span>
-        </Typography>
 
         {/* ✅ 2 КОНТЕНТ КОЛОНКИ як у Bootstrap */}
-        <Grid container spacing={4}>
-          {/* ЛІВА КОЛОНКА - Контакти */}
+        <Grid container spacing={8} sx={{ px: { xs: 2, md: 12 } }}>
           <Grid item xs={12} md={6}>
+            <Box sx={{ 
+      width: 450,      // ✅ ФІКСОВАНА ширина
+      maxWidth: '100%', // ✅ Responsive
+      mx: 'auto'       // ✅ Центр на мобільному
+    }}>
+            <Typography variant='h3' sx={{ marginTop: { xs: '-8px', md: 15 }, mb: 3 }}>
+              <strong>Contact me</strong>
+            </Typography>
+            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: { xs: -30, md: -20 }, lineHeight: 1 }}>
+              <span style={{ color: 'var(--blue)' }}>____</span>
+            </Typography>
             <Box sx={{ textAlign: { xs: 'center', md: 'start' } }}>
               <Typography variant='h4' sx={{ mb: 1 }}>
                 Anna Boiko
               </Typography>
-              <Link href="mailto:annaboiko1@icloud.com" style={{ textDecoration: 'underline', color: 'var(--purple)' }}>
-                <Typography variant='h4' sx={{ mb: 1 }}>
-                  annaboiko1@icloud.com
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: { xs: 'center', md: 'start' } }}>
+                <Link href="mailto:annaboiko1@icloud.com" style={{ textDecoration: 'underline', color: 'var(--purple)' }}>
+                  <Typography variant='h4' sx={{ mb: 1 }}>
+                    annaboiko1@icloud.com
+                  </Typography>
+                </Link>
+                <Typography
+                  variant='h7'
+                  sx={{
+                    mt: 0.1,
+                    marginLeft: '8px',
+                    width: '8%',
+                    fontSize: '0.8rem',
+                    color: 'var(--blue)',
+                    cursor: 'pointer',
+                    '&:hover': { opacity: 0.7 }
+                  }}
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText('annaboiko1@icloud.com');
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    } catch (err) {
+                      const textArea = document.createElement('textarea');
+                      textArea.value = 'annaboiko1@icloud.com';
+                      document.body.appendChild(textArea);
+                      textArea.select();
+                      document.execCommand('copy');
+                      document.body.removeChild(textArea);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    }
+                  }}
+                >
+                  {copied ? 'Copied!' : 'Copy email'}
                 </Typography>
-              </Link>
+              </Box>
 
               <Typography variant='h4' sx={{ mb: 4 }}>
                 Based in Toronto, ON Canada
@@ -65,7 +103,7 @@ export default function ContactPage() {
                 data-cal-namespace="30min"
                 data-cal-config='{"layout":"month_view"}'
                 sx={{
-                  width: '100%',
+                  width: '450px',
                   height: '60px',
                   py: 1,
                   fontSize: '1.5rem',
@@ -150,15 +188,52 @@ export default function ContactPage() {
 
           {/* ПРАВА КОЛОНКА - Форма */}
           <Grid item xs={12} md={6}>
-            <Box sx={{ p: 4, borderRadius: 3, bgcolor: 'rgba(255,255,255,0.1)' }}>
+            <Box sx={{ p: 4, borderRadius: 10, bgcolor: 'transparent', mt: 15 }}>
               {/* Твоя ContactForm тут */}
-              <Typography variant='h6' sx={{ mb: 2 }}>Name</Typography>
-              <input placeholder="Your name" style={{ width: '100%', padding: '12px', marginBottom: '16px', border: '1px solid var(--blue)', borderRadius: 2 }} />
-              <Typography variant='h6' sx={{ mb: 2 }}>Email</Typography>
-              <input placeholder="your@email.com" style={{ width: '100%', padding: '12px', marginBottom: '16px', border: '1px solid var(--blue)', borderRadius: 2 }} />
-              <Typography variant='h6' sx={{ mb: 2 }}>Message</Typography>
-              <textarea placeholder="Enter your message" rows={4} style={{ width: '100%', padding: '12px', border: '1px solid var(--blue)', borderRadius: 2 }} />
-              <Button variant="contained" sx={{ mt: 3, px: 4, py: 1.5, width: '100%', bgcolor: 'var(--blue)' }}>
+              <Typography variant='h5' sx={{ mb: 2 }}>Name</Typography>
+              <input placeholder="Your name" style={{ width: '120%', padding: '12px', marginBottom: '16px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)' }} />
+              <Typography variant='h5' sx={{ mb: 2 }}>Email</Typography>
+              <input placeholder="your@email.com" style={{ width: '120%', padding: '12px', marginBottom: '16px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)' }} />
+              <Typography variant='h5' sx={{ mb: 2 }}>Message</Typography>
+              <textarea placeholder="Enter your message" rows={4} style={{ width: '120%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)' }} />
+              <Button variant="contained" sx={{
+                width: '120%',
+                mt: 2,
+                height: '50px',
+                py: 1,
+                fontSize: '1.3rem',
+                fontWeight: 600,
+                color: 'var(--purple)',
+                bgcolor: 'transparent',
+                backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+                textTransform: 'none',
+                display: 'inline-flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+                backgroundSize: '15px 15px',
+                position: 'relative',
+                backgroundOrigin: 'padding-box',
+                borderRadius: 3,
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  inset: 0,
+                  borderRadius: 3,
+                  padding: '3px',
+                  background: 'var(--purple)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  pointerEvents: 'none',
+                },
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 10px 30px var(--red)',
+                  bgcolor: 'var(--blue)',
+                  backgroundImage: 'none',
+                }
+              }}>
                 Submit
               </Button>
             </Box>
