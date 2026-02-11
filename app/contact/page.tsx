@@ -8,6 +8,9 @@ import Button from '@mui/material/Button';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
 
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+
 const NavigationSeparator = ({ sx }: { sx?: any }) => (
   <Typography sx={sx} component="span">|</Typography>
 );
@@ -38,7 +41,7 @@ const StarRating = () => {
             width="44"
             height="44"
             viewBox="0 0 24 24"
-            fill={i <= (hoverRating || rating) ? '#9333ea' : '#22d3ee'}
+            fill={i <= (hoverRating || rating) ? 'var(--purple)' : 'var(--blue)'}
             xmlns="http://www.w3.org/2000/svg"
             style={{ cursor: 'pointer', transition: 'fill 0.2s' }}
             onMouseEnter={() => setHoverRating(i)}
@@ -56,12 +59,131 @@ const StarRating = () => {
           fontSize: '1.2rem',
           whiteSpace: 'nowrap',
           opacity: isVisible ? 1 : 0,
-          transition: isVisible ? 'none' : 'opacity 1.5s ease-in-out',
+          transition: isVisible ? 'none' : 'opacity 0.01s ease-in-out',
           pointerEvents: 'none'
         }}>
           Thank you!
         </Typography>
       </Box>
+    </Box>
+  );
+};
+
+const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githubUrl: string }) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    timeoutRef.current = setTimeout(() => {
+      setAnchorEl(null);
+    }, 150); // Small delay to allow moving to the menu
+  };
+
+  const handleMenuEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  return (
+    <Box
+      onMouseLeave={handleClose}
+      sx={{ display: 'inline-block' }}
+    >
+      <Button
+        onMouseEnter={handleOpen}
+        sx={{
+          mt: 4,
+          width: 350,
+          py: 1,
+          fontSize: '1.3rem',
+          fontWeight: 600,
+          color: 'var(--purple)',
+          bgcolor: open ? 'var(--blue)' : 'transparent',
+          backgroundImage: open ? 'none' : `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+          textTransform: 'none',
+          display: 'inline-flex',
+          justifyContent: 'center',
+          textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+          backgroundSize: '15px 15px',
+          position: 'relative',
+          backgroundOrigin: 'padding-box',
+          borderRadius: 3,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            borderRadius: 3,
+            padding: '3px',
+            background: 'var(--purple)',
+            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+            WebkitMaskComposite: 'xor',
+            maskComposite: 'exclude',
+            pointerEvents: 'none',
+          },
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            boxShadow: '0 10px 30px var(--red)',
+            bgcolor: 'var(--blue)',
+            backgroundImage: 'none',
+          }
+        }}
+      >
+        Link to project
+      </Button>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={() => setAnchorEl(null)}
+        onMouseEnter={handleMenuEnter}
+        onMouseLeave={handleClose}
+        MenuListProps={{ onMouseEnter: handleMenuEnter }}
+        PaperProps={{
+          sx: {
+            mt: 0.5,
+            bgcolor: 'transparent',
+            backdropFilter: 'blur(10px)',
+            border: 'none',
+            boxShadow: 'none',
+            borderRadius: 2,
+            minWidth: 350,
+            pointerEvents: 'auto'
+          }
+        }}
+        sx={{ pointerEvents: 'none' }}
+      >
+        <MenuItem
+          onClick={() => { window.open(figmaUrl, '_blank'); setAnchorEl(null); }}
+          sx={{ color: 'var(--text)', gap: 2, '&:hover': { color: 'var(--purple)' } }}
+        >
+          <svg width="24" height="24" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 28.5C19 25.8478 20.0536 23.3043 21.9289 21.4289C23.8043 19.5536 26.3478 18.5 29 18.5C31.6522 18.5 34.1957 19.5536 36.0711 21.4289C37.9464 23.3043 39 25.8478 39 28.5C39 31.1522 37.9464 33.6957 36.0711 35.5711C34.1957 37.4464 31.6522 38.5 29 38.5C26.3478 38.5 23.8043 37.4464 21.9289 35.5711C20.0536 33.6957 19 31.1522 19 28.5Z" fill="#1ABCFE" />
+            <path d="M0 47.5C0 44.8478 1.05357 42.3043 2.92893 40.4289C4.8043 38.5536 7.34784 37.5 10 37.5C12.6522 37.5 15.1957 38.5536 17.0711 40.4289C18.9464 42.3043 20 44.8478 20 47.5C20 50.1522 18.9464 52.6957 17.0711 54.5711C15.1957 56.4464 12.6522 57.5 10 57.5C7.34784 57.5 4.8043 56.4464 2.92893 54.5711C1.05357 52.6957 0 50.1522 0 47.5Z" fill="#0ACF83" />
+            <path d="M0 28.5C0 25.8478 1.05357 23.3043 2.92893 21.4289C4.8043 19.5536 7.34784 18.5 10 18.5H20V38.5H10C7.34784 38.5 4.8043 37.4464 2.92893 35.5711C1.05357 33.6957 0 31.1522 0 28.5Z" fill="#A259FF" />
+            <path d="M0 9.5C0 6.84784 1.05357 4.3043 2.92893 2.42893C4.8043 0.553571 7.34784 -4.76837e-07 10 0H20V19H10C7.34784 19 4.8043 18.4464 2.92893 16.5711C1.05357 14.6957 0 12.1522 0 9.5Z" fill="#F24E1E" />
+            <path d="M20 0H30C32.6522 -4.76837e-07 35.1957 0.553571 37.0711 2.42893C38.9464 4.3043 40 6.84784 40 9.5C40 12.1522 38.9464 14.6957 37.0711 16.5711C35.1957 18.4464 32.6522 19 30 19H20V0Z" fill="#FF7262" />
+          </svg>
+          <Typography sx={{ fontSize: '1.2rem', fontWeight: 500 }}>Figma</Typography>
+        </MenuItem>
+        <MenuItem
+          onClick={() => { window.open(githubUrl, '_blank'); setAnchorEl(null); }}
+          sx={{
+            color: 'var(--text)',
+            gap: 2,
+            '&:hover': { color: 'var(--purple)' },
+            '&:hover svg': { fill: 'var(--purple)' }
+          }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.795 8.205 23.385C8.805 23.49 9.03 23.13 9.03 22.815V20.73C5.685 21.465 4.98 19.125 4.98 19.125C4.425 17.73 3.63 17.355 3.63 17.355C2.535 16.605 3.72 16.62 3.72 16.62C4.935 16.71 5.58 17.865 5.58 17.865C6.66 19.725 8.415 19.185 9.105 18.87C9.21 18.09 9.525 17.565 9.87 17.265C7.185 16.965 4.365 15.93 4.365 11.295C4.365 9.975 4.83 8.895 5.61 8.055C5.475 7.74 5.07 6.51 5.73 4.86C5.73 4.86 6.735 4.545 9.03 6.09C9.99 5.82 11.01 5.685 12.03 5.685C13.05 5.685 14.07 5.82 15.03 6.09C17.325 4.545 18.33 4.86 18.33 4.86C18.99 6.51 18.585 7.74 18.45 8.055C19.23 8.895 19.695 9.975 19.695 11.295C19.695 15.945 16.86 16.95 14.175 17.25C14.61 17.625 15 18.36 15 19.485V22.815C15 23.13 15.225 23.505 15.825 23.385C20.58 21.795 24 17.31 24 12C24 5.37 18.63 0 12 0Z" />
+          </svg>
+          <Typography sx={{ fontSize: '1.2rem', fontWeight: 500 }}>GitHub</Typography>
+        </MenuItem>
+      </Menu>
     </Box>
   );
 };
@@ -105,65 +227,7 @@ export default function ContactPage() {
             </Typography>
             <StarRating />
           </Box>
-          <Button
-            sx={{
-              mt: 4,
-              px: 6,
-              py: 1,
-              mb: 15,
-              fontSize: '1.3rem',
-              fontWeight: 600,
-              color: 'var(--purple)',
-              bgcolor: 'transparent',
-              textTransform: 'none',
-              display: 'inline-flex',
-              textShadow: `
-              1px 1px 1px rgba(0,0,0,0.3),        
-              0 0 3px rgba(255,255,255,0.4)
-              `,
-
-
-              backgroundImage: `linear-gradient(
-                45deg, 
-                transparent 25%, 
-                var(--blue) 25%, 
-                var(--blue)50%, 
-                transparent 50%, 
-                transparent 75%, 
-                var(--blue) 75%
-                )`,
-
-              backgroundSize: '15px 15px',
-
-
-
-              position: 'relative',
-              backgroundOrigin: 'padding-box',
-
-              borderRadius: 3, // Adjusted roundness
-
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                inset: 0,
-                borderRadius: 3, // Match parent border-radius
-                padding: '3px',
-                background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                pointerEvents: 'none',
-              },
-
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: '0 10px 30px var(--red)',
-                bgcolor: 'var(--red)',
-              }
-            }}
-          >
-            Link to project
-          </Button>
+          <ProjectLinksDropdown figmaUrl="#" githubUrl="#" />
         </Container>
       </Box>
 
