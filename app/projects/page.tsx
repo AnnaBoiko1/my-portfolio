@@ -261,7 +261,10 @@ export default function ProjectsPage() {
                 <strong>Ping It</strong>
               </Typography>
               <Typography variant='h5' sx={{ mt: 2 }}>
-                A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time. <br />Built with <strong>React</strong> and <strong>Ruby on Rails</strong>, it integrates <strong>APIs</strong> for live map updates and seamless match coordination. I implemented user <strong>authentication</strong>, <strong>UI/UX improvements</strong>, and <strong>mobile-first design</strong> to enhance accessibility and user engagement.
+                A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time.
+              </Typography>
+              <Typography variant='h5' sx={{ mt: 2 }}>
+                Built with <strong>React</strong> and <strong>Ruby on Rails</strong>, it integrates <strong>APIs</strong> for live map updates and seamless match coordination. I implemented user <strong>authentication</strong>, <strong>UI/UX improvements</strong>, and <strong>mobile-first design</strong> to enhance accessibility and user engagement.
               </Typography>
 
               {/* Feedback Stars Section */}
@@ -272,11 +275,14 @@ export default function ProjectsPage() {
                 <StarRating />
               </Box>
 
-              <ProjectLinksDropdown figmaUrl="#" githubUrl="#" />
+              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/IdMHUj0lHkEr4KxSYTvVUS/LW--1282-Ping-it?node-id=1-44&p=f&t=ifGl8TuZ8ROcOVUy-0" githubUrl="https://github.com/S00J1NK1M/ping_it" />
             </Box>
           </Box>
 
         </Container>
+
+
+
         {/* Секція  - 2 snap точка */}
         <Container maxWidth="lg" sx={{
           scrollSnapAlign: 'start',
@@ -285,35 +291,56 @@ export default function ProjectsPage() {
           flexDirection: 'column',
           justifyContent: 'center',
           gap: 2,
-          pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
-        }}>
+          pb: 20,
+          }}>
 
-          <Box>
-            <Image
-              src="/annaboiko.png"
-              alt="Anna Boiko"
-              width={600}
-              height={600}
-              style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
-              priority
-            />
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
+            <Box sx={{ flex: 1, maxWidth: { md: 600 } }}>
+              <Grid container spacing={0} columns={6}>
+                {[
+                  '/lingoda_1.png', '/lingoda_2.png', '/lingoda_3.png'
+                ].map((src, i) => (
+                  <Grid size={6} key={i}>  {/* ✅ size=6 = 1 фото/рядок */}
+                    <Image
+                      src={src}
+                      alt="Lingoda Project"
+                      width={300} height={300}  // Більші фото вертикально
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block'
+                      }}
+                      priority
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+
+
+            {/* Текст ПРАВОРУЧ */}
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Typography variant='h4'sx={{ mt: 5 }}>
+                <strong>Lingoda copy cat</strong>
+              </Typography>
+              <Typography variant='h5' sx={{ mt: 2 }}>
+                A user-friendly web platform for discovering and booking language courses with ease. Learners can filter, view, and reserve lessons in just a few clicks while managing their bookings effortlessly.
+              </Typography>
+              <Typography variant='h5' sx={{ mt: 2 }}>
+                Built with Ruby on Rails, JavaScript (ES6), and SCSS, the app features a responsive UI, secure user authentication (Devise), and PostgreSQL for reliable data management. Integrated Cloudinary ensures smooth and scalable media storage.
+              </Typography>
+              {/* Feedback Stars Section */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
+                  Feedback
+                </Typography>
+                <StarRating />
+              </Box>
+
+              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/LoJSPqtZcWbeKD6hcOdo0x/Lingoda-Copycat?node-id=1-34&p=f&t=EYlDmZRuMQeVE1Hs-0" githubUrl="https://github.com/S00J1NK1M/lingoda_copycat" />
+            </Box>
           </Box>
-          <Typography variant='h5' sx={{}}>
-            <strong>project2</strong>
-          </Typography>
-          <Typography variant='h5' sx={{}}>
-            Info
-          </Typography>
-
-          {/* Feedback Stars Section */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
-            <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
-              Feedback
-            </Typography>
-            <StarRating />
-          </Box>
-
-          <ProjectLinksDropdown figmaUrl="#" githubUrl="#" />
 
         </Container>
         {/* Секція  - 3 snap точка */}
@@ -355,47 +382,7 @@ export default function ProjectsPage() {
           <ProjectLinksDropdown figmaUrl="#" githubUrl="#" />
 
         </Container>
-        {/* Секція  - 4 snap точка */}
 
-        {/* Секція  - перша snap точка */}
-        <Container maxWidth="lg" sx={{
-          scrollSnapAlign: 'start',
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 2,
-          pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
-        }}>
-          <Box>
-            <Image
-              src="/annaboiko.png"
-              alt="Anna Boiko"
-              width={600}
-              height={600}
-              style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
-              priority
-            />
-          </Box>
-
-          <Typography variant='h5' sx={{}}>
-            <strong>Project 4</strong>
-          </Typography>
-          <Typography variant='h5' sx={{}}>
-            Info
-          </Typography>
-
-          {/* Feedback Stars Section */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
-            <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)' }}>
-              Feedback
-            </Typography>
-            <StarRating />
-          </Box>
-
-          <ProjectLinksDropdown figmaUrl="#" githubUrl="#" />
-
-        </Container>
       </Box>
 
       {/* ✅ Desktop Navbar (Top fixed) - ІДЕНТИЧНИЙ з Home */}
