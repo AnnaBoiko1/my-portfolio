@@ -157,7 +157,7 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
         sx={{ pointerEvents: 'none' }}
       >
         <MenuItem
-          onClick={() => { window.open(figmaUrl, '_blank'); setAnchorEl(null); }}
+          onClick={() => { window.open(figmaUrl, '_blank', 'noopener,noreferrer'); setAnchorEl(null); }}
           sx={{
             color: 'var(--text)',
             gap: 2,
@@ -177,7 +177,7 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
           <Typography sx={{ fontSize: '1.2rem', fontWeight: 500 }}>Figma</Typography>
         </MenuItem>
         <MenuItem
-          onClick={() => { window.open(githubUrl, '_blank'); setAnchorEl(null); }}
+          onClick={() => { window.open(githubUrl, '_blank', 'noopener,noreferrer'); setAnchorEl(null); }}
           sx={{
             color: 'var(--text)',
             gap: 2,
@@ -397,8 +397,8 @@ export default function ProjectsPage() {
                   mb: 15,
                   fontSize: '1.3rem',
                   fontWeight: 550,
-                  width: 300,
-                  height: 40,
+                  width: 350,
+                  height: 50,
                   color: 'var(--purple)',
                   bgcolor: 'transparent',
                   textTransform: 'none',
@@ -446,11 +446,10 @@ export default function ProjectsPage() {
 
           </Box>
         </Container>
-
-      </Box >
+      </Box>
 
       {/* ✅ Desktop Navbar (Top fixed) - ІДЕНТИЧНИЙ з Home */}
-      < Box sx={{
+      <Box sx={{
         position: 'fixed',
         top: 0,
         left: 0,
