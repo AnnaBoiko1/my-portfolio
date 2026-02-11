@@ -386,64 +386,8 @@ export default function ProjectsPage() {
                 </Typography>
                 <StarRating />
               </Box>
-              <Button
-                href="https://github.com/AnnaBoiko1/rails-watch-list"  // ✅ GitHub посилання
-                target="_blank"  // ✅ Нова вкладка
-                rel="noopener noreferrer"  // ✅ Безпека
-                sx={{
-                  mt: 1,
-                  px: 6,
-                  py: 1,
-                  mb: 15,
-                  fontSize: '1.3rem',
-                  fontWeight: 550,
-                  width: 350,
-                  height: 50,
-                  color: 'var(--purple)',
-                  bgcolor: 'transparent',
-                  textTransform: 'none',
-                  display: 'inline-flex',
-                  textShadow: `
-      1px 1px 1px rgba(0,0,0,0.3),        
-      0 0 3px rgba(255,255,255,0.4)
-    `,
-                  backgroundImage: `linear-gradient(
-        45deg, 
-        transparent 25%, 
-        var(--blue) 25%, 
-        var(--blue)50%, 
-        transparent 50%, 
-        transparent 75%, 
-        var(--blue) 75%
-      )`,
-                  backgroundSize: '15px 15px',
-                  position: 'relative',
-                  backgroundOrigin: 'padding-box',
-                  borderRadius: 3,
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: 0,
-                    borderRadius: 3,
-                    padding: '3px',
-                    background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
-                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    WebkitMaskComposite: 'xor',
-                    maskComposite: 'exclude',
-                    pointerEvents: 'none',
-                  },
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 10px 30px var(--red)',
-                    bgcolor: 'var(--blue)',
-                  }
-                }}
-              >
-                Link to project
-              </Button>
-
+              <ProjectLinksDropdown figmaUrl="#" githubUrl="https://github.com/AnnaBoiko1/rails-watch-list" />
             </Box>
-
           </Box>
         </Container>
       </Box>
