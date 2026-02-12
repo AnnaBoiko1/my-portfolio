@@ -132,12 +132,29 @@ export default function Navbar() {
                 alignItems: 'center',
                 p: 4,
                 pt: 6,
-                backgroundColor: 'transparent',
-                backdropFilter: 'blur(5px)', // Optional: Adds a nice glass effect
-                transition: 'background-color 0.3s ease'
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.05) 20%)',
+                backdropFilter: 'blur(5px)',
+                WebkitBackdropFilter: 'blur(5px)',
+                transition: 'background-color 0.3s ease',
+                height: '90px',
             }}>
-                {/* Left: Auth Button */}
-                <Box>
+                {/* Left: Empty */}
+                <Box></Box>
+
+                {/* Center: Navigation */}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
+                    <Button onClick={() => router.push('/')} sx={navLinkStyle('/')}>Home</Button>
+                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+                    <Button onClick={() => router.push('/about')} sx={navLinkStyle('/about')}>About me</Button>
+                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+                    <Button onClick={() => router.push('/projects')} sx={navLinkStyle('/projects')}>Projects</Button>
+                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+                    <Button onClick={() => router.push('/contact')} sx={navLinkStyle('/contact')}>Contact</Button>
+                </Box>
+
+                {/* Right: Auth, Theme & Language */}
+                <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end', alignItems: 'center' }}>
+                    {/* Auth Button */}
                     <Button
                         onClick={() => setIsLoggedIn(!isLoggedIn)}
                         sx={{
@@ -177,21 +194,7 @@ export default function Navbar() {
                             {isLoggedIn ? 'Sign out' : 'Sign in'}
                         </Typography>
                     </Button>
-                </Box>
 
-                {/* Center: Navigation */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
-                    <Button onClick={() => router.push('/')} sx={navLinkStyle('/')}>Home</Button>
-                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-                    <Button onClick={() => router.push('/about')} sx={navLinkStyle('/about')}>About me</Button>
-                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-                    <Button onClick={() => router.push('/projects')} sx={navLinkStyle('/projects')}>Projects</Button>
-                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-                    <Button onClick={() => router.push('/contact')} sx={navLinkStyle('/contact')}>Contact</Button>
-                </Box>
-
-                {/* Right: Theme & Language */}
-                <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end', alignItems: 'center' }}>
                     {/* Theme Toggle */}
                     <Box
                         onClick={toggleTheme}
@@ -275,10 +278,9 @@ export default function Navbar() {
                 alignItems: 'center',
                 gap: 2,
                 zIndex: 100,
-                // background: 'linear-gradient(to top, var(--background) 80%, transparent)',
                 backgroundColor: 'transparent',
-                backdropFilter: 'blur(5px)',
-                pt: 2
+                pt: 2,
+                height: '80px',
             }}>
                 <Button onClick={() => router.push('/')} sx={mobileNavLinkStyle('/')}>Home</Button>
                 <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
@@ -301,7 +303,7 @@ export default function Navbar() {
                 alignItems: 'center',
                 p: 2,
                 backgroundColor: 'transparent',
-                backdropFilter: 'blur(5px)',
+                // backdropFilter: 'blur(5px)',
             }}>
                 <Button
                     onClick={() => setIsLoggedIn(!isLoggedIn)}
@@ -332,7 +334,7 @@ export default function Navbar() {
                             fontWeight: 700,
                             textTransform: 'none',
                             lineHeight: 1,
-                            background: isLoggedIn ? 'var(--purple)' : ' var(--blue))',
+                            background: isLoggedIn ? 'var(--purple)' : 'var(--blue)',
                             backgroundClip: 'text',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',

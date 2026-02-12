@@ -95,11 +95,12 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
     >
       <Button
         onMouseEnter={handleOpen}
+        onClick={handleOpen}
         sx={{
-          mt: 4,
+          mt: { xs: 1, md: 4 },
           width: 350,
           py: 1,
-          fontSize: '1.3rem',
+          fontSize: '1rem',
           fontWeight: 600,
           color: 'var(--purple)',
           bgcolor: open ? 'var(--blue)' : 'transparent',
@@ -223,24 +224,33 @@ export default function ProjectsPage() {
           gap: 2,
           pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
         }}>
-          <Typography variant='h3' sx={{ marginTop: { xs: '-8px', md: 15 } }}>
+          <Typography variant='h3' sx={{ marginTop: { xs: '60px', md: 15 } }}>
             <strong>Projects</strong>
           </Typography>
-          <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: { xs: -30, md: -20 }, lineHeight: 1 }}>
+          <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: { xs: -40, md: -20 }, lineHeight: 1 }}>
             <span style={{ color: 'var(--blue)' }}>____</span>
           </Typography>
 
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: -2 }}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: -2 }}>
 
-            {/* MOBILE ONLY: Title & Carousel */}
-            <Box sx={{ display: { xs: 'block', md: 'none' }, width: '100%' }}>
-              <Typography variant='h4' sx={{ mb: 2, whiteSpace: 'nowrap' }}>
-                <strong>Ping It</strong>
-              </Typography>
-              <ImageCarousel images={[
-                '/ping_it_1.png', '/ping_it_2.png', '/ping_it_3.png',
-                '/ping_it_4.png', '/ping_it_5.png', '/ping_it_6.png'
-              ]} alt="Ping It Project" slideWidth="50vw" />
+            {/* MOBILE ONLY: Side-by-side layout */}
+            <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', gap: 1, mt: -5, alignItems: 'center' }}>
+              {/* Left: Images (40% width) */}
+              <Box sx={{ width: '50%', ml: -1 }}>
+                <ImageCarousel images={[
+                  '/ping_it_1.png', '/ping_it_2.png', '/ping_it_3.png',
+                  '/ping_it_4.png', '/ping_it_5.png', '/ping_it_6.png'
+                ]} alt="Ping It Project" slideWidth="100%" />
+              </Box>
+              {/* Right: Text (60% width) */}
+              <Box sx={{ width: '60%' }}>
+                <Typography variant='h6' sx={{ mb: 1, fontWeight: 700 }}>
+                  Ping It
+                </Typography>
+                <Typography variant='body2' sx={{ fontSize: '1rem', mr: -2 }}>
+                  A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time.<br />Built with <strong>React</strong> and <strong>Ruby on Rails</strong>, it integrates <strong>APIs</strong> for live map updates and seamless match coordination. I implemented user <strong>authentication</strong>, <strong>UI/UX improvements</strong>, and <strong>mobile-first design</strong> to enhance accessibility and user engagement.
+                </Typography>
+              </Box>
             </Box>
 
             {/* DESKTOP: Grid Images */}
@@ -275,26 +285,26 @@ export default function ProjectsPage() {
                 <strong>Ping It</strong>
               </Typography>
 
-              <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
+              <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
                 A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time.
               </Typography>
-              <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
+              <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
                 Built with <strong>React</strong> and <strong>Ruby on Rails</strong>, it integrates <strong>APIs</strong> for live map updates and seamless match coordination. I implemented user <strong>authentication</strong>, <strong>UI/UX improvements</strong>, and <strong>mobile-first design</strong> to enhance accessibility and user engagement.
               </Typography>
 
+              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/IdMHUj0lHkEr4KxSYTvVUS/LW--1282-Ping-it?node-id=1-44&p=f&t=ifGl8TuZ8ROcOVUy-0" githubUrl="https://github.com/S00J1NK1M/ping_it" />
+
               {/* Feedback Stars Section */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
                 <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
                   Feedback
                 </Typography>
                 <StarRating />
               </Box>
-
-              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/IdMHUj0lHkEr4KxSYTvVUS/LW--1282-Ping-it?node-id=1-44&p=f&t=ifGl8TuZ8ROcOVUy-0" githubUrl="https://github.com/S00J1NK1M/ping_it" />
             </Box>
-          </Box>
+          </Box >
 
-        </Container>
+        </Container >
 
 
 
@@ -415,8 +425,8 @@ export default function ProjectsPage() {
               <ProjectLinksDropdown figmaUrl="#" githubUrl="https://github.com/AnnaBoiko1/rails-watch-list" />
             </Box>
           </Box>
-        </Container>
-      </Box>
+        </Container >
+      </Box >
 
 
     </>
