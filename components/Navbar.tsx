@@ -83,6 +83,7 @@ export default function Navbar() {
     // --- Language State ---
     const [languageAnchorEl, setLanguageAnchorEl] = useState<null | HTMLElement>(null);
     const [language, setLanguage] = useState('EN');
+    const [hoveredLanguage, setHoveredLanguage] = useState<string | null>(null);
     const openLanguageMenu = Boolean(languageAnchorEl);
 
     const handleLanguageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -255,16 +256,33 @@ export default function Navbar() {
                             <MenuItem
                                 key={lang}
                                 onClick={() => handleLanguageClose(lang)}
+                                onMouseEnter={() => setHoveredLanguage(lang)}
+                                onMouseLeave={() => setHoveredLanguage(null)}
                                 sx={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    gap: 2,
                                     fontWeight: language === lang ? 900 : 500,
                                     fontSize: { xs: '1rem', md: '1.7rem' },
                                     p: 1,
                                     mt: { xs: -2, md: -2 },
                                     mb: { xs: -2, md: -2 },
-                                    color: language === lang ? 'var(--purple)' : 'var(--text)'
+                                    color: language === lang ? 'var(--purple)' : 'var(--text)',
+                                    '&:hover': {
+                                        color: 'var(--purple)',
+                                        fontWeight: 900,
+                                    }
+
                                 }}
                             >
                                 {lang}
+                                <span style={{
+                                    opacity: (language === lang || hoveredLanguage === lang) ? 1 : 0,
+                                    transition: 'opacity 0.2s',
+                                    fontSize: '0.9em',
+                                    color: 'var(--text)'
+                                }}>✔</span>
                             </MenuItem>
                         ))}
                     </Menu>
