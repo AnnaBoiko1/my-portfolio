@@ -155,19 +155,19 @@ export default function Navbar() {
                         }}
                     >
                         <img
-                            src={isLoggedIn ? "/log_out.png" : "/log_in.png"}
+                            src={isLoggedIn ? "/log_out.svg" : "/log_in.svg"}
                             alt={isLoggedIn ? "Log Out" : "Log In"}
                             width={32}
                             height={32}
-                            style={{ borderRadius: '50%', marginBottom: '4px' }}
+                            style={{ marginBottom: '0px' }}
                         />
                         <Typography
                             sx={{
-                                fontSize: '0.75rem',
+                                fontSize: '0.65rem',
                                 fontWeight: 700,
                                 textTransform: 'none',
                                 lineHeight: 1,
-                                background: isLoggedIn ? 'var(--purple)' : 'var(--purple)',
+                                background: isLoggedIn ? 'var(--blue)' : 'var(--purple)',
                                 backgroundClip: 'text',
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
@@ -320,19 +320,19 @@ export default function Navbar() {
                     }}
                 >
                     <img
-                        src={isLoggedIn ? "/log_out.png" : "/log_in.png"}
+                        src={isLoggedIn ? "/log_out.svg" : "/log_in.svg"}
                         alt={isLoggedIn ? "Log Out" : "Log In"}
                         width={28}
                         height={28}
-                        style={{ borderRadius: '50%', marginBottom: '2px' }}
+                        style={{ marginBottom: '0px' }}
                     />
                     <Typography
                         sx={{
-                            fontSize: '0.7rem',
+                            fontSize: '0.6rem',
                             fontWeight: 700,
                             textTransform: 'none',
                             lineHeight: 1,
-                            background: isLoggedIn ? 'var(--purple)' : 'linear-gradient(90deg, var(--purple), var(--blue))',
+                            background: isLoggedIn ? 'var(--purple)' : ' var(--blue))',
                             backgroundClip: 'text',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
@@ -348,7 +348,13 @@ export default function Navbar() {
                         onClick={toggleTheme}
                         sx={{ width: 28, height: 28, display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}
                     >
-                        {theme === 'light' ? '☀' : theme === 'dark' ? '☾' : 'A'}
+                        {theme === 'light' ? (
+                            <span style={{ fontSize: '2.4rem', marginBottom: '4px' }}>☀</span>
+                        ) : theme === 'dark' ? (
+                            <span style={{ fontSize: '2rem', marginBottom: '4px' }}>☾</span>
+                        ) : (
+                            <img src="/theme_auto2.png" alt="Auto" style={{ width: '24px', height: '24px' }} />
+                        )}
                     </Box>
                     <Button
                         onClick={handleLanguageClick}
