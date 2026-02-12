@@ -242,9 +242,11 @@ export default function Navbar() {
                         PaperProps={{
                             sx: {
                                 mt: 1,
-                                bgcolor: 'var(--background)',
+                                bgcolor: 'var(--blue)',
+                                borderRadius: '10px',
+                                fontWeight: '800',
                                 color: 'var(--text)',
-                                border: '1px solid var(--blue)',
+                                border: '3px solid var(--purple)',
                                 boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
                             }
                         }}
@@ -254,7 +256,11 @@ export default function Navbar() {
                                 key={lang}
                                 onClick={() => handleLanguageClose(lang)}
                                 sx={{
-                                    fontWeight: language === lang ? 900 : 400,
+                                    fontWeight: language === lang ? 900 : 500,
+                                    fontSize: { xs: '1rem', md: '1.7rem' },
+                                    p: 1,
+                                    mt: { xs: -2, md: -2 },
+                                    mb: { xs: -2, md: -2 },
                                     color: language === lang ? 'var(--purple)' : 'var(--text)'
                                 }}
                             >
@@ -294,9 +300,9 @@ export default function Navbar() {
             {/* Mobile Top Bar for Auth/Theme/Lang (Optional, adding since users asked for these features and desktop only shows them) */}
             <Box sx={{
                 position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
+                top: 2,
+                left: 10,
+                right: 20,
                 zIndex: 100,
                 display: { xs: 'flex', md: 'none' },
                 justifyContent: 'space-between',
@@ -362,8 +368,9 @@ export default function Navbar() {
                         onClick={handleLanguageClick}
                         sx={{ fontSize: '1rem', fontWeight: '900', color: 'var(--text)', minWidth: 0, p: 0 }}
                     >
-                        {language}
+                        {language} <span style={{ fontSize: '1em', marginLeft: 6 }}>▼</span>
                     </Button>
+
                 </Box>
             </Box>
         </>

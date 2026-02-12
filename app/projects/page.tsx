@@ -104,7 +104,7 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
         onClick={handleOpen}
         sx={{
           mt: { xs: 1, md: 4 },
-          width: 350,
+          width: { xs: "40vh", md: 350 },
           py: 1,
           fontSize: '1rem',
           fontWeight: 600,
