@@ -5,8 +5,8 @@ export default function BackgroundCanva({ children }: { children: React.ReactNod
   return (
     <Box
       sx={{
-        height: '100%', // Fit within body
-        width: '100%',
+        height: '99.5%', // Fit within body
+        width: '99.5%',
         bgcolor: 'rgba(31, 167, 188, 0.15)',
         overflow: 'hidden', // Ensure it contains its children
         position: 'relative'

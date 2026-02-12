@@ -12,9 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import ImageCarousel from '@/components/ImageCarousel';
 
-const NavigationSeparator = ({ sx }: { sx?: any }) => (
-  <Typography sx={sx} component="span">|</Typography>
-);
+import Navbar from '@/components/Navbar';
 
 const StarRating = () => {
   const [rating, setRating] = React.useState(0);
@@ -214,6 +212,7 @@ export default function ProjectsPage() {
         scrollbarWidth: 'none',
         pb: 5
       }}>
+        <Navbar />
         {/* Секція  - перша snap точка */}
         <Container maxWidth="lg" sx={{
           scrollSnapAlign: 'start',
@@ -296,7 +295,7 @@ export default function ProjectsPage() {
           </Box>
 
         </Container>
- 
+
 
 
         {/* Секція  - 2 snap точка */}
@@ -419,52 +418,7 @@ export default function ProjectsPage() {
         </Container>
       </Box>
 
-      {/* ✅ Desktop Navbar (Top fixed) - ІДЕНТИЧНИЙ з Home */}
-      <Box sx={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 10,
-        display: { xs: 'none', md: 'grid' },
-        gridTemplateColumns: '1fr auto 1fr',
-        alignItems: 'center',
-        p: 4,
-        pt: 6
-      }
-      }>
-        <Box />
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
-          <Button onClick={() => router.push('/')} sx={{ fontSize: '1.4rem', color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Home</Button>
-          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-          <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.4rem', color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>About me</Button>
-          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-          <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.4rem', color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Projects</Button>
-          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-          <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.4rem', color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Contact</Button>
-        </Box>
-        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'flex-end', alignItems: 'center' }}>
-          <Box sx={{ width: 32, height: 32, border: '2px solid currentColor', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--blue)' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 18, height: 18 }}>
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-          </Box>
-          <Typography sx={{ fontSize: '1.4rem', fontWeight: 'bold' }}>☀</Typography>
-          <Typography sx={{ fontSize: '1.4rem', fontWeight: '900', display: 'flex', alignItems: 'center', gap: 0.5 }}>EN <span style={{ fontSize: '0.8em' }}>▼</span></Typography>
-        </Box>
-      </Box >
 
-      {/* Mobile Navigation (Bottom) - з pb:6 */}
-      < Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', pb: 6, alignItems: 'center', gap: 2 }}>
-        <Button onClick={() => router.push('/')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Home</Button>
-        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>About me</Button>
-        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Projects</Button>
-        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Contact</Button>
-      </Box >
     </>
   );
 }

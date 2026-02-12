@@ -9,9 +9,7 @@ import Button from '@mui/material/Button';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
-const NavigationSeparator = ({ sx }: { sx?: SxProps<Theme> }) => (
-  <Typography sx={sx} component="span">|</Typography>
-);
+import Navbar from '@/components/Navbar';
 
 export default function Home() {
   const pathname = usePathname();
@@ -29,6 +27,7 @@ export default function Home() {
         scrollbarWidth: 'none',
         pb: 5 // Optional padding at bottom for content
       }}>
+        <Navbar />
         <Container maxWidth="lg" sx={{
           scrollSnapAlign: 'start',
           minHeight: '100vh',
@@ -171,18 +170,7 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* ... (Desktop Navbar omitted) ... */}
 
-      {/* Navigation (Mobile) */}
-      <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', pb: 6, alignItems: 'center', gap: 2 }}>
-        <Button onClick={() => router.push('/')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Home</Button>
-        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>About me</Button>
-        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Projects</Button>
-        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Contact</Button>
-      </Box>
     </>
   );
 }

@@ -3,43 +3,40 @@
 
 
 :root {
+  --background: #ffffff;
   --text: #161645;
   --purple: #A749D6;
   --blue: #60E7F1;
   --blue-light: #cbecfa;
   --red: #FFA2B4;
-  --bg-blue:'rgba(31, 167, 188, 0.15)',
-
-
+  --bg-blue: rgba(31, 167, 188, 0.15);
+  --border: #ffffff;
 }
 
-/* @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
-
-/* @media 
-(prefers-color-scheme: dark) 
-{
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+[data-theme='dark'],
+.dark {
+  --background: #1e1e50 !important;
+  /* Brighter blue to be visible */
+  --text: #ededed;
+  --blue-light: #2c2c6e;
+  /* Darker background for boxes */
+  --bg-blue: rgba(96, 231, 241, 0.15);
+  --border: #1e1e50 !important;
+  color-scheme: dark;
+}
 
 body {
-  background: transparent;
-  color: #161645;
+  background: var(--background);
+  color: var(--text);
   font-family: Roboto, Helvetica, sans-serif;
   border-width: 12px 12px 16px 12px;
   border-style: solid;
-  border-color: white;
+  border-color: var(--border);
   margin: 0;
   box-sizing: border-box;
   height: 100vh;
   overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   /* Prevent body scroll, let React component handle it */
 }
 
