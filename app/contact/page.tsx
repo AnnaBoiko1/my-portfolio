@@ -46,7 +46,7 @@ export default function ContactPage() {
               <Box sx={{
                 width: 450,      // ✅ ФІКСОВАНА ширина
                 maxWidth: '100%', // ✅ Responsive
-                mx: 'auto'       // ✅ Центр на мобільному
+                mx: 0            // ✅ Left alignment
               }}>
                 <Typography variant='h3' sx={{ marginTop: { xs: '-8px', md: 15 }, mb: 3 }}>
                   <strong>Contact me</strong>
@@ -54,15 +54,16 @@ export default function ContactPage() {
                 <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: { xs: -30, md: -20 }, lineHeight: 1 }}>
                   <span style={{ color: 'var(--blue)' }}>____</span>
                 </Typography>
-                <Box sx={{ textAlign: { xs: 'center', md: 'start' } }}>
+                <Box sx={{ textAlign: 'start' }}>
                   <Typography variant='h4' sx={{ mb: 1 }}>
                     Anna Boiko
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: { xs: 'center', md: 'start' } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'flex-start' }}>
                   <Link href="mailto:annaboiko1@icloud.com" style={{ color: 'var(--purple)' }}>
                     <Typography variant='h4' sx={{
                       mb: 1,
+                      fontSize: { xs: '1.4rem', md: '2.125rem' }, // ✅ Fit on screen
                       textDecoration: 'underline',
                       textDecorationThickness: '2px',
                       textUnderlineOffset: '4px',
@@ -80,10 +81,13 @@ export default function ContactPage() {
                     sx={{
                       mt: 0.1,
                       marginLeft: '8px',
-                      width: '8%',
+                      width: '120px', // ✅ Increased fixed width
+                      display: 'inline-block', // ✅ Enforce block behavior for width
+                      whiteSpace: 'nowrap', // ✅ Prevent wrapping
                       fontSize: '0.8rem',
                       color: 'var(--blue)',
                       cursor: 'pointer',
+                      textAlign: 'left', // Ensure text starts from left
                       '&:hover': {
                         opacity: 0.7,
                         color: 'var(--bg-blue)'
@@ -120,7 +124,8 @@ export default function ContactPage() {
                   data-cal-namespace="30min"
                   data-cal-config='{"layout":"month_view"}'
                   sx={{
-                    width: '450px',
+                    width: '100%',
+                    maxWidth: '450px',
                     height: '60px',
                     py: 1,
                     fontSize: '1.5rem',
@@ -154,10 +159,11 @@ export default function ContactPage() {
                       boxShadow: '0 10px 30px var(--red)',
                       bgcolor: 'var(--blue)',
                       backgroundImage: 'none',
+                      zIndex: 10
                     }
                   }}
                 >
-                  <Typography variant='h5' sx={{ fontWeight: 600, fontSize: '1.75rem' }}>
+                  <Typography variant='h5' sx={{ fontWeight: 600, fontSize: { xs: '1.3rem', sm: '1.6rem', md: '1.9rem' }, whiteSpace: 'nowrap' }}>
                     Schedule an Appointment
                   </Typography>
                 </Box>
@@ -211,18 +217,18 @@ export default function ContactPage() {
               </Box>
             </Grid>
 
-            {/* ПРАВА КОЛОНКА - Форма */}
-            <Grid size={{ xs: 12, md: 6 }}>
+            {/* ПРАВА КОЛОНКА - Форма (Desktop Only) */}
+            <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ p: 4, borderRadius: 10, bgcolor: 'transparent', mt: 15 }}>
                 {/* Твоя ContactForm тут */}
                 <Typography variant='h5' sx={{ mb: 2 }}>Name</Typography>
-                <Box component="input" placeholder="Your name" sx={{ width: '120%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+                <Box component="input" placeholder="Your name" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
                 <Typography variant='h5' sx={{ mb: 2 }}>Email</Typography>
-                <Box component="input" placeholder="your@email.com" sx={{ width: '120%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+                <Box component="input" placeholder="your@email.com" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
                 <Typography variant='h5' sx={{ mb: 2 }}>Message</Typography>
-                <Box component="textarea" placeholder="Enter your message" rows={4} sx={{ width: '120%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+                <Box component="textarea" placeholder="Enter your message" rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
                 <Button variant="contained" sx={{
-                  width: '120%',
+                  width: '100%',
                   mt: 2,
                   height: '50px',
                   py: 1,
@@ -264,8 +270,65 @@ export default function ContactPage() {
               </Box>
             </Grid>
           </Grid>
+        </Container>
 
-
+        {/* NEW MOBILE FORM SECTION */}
+        <Container maxWidth="lg" sx={{
+          display: { xs: 'flex', md: 'none' },
+          scrollSnapAlign: 'start',
+          minHeight: '100vh',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          pb: 20
+        }}>
+          <Box sx={{ p: 2, borderRadius: 10, bgcolor: 'transparent' }}>
+            <Typography variant='h5' sx={{ mb: 2 }}>Name</Typography>
+            <Box component="input" placeholder="Your name" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Typography variant='h5' sx={{ mb: 2 }}>Email</Typography>
+            <Box component="input" placeholder="your@email.com" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Typography variant='h5' sx={{ mb: 2 }}>Message</Typography>
+            <Box component="textarea" placeholder="Enter your message" rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Button variant="contained" sx={{
+              width: '100%',
+              mt: 2,
+              height: '50px',
+              py: 1,
+              fontSize: '1.3rem',
+              fontWeight: 600,
+              color: 'var(--purple)',
+              bgcolor: 'transparent',
+              backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+              textTransform: 'none',
+              display: 'inline-flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+              backgroundSize: '15px 15px',
+              position: 'relative',
+              backgroundOrigin: 'padding-box',
+              borderRadius: 3,
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                inset: 0,
+                borderRadius: 3,
+                padding: '3px',
+                background: 'var(--purple)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+                pointerEvents: 'none',
+              },
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 10px 30px var(--red)',
+                bgcolor: 'var(--blue)',
+                backgroundImage: 'none',
+              }
+            }}>
+              Submit
+            </Button>
+          </Box>
         </Container>
       </Box>
 
@@ -306,13 +369,13 @@ export default function ContactPage() {
 
       {/* Mobile Navigation (Bottom) - з pb:6 */}
       <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', pb: 6, alignItems: 'center', gap: 2 }}>
-        <Button onClick={() => router.push('/')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Home</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>About me</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Projects</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Contact</Button>
+        <Button onClick={() => router.push('/')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Home</Button>
+        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>About me</Button>
+        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Projects</Button>
+        <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1rem', fontWeight: 600, color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, whiteSpace: 'nowrap' }}>Contact</Button>
       </Box>
     </>
 
