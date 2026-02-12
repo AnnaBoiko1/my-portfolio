@@ -230,7 +230,7 @@ export default function ProjectsPage() {
             <span style={{ color: 'var(--blue)' }}>____</span>
           </Typography>
 
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4 }}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: -2 }}>
             <Box sx={{ flex: 1, maxWidth: { md: 600 } }}>
               <Grid container spacing={0} columns={{ xs: 6, md: 6 }}>  {/* gap: 0 = spacing={0} */}
                 {[
@@ -316,7 +316,7 @@ export default function ProjectsPage() {
               <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/LoJSPqtZcWbeKD6hcOdo0x/Lingoda-Copycat?node-id=1-34&p=f&t=EYlDmZRuMQeVE1Hs-0" githubUrl="https://github.com/S00J1NK1M/lingoda_copycat" />
             </Box>
 
-            <Box sx={{ flex: 1, maxWidth: { md: 600 } }}>
+            <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: -2 }}>
               <Grid container spacing={0} columns={6}>
                 {[
                   '/lingoda_1.png', '/lingoda_2.png', '/lingoda_3.png'
