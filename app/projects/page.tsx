@@ -13,11 +13,15 @@ import Menu from '@mui/material/Menu';
 import ImageCarousel from '@/components/ImageCarousel';
 
 import Navbar from '@/components/Navbar';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 const StarRating = () => {
   const [rating, setRating] = React.useState(0);
   const [hoverRating, setHoverRating] = React.useState(0);
   const [isVisible, setIsVisible] = React.useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   React.useEffect(() => {
     if (isVisible) {
@@ -37,8 +41,8 @@ const StarRating = () => {
         {[1, 2, 3, 4, 5].map((i) => (
           <svg
             key={i}
-            width="44"
-            height="44"
+            width={isMobile ? "30px" : "44px"}
+            height={isMobile ? "30px" : "44px"}
             viewBox="0 0 24 24"
             fill={i <= (hoverRating || rating) ? 'var(--purple)' : 'var(--blue)'}
             xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +59,7 @@ const StarRating = () => {
         <Typography sx={{
           color: 'var(--blue)',
           fontWeight: 500,
-          fontSize: '1.2rem',
+          fontSize: { xs: '0.7rem', md: '1.2rem' },
           whiteSpace: 'nowrap',
           opacity: isVisible ? 1 : 0,
           transition: isVisible ? 'none' : 'opacity 0.01s ease-in-out',
@@ -72,6 +76,8 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -113,6 +119,8 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
           position: 'relative',
           backgroundOrigin: 'padding-box',
           borderRadius: 3,
+          boxShadow: open ? '0 10px 30px var(--red)' : 'none',
+          transform: open ? 'translateY(-2px)' : 'none',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -141,7 +149,10 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
         onClose={() => setAnchorEl(null)}
         onMouseEnter={handleMenuEnter}
         onMouseLeave={handleClose}
-        MenuListProps={{ onMouseEnter: handleMenuEnter }}
+        MenuListProps={{
+          onMouseEnter: handleMenuEnter,
+          sx: { py: 0 } // Optional: remove default padding if needed
+        }}
         PaperProps={{
           sx: {
             mt: 0.5,
@@ -154,13 +165,20 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
             pointerEvents: 'auto'
           }
         }}
-        sx={{ pointerEvents: 'none' }}
+        sx={{ pointerEvents: isMobile ? 'auto' : 'none' }}
       >
         <MenuItem
           onClick={() => { window.open(figmaUrl, '_blank', 'noopener,noreferrer'); setAnchorEl(null); }}
+          disableRipple
           sx={{
             color: 'var(--text)',
             gap: 2,
+            bgcolor: 'transparent',
+            // Ensure no background on potential focus/active states
+            '&:focus, &:active, &.Mui-selected, &.Mui-selected:hover': {
+              bgcolor: 'transparent'
+            },
+            // Only apply purple color on hover
             '&:hover': {
               color: 'var(--purple)',
               bgcolor: 'transparent'
@@ -178,9 +196,16 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
         </MenuItem>
         <MenuItem
           onClick={() => { window.open(githubUrl, '_blank', 'noopener,noreferrer'); setAnchorEl(null); }}
+          disableRipple
           sx={{
             color: 'var(--text)',
             gap: 2,
+            bgcolor: 'transparent',
+            // Ensure no background on potential focus/active states
+            '&:focus, &:active, &.Mui-selected, &.Mui-selected:hover': {
+              bgcolor: 'transparent'
+            },
+            // Only apply purple color on hover
             '&:hover': {
               color: 'var(--purple)',
               bgcolor: 'transparent'
@@ -296,7 +321,7 @@ export default function ProjectsPage() {
 
               {/* Feedback Stars Section */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
-                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
+                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                   Feedback
                 </Typography>
                 <StarRating />
@@ -332,7 +357,7 @@ export default function ProjectsPage() {
               </Typography>
               {/* Feedback Stars Section */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
-                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
+                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                   Feedback
                 </Typography>
                 <StarRating />
@@ -417,7 +442,7 @@ export default function ProjectsPage() {
               </Typography>
               {/* Feedback Stars Section */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
-                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
+                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                   Feedback
                 </Typography>
                 <StarRating />
