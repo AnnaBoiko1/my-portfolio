@@ -1,14 +1,13 @@
 "use client";
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
-// ✅ ДОДАНО: Імпорти для навігації
-import { usePathname, useRouter } from 'next/navigation';
 
 const NavigationSeparator = ({ sx }: { sx?: any }) => (
   <Typography sx={sx} component="span">|</Typography>
@@ -16,10 +15,8 @@ const NavigationSeparator = ({ sx }: { sx?: any }) => (
 
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
-  // ✅ ДОДАНО: Змінні навігації
   const pathname = usePathname();
   const router = useRouter();
-
   return (
     <>
       <Box sx={{
@@ -32,7 +29,7 @@ export default function ContactPage() {
         scrollbarWidth: 'none',
         pb: 5
       }}>
-        {/* Секція */}
+        {/* Секція  - перша snap точка */}
         <Container maxWidth="lg" sx={{
           scrollSnapAlign: 'start',
           minHeight: '100vh',
@@ -40,39 +37,72 @@ export default function ContactPage() {
           flexDirection: 'column',
           justifyContent: 'center',
           gap: 2,
-          pb: 20
+          pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
         }}>
 
+          {/* ✅ 2 КОНТЕНТ КОЛОНКИ як у Bootstrap */}
           <Grid container spacing={8} sx={{ px: { xs: 2, md: 12 } }}>
-            {/* ЛІВА КОЛОНКА */}
-            <Grid item xs={12} md={6}>
-              <Box sx={{ width: 450, maxWidth: '100%', mx: 'auto' }}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Box sx={{
+                width: 450,      // ✅ ФІКСОВАНА ширина
+                maxWidth: '100%', // ✅ Responsive
+                mx: 'auto'       // ✅ Центр на мобільному
+              }}>
                 <Typography variant='h3' sx={{ marginTop: { xs: '-8px', md: 15 }, mb: 3 }}>
                   <strong>Contact me</strong>
                 </Typography>
                 <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: { xs: -30, md: -20 }, lineHeight: 1 }}>
                   <span style={{ color: 'var(--blue)' }}>____</span>
                 </Typography>
-                
                 <Box sx={{ textAlign: { xs: 'center', md: 'start' } }}>
-                  <Typography variant='h4' sx={{ mb: 1 }}>Anna Boiko</Typography>
+                  <Typography variant='h4' sx={{ mb: 1 }}>
+                    Anna Boiko
+                  </Typography>
                 </Box>
-
-                {/* Email + Copy */}
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: { xs: 'center', md: 'start' } }}>
-                  <Link href="mailto:annaboiko1@icloud.com" style={{ textDecoration: 'underline', color: 'var(--purple)' }}>
-                    <Typography variant='h4' sx={{ mb: 1 }}>annaboiko1@icloud.com</Typography>
+                  <Link href="mailto:annaboiko1@icloud.com" style={{ color: 'var(--purple)' }}>
+                    <Typography variant='h4' sx={{
+                      mb: 1,
+                      textDecoration: 'underline',
+                      textDecorationThickness: '2px',
+                      textUnderlineOffset: '4px',
+                      '&:hover': {
+                        color: 'var(--blue)',
+                        textDecorationColor: 'var(--blue)',
+                        backgroundImage: 'none',
+                      }
+                    }}>
+                      annaboiko1@icloud.com
+                    </Typography>
                   </Link>
                   <Typography
-                    variant='body2'
-                    sx={{ minWidth: 80, fontSize: '0.8rem', color: 'var(--blue)', cursor: 'pointer', textAlign: 'center' }}
+                    variant='h6'
+                    sx={{
+                      mt: 0.1,
+                      marginLeft: '8px',
+                      width: '8%',
+                      fontSize: '0.8rem',
+                      color: 'var(--blue)',
+                      cursor: 'pointer',
+                      '&:hover': {
+                        opacity: 0.7,
+                        color: 'var(--bg-blue)'
+                      }
+                    }}
                     onClick={async () => {
                       try {
                         await navigator.clipboard.writeText('annaboiko1@icloud.com');
                         setCopied(true);
                         setTimeout(() => setCopied(false), 2000);
                       } catch (err) {
-                        setCopied(false);
+                        const textArea = document.createElement('textarea');
+                        textArea.value = 'annaboiko1@icloud.com';
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
                       }
                     }}
                   >
@@ -80,97 +110,211 @@ export default function ContactPage() {
                   </Typography>
                 </Box>
 
-                <Typography variant='h4' sx={{ mb: 4 }}>Based in Toronto, ON Canada</Typography>
+                <Typography variant='h4' sx={{ mb: 4 }}>
+                  Based in Toronto, ON Canada
+                </Typography>
 
-                {/* Cal.com Button */}
-                <Box data-cal-link="annaboiko/30min" sx={{
-                  width: '450px', height: '60px', py: 1, fontSize: '1.5rem', fontWeight: 600,
-                  color: 'var(--purple)', bgcolor: 'transparent', borderRadius: 3, position: 'relative',
-                  display: 'inline-flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer',
-                  backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
-                  backgroundSize: '15px 15px',
-                  '&::before': { content: '""', position: 'absolute', inset: 0, borderRadius: 3, padding: '3px', background: 'var(--purple)', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude', pointerEvents: 'none' },
-                  '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 10px 30px var(--red)', bgcolor: 'var(--blue)', backgroundImage: 'none' }
-                }}>
-                  <Typography variant='h5' sx={{ fontWeight: 600, fontSize: '1.75rem' }}>Schedule an Appointment</Typography>
+                {/* ✅ Cal.com Кнопка */}
+                <Box
+                  data-cal-link="annaboiko/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"month_view"}'
+                  sx={{
+                    width: '450px',
+                    height: '60px',
+                    py: 1,
+                    fontSize: '1.5rem',
+                    fontWeight: 600,
+                    color: 'var(--purple)',
+                    bgcolor: 'transparent',
+                    backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+                    textTransform: 'none',
+                    display: 'inline-flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+                    backgroundSize: '15px 15px',
+                    position: 'relative',
+                    backgroundOrigin: 'padding-box',
+                    borderRadius: 3,
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      inset: 0,
+                      borderRadius: 3,
+                      padding: '3px',
+                      background: 'var(--purple)',
+                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      WebkitMaskComposite: 'xor',
+                      maskComposite: 'exclude',
+                      pointerEvents: 'none',
+                    },
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 10px 30px var(--red)',
+                      bgcolor: 'var(--blue)',
+                      backgroundImage: 'none',
+                    }
+                  }}
+                >
+                  <Typography variant='h5' sx={{ fontWeight: 600, fontSize: '1.75rem' }}>
+                    Schedule an Appointment
+                  </Typography>
                 </Box>
 
+                {/* Find me on */}
                 <Box sx={{ mt: 6, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Typography variant='h5' sx={{ mb: 0.5, opacity: 0.8, fontWeight: 600 }}>Find me on</Typography>
+                  <Typography variant='h5' sx={{ mb: 0.5, opacity: 0.8, fontWeight: 600 }}>
+                    Find me on
+                  </Typography>
                 </Box>
 
-                {/* Social Icons */}
+
                 <Box sx={{ display: 'flex', gap: 0.1, justifyContent: 'center' }}>
                   <Link href="https://github.com/AnnaBoiko1" target="_blank" rel="noopener noreferrer">
-                    <Box sx={{ width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--purple)' }}>
-                      <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.058-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.176 2.873.171 3.176.768.84 1.239 1.91 1.239 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                    <Box sx={{
+                      width: 48, height: 48,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--purple)',
+                      '&:hover': {
+                        color: 'var(--blue)',
+                        backgroundImage: 'none',
+                      }
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.058-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.176 2.873.171 3.176.768.84 1.239 1.91 1.239 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
                     </Box>
                   </Link>
                   <Link href="https://www.linkedin.com/in/anna-boiko1/" target="_blank" rel="noopener noreferrer">
-                    <Box sx={{ width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--purple)' }}>
-                      <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                    <Box sx={{
+                      width: 48, height: 48,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--purple)',
+                      '&:hover': {
+                        color: 'var(--blue)',
+                        backgroundImage: 'none',
+                      }
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
                     </Box>
                   </Link>
                 </Box>
+
+
               </Box>
             </Grid>
 
             {/* ПРАВА КОЛОНКА - Форма */}
-            <Grid item xs={12} md={6}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <Box sx={{ p: 4, borderRadius: 10, bgcolor: 'transparent', mt: 15 }}>
+                {/* Твоя ContactForm тут */}
                 <Typography variant='h5' sx={{ mb: 2 }}>Name</Typography>
-                <input placeholder="Your name" style={{ width: '120%', padding: '12px', marginBottom: '16px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)' }} />
+                <Box component="input" placeholder="Your name" sx={{ width: '120%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
                 <Typography variant='h5' sx={{ mb: 2 }}>Email</Typography>
-                <input placeholder="your@email.com" style={{ width: '120%', padding: '12px', marginBottom: '16px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)' }} />
+                <Box component="input" placeholder="your@email.com" sx={{ width: '120%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
                 <Typography variant='h5' sx={{ mb: 2 }}>Message</Typography>
-                <textarea placeholder="Enter your message" rows={4} style={{ width: '120%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)' }} />
+                <Box component="textarea" placeholder="Enter your message" rows={4} sx={{ width: '120%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
                 <Button variant="contained" sx={{
-                  width: '120%', mt: 2, height: '50px', fontSize: '1.3rem', fontWeight: 600, color: 'var(--purple)', bgcolor: 'transparent',
+                  width: '120%',
+                  mt: 2,
+                  height: '50px',
+                  py: 1,
+                  fontSize: '1.3rem',
+                  fontWeight: 600,
+                  color: 'var(--purple)',
+                  bgcolor: 'transparent',
                   backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
-                  borderRadius: 3, backgroundSize: '15px 15px', position: 'relative',
-                  '&::before': { content: '""', position: 'absolute', inset: 0, borderRadius: 3, padding: '3px', background: 'var(--purple)', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude', pointerEvents: 'none' },
-                  '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 10px 30px var(--red)', bgcolor: 'var(--blue)', backgroundImage: 'none' }
-                }}>Submit</Button>
+                  textTransform: 'none',
+                  display: 'inline-flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+                  backgroundSize: '15px 15px',
+                  position: 'relative',
+                  backgroundOrigin: 'padding-box',
+                  borderRadius: 3,
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    borderRadius: 3,
+                    padding: '3px',
+                    background: 'var(--purple)',
+                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                    pointerEvents: 'none',
+                  },
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 10px 30px var(--red)',
+                    bgcolor: 'var(--blue)',
+                    backgroundImage: 'none',
+                  }
+                }}>
+                  Submit
+                </Button>
               </Box>
             </Grid>
           </Grid>
+
+
         </Container>
       </Box>
 
-      {/* ✅ ДОДАНО: Навбар Desktop (Top) */}
+      {/* ✅ Desktop Navbar (Top fixed) - ІДЕНТИЧНИЙ з Home */}
       <Box sx={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 10,
-        display: { xs: 'none', md: 'grid' }, gridTemplateColumns: '1fr auto 1fr',
-        alignItems: 'center', p: 4, pt: 6
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 10,
+        display: { xs: 'none', md: 'grid' },
+        gridTemplateColumns: '1fr auto 1fr',
+        alignItems: 'center',
+        p: 4,
+        pt: 6
       }}>
         <Box />
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
-          <Button onClick={() => router.push('/')} sx={{ fontSize: '1.4rem', color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>Home</Button>
-          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)' }} />
-          <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.4rem', color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>About me</Button>
-          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)' }} />
-          <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.4rem', color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>Projects</Button>
-          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)' }} />
-          <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.4rem', color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>Contact</Button>
+          <Button onClick={() => router.push('/')} sx={{ fontSize: '1.4rem', color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Home</Button>
+          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+          <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.4rem', color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>About me</Button>
+          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+          <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.4rem', color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Projects</Button>
+          <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+          <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.4rem', color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { bgcolor: 'transparent', color: 'var(--purple)' } }}>Contact</Button>
         </Box>
-        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'flex-end' }}>
+        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'flex-end', alignItems: 'center' }}>
           <Box sx={{ width: 32, height: 32, border: '2px solid currentColor', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--blue)' }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 18, height: 18 }}>
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
           </Box>
           <Typography sx={{ fontSize: '1.4rem', fontWeight: 'bold' }}>☀</Typography>
+          <Typography sx={{ fontSize: '1.4rem', fontWeight: '900', display: 'flex', alignItems: 'center', gap: 0.5 }}>EN <span style={{ fontSize: '0.8em' }}>▼</span></Typography>
         </Box>
       </Box>
 
-      {/* ✅ ДОДАНО: Навбар Mobile (Bottom) */}
+      {/* Mobile Navigation (Bottom) - з pb:6 */}
       <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', pb: 6, alignItems: 'center', gap: 2 }}>
-        <Button onClick={() => router.push('/')} sx={{ fontSize: '1.2rem', color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>Home</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', color: 'var(--text)' }} />
-        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.2rem', color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>About me</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', color: 'var(--text)' }} />
-        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.2rem', color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>Projects</Button>
-        <NavigationSeparator sx={{ fontSize: '1.2rem', color: 'var(--text)' }} />
-        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.2rem', color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none' }}>Contact</Button>
+        <Button onClick={() => router.push('/')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Home</Button>
+        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/about')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/about' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>About me</Button>
+        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/projects')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/projects' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Projects</Button>
+        <NavigationSeparator sx={{ fontSize: '1.2rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+        <Button onClick={() => router.push('/contact')} sx={{ fontSize: '1.2rem', fontWeight: 400, color: pathname === '/contact' ? 'var(--purple)' : 'var(--text)', textTransform: 'none', minWidth: 0, p: 0 }}>Contact</Button>
       </Box>
     </>
+
   );
 }
