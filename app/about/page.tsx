@@ -78,7 +78,7 @@ export default function AboutPage() {
           }}>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
@@ -96,7 +96,7 @@ export default function AboutPage() {
 
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
@@ -113,7 +113,7 @@ export default function AboutPage() {
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
@@ -129,7 +129,7 @@ export default function AboutPage() {
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
@@ -142,7 +142,7 @@ export default function AboutPage() {
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
@@ -158,7 +158,7 @@ export default function AboutPage() {
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--red)', borderRadius: 3, mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
