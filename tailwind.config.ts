@@ -1,12 +1,12 @@
-import type { Config } from 'tailwindcss'
+// import type { Config } from 'tailwindcss'
 
-const config: Config = {
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-    safelist: [
+  safelist: [
     'bg-(--blue)',
     'bg-(--purple)',
     'text-(--blue)',
@@ -16,7 +16,7 @@ const config: Config = {
   ],
   plugins: [],
 
-  
+
 }
 
 export default config
