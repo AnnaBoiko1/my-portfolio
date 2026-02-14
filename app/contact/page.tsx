@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 
 import Navbar from '@/components/Navbar';
+import ContactForm from "@/components/ContactForm";
 
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
@@ -220,52 +221,8 @@ export default function ContactPage() {
             <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ p: 4, borderRadius: 10, bgcolor: 'transparent', mt: 15 }}>
                 {/* Твоя ContactForm тут */}
-                <Typography variant='h5' sx={{ mb: 2 }}>Name</Typography>
-                <Box component="input" placeholder="Your name" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
-                <Typography variant='h5' sx={{ mb: 2 }}>Email</Typography>
-                <Box component="input" placeholder="your@email.com" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
-                <Typography variant='h5' sx={{ mb: 2 }}>Message</Typography>
-                <Box component="textarea" placeholder="Enter your message" rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
-                <Button variant="contained" sx={{
-                  width: '100%',
-                  mt: 2,
-                  height: '50px',
-                  py: 1,
-                  fontSize: '1.3rem',
-                  fontWeight: 600,
-                  color: 'var(--purple)',
-                  bgcolor: 'transparent',
-                  backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
-                  textTransform: 'none',
-                  display: 'inline-flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
-                  backgroundSize: '15px 15px',
-                  position: 'relative',
-                  backgroundOrigin: 'padding-box',
-                  borderRadius: 3,
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: 0,
-                    borderRadius: 3,
-                    padding: '3px',
-                    background: 'var(--purple)',
-                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    WebkitMaskComposite: 'xor',
-                    maskComposite: 'exclude',
-                    pointerEvents: 'none',
-                  },
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 10px 30px var(--red)',
-                    bgcolor: 'var(--blue)',
-                    backgroundImage: 'none',
-                  }
-                }}>
-                  Submit
-                </Button>
+                {/* Твоя ContactForm тут */}
+                <ContactForm />
               </Box>
             </Grid>
           </Grid>
@@ -281,52 +238,7 @@ export default function ContactPage() {
           pb: 20
         }}>
           <Box sx={{ p: 2, borderRadius: 10, bgcolor: 'transparent' }}>
-            <Typography variant='h5' sx={{ mb: 2 }}>Name</Typography>
-            <Box component="input" placeholder="Your name" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
-            <Typography variant='h5' sx={{ mb: 2 }}>Email</Typography>
-            <Box component="input" placeholder="your@email.com" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
-            <Typography variant='h5' sx={{ mb: 2 }}>Message</Typography>
-            <Box component="textarea" placeholder="Enter your message" rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
-            <Button variant="contained" sx={{
-              width: '100%',
-              mt: 2,
-              height: '50px',
-              py: 1,
-              fontSize: '1.3rem',
-              fontWeight: 600,
-              color: 'var(--purple)',
-              bgcolor: 'transparent',
-              backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
-              textTransform: 'none',
-              display: 'inline-flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
-              backgroundSize: '15px 15px',
-              position: 'relative',
-              backgroundOrigin: 'padding-box',
-              borderRadius: 3,
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                inset: 0,
-                borderRadius: 3,
-                padding: '3px',
-                background: 'var(--purple)',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                pointerEvents: 'none',
-              },
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: '0 10px 30px var(--red)',
-                bgcolor: 'var(--blue)',
-                backgroundImage: 'none',
-              }
-            }}>
-              Submit
-            </Button>
+            <ContactForm />
           </Box>
         </Container>
       </Box>
