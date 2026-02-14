@@ -126,7 +126,7 @@ export default function ContactPage() {
                   Based in Toronto, ON Canada
                 </Typography>
 
-                {/* ✅ Cal.com Кнопка */}
+                {/* Cal.com  */}
                 <Box
                   data-cal-link="annaboiko/30min"
                   data-cal-namespace="30min"
@@ -229,8 +229,6 @@ export default function ContactPage() {
             {/* ПРАВА КОЛОНКА - Форма (Desktop Only) */}
             <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ p: 4, borderRadius: 10, bgcolor: 'transparent', mt: 15 }}>
-                {/* Твоя ContactForm тут */}
-                {/* Твоя ContactForm тут */}
                 <ContactForm />
               </Box>
             </Grid>
