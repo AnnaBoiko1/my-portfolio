@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@clerk/nextjs": "^6.37.3",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",

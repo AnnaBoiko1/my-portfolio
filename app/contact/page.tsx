@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { getCalApi } from "@calcom/embed-react";
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -16,6 +17,13 @@ export default function ContactPage() {
   const [copied, setCopied] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "30min" });
+      cal("ui", { "styles": { "branding": { "brandColor": "#000000" } }, "hideEventTypeDetails": false, "layout": "month_view" });
+    })();
+  }, []);
   return (
     <>
       <Box sx={{
@@ -139,6 +147,7 @@ export default function ContactPage() {
                     alignItems: 'center',
                     textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
                     backgroundSize: '15px 15px',
+                    cursor: 'pointer',
                     position: 'relative',
                     backgroundOrigin: 'padding-box',
                     borderRadius: 3,
