@@ -1,43 +1,33 @@
 'use server';
 
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(formData: FormData) {
     const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
+    const senderEmail = formData.get('email') as string;
     const message = formData.get('message') as string;
 
-    if (!name || !email || !message) {
+    if (!name || !senderEmail || !message) {
         return { error: 'Please fill in all fields.' };
     }
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail', // You can use other services or generic SMTP config
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
-    });
-
-    const mailOptions = {
-        from: email, // Sender address (from the form)
-        to: 'annaboiko1@icloud.com', // Your email
-        subject: `New message from ${name}`,
-        text: `
-      Name: ${name}
-      Email: ${email}
-      Message: ${message}
-    `,
-        html: `
-      <h3>New message from Project Portfolio</h3>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Message:</strong> ${message}</p>
-    `,
-    };
-
     try {
-        await transporter.sendMail(mailOptions);
+        await resend.emails.send({
+            from: 'onboarding@resend.dev',
+            to: 'annaboiko1@icloud.com',
+            subject: `PORTFOLIO: New message from ${name}`,
+            replyTo: senderEmail,
+            text: `Name: ${name}\nEmail: ${senderEmail}\nMessage: ${message}`,
+            html: `
+              <h3>New message from Project Portfolio</h3>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${senderEmail}</p>
+              <p><strong>Message:</strong> ${message}</p>
+            `,
+        });
+
         return { success: 'Email sent successfully!' };
     } catch (error) {
         console.error('Error sending email:', error);

@@ -93,7 +93,7 @@ export default function Home() {
             {/* Bottom Row: Bio */}
             <Box>
               <Typography variant="h3" sx={{ fontSize: '1.5rem', color: 'text', maxWidth: 800 }}>
-                I&apos;m an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, based in Toronto.
+                I&apos;m an independent, creative <strong>full-stack web developer</strong>, <strong>designer</strong> and <strong>data analyst</strong> from Ukraine, based in Toronto.
               </Typography>
             </Box>
           </Box>
