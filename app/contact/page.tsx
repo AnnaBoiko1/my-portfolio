@@ -12,11 +12,13 @@ import Link from 'next/link';
 
 import Navbar from '@/components/Navbar';
 import ContactForm from "@/components/ContactForm";
+import { useScrollNavigation } from '../hooks/useScrollNavigation';
 
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const containerRef = useScrollNavigation(null, '/projects');
 
   useEffect(() => {
     (async function () {
@@ -26,7 +28,7 @@ export default function ContactPage() {
   }, []);
   return (
     <>
-      <Box sx={{
+      <Box ref={containerRef} sx={{
         height: '100%',
         overflowY: 'scroll',
         scrollSnapType: 'y mandatory',

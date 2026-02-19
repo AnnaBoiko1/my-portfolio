@@ -7,14 +7,13 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+// Imports
 import {
     ClerkProvider,
-    SignInButton,
-    SignUpButton,
     SignedIn,
     SignedOut,
     UserButton,
-    SignOutButton,
+    useClerk, // Import useClerk
 } from '@clerk/nextjs'
 
 
@@ -26,6 +25,7 @@ const NavigationSeparator = ({ sx }: { sx?: any }) => (
 export default function Navbar() {
     const pathname = usePathname();
     const router = useRouter();
+    const { openSignIn, signOut } = useClerk(); // Get methods
 
     // --- Theme State ---
     const [theme, setTheme] = useState<'light' | 'dark' | 'auto'>('auto');
@@ -172,102 +172,100 @@ export default function Navbar() {
                     {/* Auth Button */}
                     {/* Auth Buttons */}
                     <SignedOut>
-                        <SignInButton>
-                            <Button
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
+                        <Button
+                            onClick={() => openSignIn()}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                bgcolor: 'transparent',
+                                p: 0,
+                                minWidth: 0,
+                                '&:hover': {
                                     bgcolor: 'transparent',
-                                    p: 0,
-                                    minWidth: 0,
-                                    '&:hover': {
-                                        bgcolor: 'transparent',
-                                        opacity: 0.8,
-                                        '& .MuiTypography-root': {
-                                            background: 'var(--blue)',
-                                            backgroundClip: 'text',
-                                            WebkitBackgroundClip: 'text',
-                                            WebkitTextFillColor: 'transparent',
-                                            color: 'transparent'
-                                        }
-                                    }
-                                }}
-                            >
-                                <img
-                                    src="/log_in.svg"
-                                    alt="Sign up"
-                                    width={32}
-                                    height={32}
-                                    style={{ marginBottom: '0px' }}
-                                />
-                                <Typography
-                                    sx={{
-                                        fontSize: '0.65rem',
-                                        fontWeight: 700,
-                                        textTransform: 'none',
-                                        lineHeight: 1,
-                                        background: 'var(--purple)',
-                                        backgroundClip: 'text',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        color: 'transparent'
-                                    }}
-                                >
-                                    Sign up
-                                </Typography>
-                            </Button>
-                        </SignInButton>
-                    </SignedOut>
-                    <SignedIn>
-                        <SignOutButton>
-                            <Button
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    bgcolor: 'transparent',
-                                    p: 0,
-                                    minWidth: 0,
-                                    '&:hover': {
-                                        bgcolor: 'transparent',
-                                        opacity: 0.8,
-                                        '& .MuiTypography-root': {
-                                            background: 'var(--purple)',
-                                            backgroundClip: 'text',
-                                            WebkitBackgroundClip: 'text',
-                                            WebkitTextFillColor: 'transparent',
-                                            color: 'transparent'
-                                        }
-                                    }
-                                }}
-                            >
-                                <img
-                                    src="/log_out.svg"
-                                    alt="Sign out"
-                                    width={32}
-                                    height={32}
-                                    style={{ marginBottom: '0px' }}
-                                />
-                                <Typography
-                                    sx={{
-                                        fontSize: '0.65rem',
-                                        fontWeight: 700,
-                                        textTransform: 'none',
-                                        lineHeight: 1,
+                                    opacity: 0.8,
+                                    '& .MuiTypography-root': {
                                         background: 'var(--blue)',
                                         backgroundClip: 'text',
                                         WebkitBackgroundClip: 'text',
                                         WebkitTextFillColor: 'transparent',
                                         color: 'transparent'
-                                    }}
-                                >
-                                    Sign out
-                                </Typography>
-                            </Button>
-                        </SignOutButton>
+                                    }
+                                }
+                            }}
+                        >
+                            <img
+                                src="/log_in.svg"
+                                alt="Sign up"
+                                width={32}
+                                height={32}
+                                style={{ marginBottom: '0px' }}
+                            />
+                            <Typography
+                                sx={{
+                                    fontSize: '0.65rem',
+                                    fontWeight: 700,
+                                    textTransform: 'none',
+                                    lineHeight: 1,
+                                    background: 'var(--purple)',
+                                    backgroundClip: 'text',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    color: 'transparent'
+                                }}
+                            >
+                                Sign up
+                            </Typography>
+                        </Button>
+                    </SignedOut>
+                    <SignedIn>
+                        <Button
+                            onClick={() => signOut()}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                bgcolor: 'transparent',
+                                p: 0,
+                                minWidth: 0,
+                                '&:hover': {
+                                    bgcolor: 'transparent',
+                                    opacity: 0.8,
+                                    '& .MuiTypography-root': {
+                                        background: 'var(--purple)',
+                                        backgroundClip: 'text',
+                                        WebkitBackgroundClip: 'text',
+                                        WebkitTextFillColor: 'transparent',
+                                        color: 'transparent'
+                                    }
+                                }
+                            }}
+                        >
+                            <img
+                                src="/log_out.svg"
+                                alt="Sign out"
+                                width={32}
+                                height={32}
+                                style={{ marginBottom: '0px' }}
+                            />
+                            <Typography
+                                sx={{
+                                    fontSize: '0.65rem',
+                                    fontWeight: 700,
+                                    textTransform: 'none',
+                                    lineHeight: 1,
+                                    background: 'var(--blue)',
+                                    backgroundClip: 'text',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    color: 'transparent'
+                                }}
+                            >
+                                Sign out
+                            </Typography>
+                        </Button>
                     </SignedIn>
 
                     {/* Theme Toggle */}
@@ -406,102 +404,100 @@ export default function Navbar() {
             }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <SignedOut>
-                        <SignInButton>
-                            <Button
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
+                        <Button
+                            onClick={() => openSignIn()}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                bgcolor: 'transparent',
+                                p: 0,
+                                minWidth: 0,
+                                '&:hover': {
                                     bgcolor: 'transparent',
-                                    p: 0,
-                                    minWidth: 0,
-                                    '&:hover': {
-                                        bgcolor: 'transparent',
-                                        opacity: 0.8,
-                                        '& .MuiTypography-root': {
-                                            background: 'var(--blue)',
-                                            backgroundClip: 'text',
-                                            WebkitBackgroundClip: 'text',
-                                            WebkitTextFillColor: 'transparent',
-                                            color: 'transparent'
-                                        }
-                                    }
-                                }}
-                            >
-                                <img
-                                    src="/log_in.svg"
-                                    alt="Sign up"
-                                    width={28}
-                                    height={28}
-                                    style={{ marginBottom: '0px' }}
-                                />
-                                <Typography
-                                    sx={{
-                                        fontSize: '0.6rem',
-                                        fontWeight: 700,
-                                        textTransform: 'none',
-                                        lineHeight: 1,
-                                        background: 'var(--purple)',
-                                        backgroundClip: 'text',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        color: 'transparent'
-                                    }}
-                                >
-                                    Sign up
-                                </Typography>
-                            </Button>
-                        </SignInButton>
-                    </SignedOut>
-                    <SignedIn>
-                        <SignOutButton>
-                            <Button
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    bgcolor: 'transparent',
-                                    p: 0,
-                                    minWidth: 0,
-                                    '&:hover': {
-                                        bgcolor: 'transparent',
-                                        opacity: 0.8,
-                                        '& .MuiTypography-root': {
-                                            background: 'var(--purple)',
-                                            backgroundClip: 'text',
-                                            WebkitBackgroundClip: 'text',
-                                            WebkitTextFillColor: 'transparent',
-                                            color: 'transparent'
-                                        }
-                                    }
-                                }}
-                            >
-                                <img
-                                    src="/log_out.svg"
-                                    alt="Sign out"
-                                    width={28}
-                                    height={28}
-                                    style={{ marginBottom: '0px' }}
-                                />
-                                <Typography
-                                    sx={{
-                                        fontSize: '0.6rem',
-                                        fontWeight: 700,
-                                        textTransform: 'none',
-                                        lineHeight: 1,
+                                    opacity: 0.8,
+                                    '& .MuiTypography-root': {
                                         background: 'var(--blue)',
                                         backgroundClip: 'text',
                                         WebkitBackgroundClip: 'text',
                                         WebkitTextFillColor: 'transparent',
                                         color: 'transparent'
-                                    }}
-                                >
-                                    Sign out
-                                </Typography>
-                            </Button>
-                        </SignOutButton>
+                                    }
+                                }
+                            }}
+                        >
+                            <img
+                                src="/log_in.svg"
+                                alt="Sign up"
+                                width={28}
+                                height={28}
+                                style={{ marginBottom: '0px' }}
+                            />
+                            <Typography
+                                sx={{
+                                    fontSize: '0.6rem',
+                                    fontWeight: 700,
+                                    textTransform: 'none',
+                                    lineHeight: 1,
+                                    background: 'var(--purple)',
+                                    backgroundClip: 'text',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    color: 'transparent'
+                                }}
+                            >
+                                Sign up
+                            </Typography>
+                        </Button>
+                    </SignedOut>
+                    <SignedIn>
+                        <Button
+                            onClick={() => signOut()}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                bgcolor: 'transparent',
+                                p: 0,
+                                minWidth: 0,
+                                '&:hover': {
+                                    bgcolor: 'transparent',
+                                    opacity: 0.8,
+                                    '& .MuiTypography-root': {
+                                        background: 'var(--purple)',
+                                        backgroundClip: 'text',
+                                        WebkitBackgroundClip: 'text',
+                                        WebkitTextFillColor: 'transparent',
+                                        color: 'transparent'
+                                    }
+                                }
+                            }}
+                        >
+                            <img
+                                src="/log_out.svg"
+                                alt="Sign out"
+                                width={28}
+                                height={28}
+                                style={{ marginBottom: '0px' }}
+                            />
+                            <Typography
+                                sx={{
+                                    fontSize: '0.6rem',
+                                    fontWeight: 700,
+                                    textTransform: 'none',
+                                    lineHeight: 1,
+                                    background: 'var(--blue)',
+                                    backgroundClip: 'text',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    color: 'transparent'
+                                }}
+                            >
+                                Sign out
+                            </Typography>
+                        </Button>
                     </SignedIn>
                 </Box>
 

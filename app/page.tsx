@@ -10,14 +10,16 @@ import Button from '@mui/material/Button';
 import { SxProps, Theme } from '@mui/material/styles';
 
 import Navbar from '@/components/Navbar';
+import { useScrollNavigation } from './hooks/useScrollNavigation';
 
 export default function Home() {
   const pathname = usePathname();
   const router = useRouter();
+  const containerRef = useScrollNavigation('/about', null);
 
   return (
     <>
-      <Box sx={{
+      <Box ref={containerRef} sx={{
         height: '100%', // Fit parent (BackgroundCanva -> Body)
         overflowY: 'scroll',
         scrollSnapType: 'y mandatory',

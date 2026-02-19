@@ -10,15 +10,17 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 
 import Navbar from '@/components/Navbar';
+import { useScrollNavigation } from '../hooks/useScrollNavigation';
 
 export default function AboutPage() {
   const pathname = usePathname();
   const router = useRouter();
+  const containerRef = useScrollNavigation('/projects', '/');
 
   return (
     <>
       {/* Головний scroll container з snap */}
-      <Box sx={{
+      <Box ref={containerRef} sx={{
         height: '100%',
         overflowY: 'scroll',
         scrollSnapType: 'y mandatory',

@@ -18,6 +18,8 @@ import { useTheme } from '@mui/material/styles';
 
 import StarRating from '@/components/StarRating';
 
+import { useScrollNavigation } from '../hooks/useScrollNavigation';
+
 
 const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githubUrl: string }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -170,12 +172,14 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
   );
 };
 
+
 export default function ProjectsPage() {
   const pathname = usePathname();
   const router = useRouter();
+  const containerRef = useScrollNavigation('/contact', '/about');
   return (
     <>
-      <Box sx={{
+      <Box ref={containerRef} sx={{
         height: '100%',
         overflowY: 'scroll',
         scrollSnapType: 'y mandatory',
