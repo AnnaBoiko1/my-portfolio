@@ -275,7 +275,7 @@ export default function ProjectsPage() {
                 <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                   Feedback
                 </Typography>
-                <StarRating />
+                <StarRating projectId="ping-it" />
               </Box>
             </Box>
           </Box >
@@ -311,7 +311,7 @@ export default function ProjectsPage() {
                 <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                   Feedback
                 </Typography>
-                <StarRating />
+                <StarRating projectId="lingoda-copy-cat" />
               </Box>
 
               <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/LoJSPqtZcWbeKD6hcOdo0x/Lingoda-Copycat?node-id=1-34&p=f&t=EYlDmZRuMQeVE1Hs-0" githubUrl="https://github.com/S00J1NK1M/lingoda_copycat" />
@@ -396,7 +396,7 @@ export default function ProjectsPage() {
                 <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                   Feedback
                 </Typography>
-                <StarRating />
+                <StarRating projectId="watch-list" />
               </Box>
               <ProjectLinksDropdown figmaUrl="#" githubUrl="https://github.com/AnnaBoiko1/rails-watch-list" />
             </Box>

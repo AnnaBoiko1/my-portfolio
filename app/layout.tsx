@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from 'react';
 import { ClerkProvider } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -35,7 +36,9 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <BackgroundCanva>
-            {children}
+            <React.Suspense fallback={null}>
+              {children}
+            </React.Suspense>
             <Footer />
           </BackgroundCanva>
           <HireMe />
