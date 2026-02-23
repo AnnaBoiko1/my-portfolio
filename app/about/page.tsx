@@ -167,16 +167,16 @@ export default function AboutPage() {
 
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 {/* BA Philosophy */}
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_philo_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_philo_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
                   <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.1rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_philo_chip')}</Typography>
                 </Tooltip>
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_npower_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_npower_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
                   <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_npower_chip')}</Typography>
                 </Tooltip>
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_lewagon_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_lewagon_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
                   <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_lewagon_chip')}</Typography>
                 </Tooltip>
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_firstaid_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_firstaid_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
                   <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_firstaid_chip')}</Typography>
                 </Tooltip>
               </Box>
