@@ -285,7 +285,6 @@ export default function ProjectsPage() {
                       <strong>{project.name}</strong>
                     </Typography>
                     <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
-                    <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
                     {/* Feedback Stars Section */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
                       <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
@@ -293,6 +292,7 @@ export default function ProjectsPage() {
                       </Typography>
                       <StarRating projectId={project.id} />
                     </Box>
+                    <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
                   </Box>
                 </Box >
               </Container>
