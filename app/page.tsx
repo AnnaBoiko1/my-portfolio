@@ -11,6 +11,7 @@ import { useUser } from '@clerk/nextjs';
 import { SxProps, Theme } from '@mui/material/styles';
 
 import Navbar from '@/components/Navbar';
+import { useLanguage } from '@/context/LanguageContext';
 import { useScrollNavigation } from './hooks/useScrollNavigation';
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
   const router = useRouter();
   const containerRef = useScrollNavigation('/about', null);
   const { user, isSignedIn } = useUser();
+  const { t } = useLanguage();
 
   return (
     <>
@@ -46,12 +48,12 @@ export default function Home() {
           <Box sx={{ display: { xs: 'block', md: 'none' } }}>
             {isSignedIn && user?.firstName && (
               <Typography variant="h3" sx={{ fontSize: '1.5rem', fontWeight: 300, mb: 1, color: 'var(--purple)' }}>
-                Nice to meet you, {user.firstName}!
+                {t('home_nice_to_meet')} {user.firstName}!
               </Typography>
             )}
             <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: 2 }}>
               <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, lineHeight: 1.3, mr: 2 }}>
-                {isSignedIn ? 'My' : 'Hi, my'}
+                {isSignedIn ? t('home_my') : t('home_hi_my')}
               </Typography>
               <Box sx={{ mb: 1 }}>
                 <Image
@@ -66,12 +68,10 @@ export default function Home() {
             </Box>
 
             <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, mb: 6, lineHeight: 1 }}>
-              name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
+              {t('home_name_is')} <strong>{t('home_name_anna')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
             </Typography>
 
-            <Typography variant="h3" sx={{ fontSize: '1.2rem', color: 'text', mb: 2, maxWidth: 600 }}>
-              I&apos;m an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, currently based in Germany.
-            </Typography>
+            <Typography variant="h3" sx={{ fontSize: '1.2rem', color: 'text', mb: 2, maxWidth: 600 }} dangerouslySetInnerHTML={{ __html: t('home_bio_mobile') }} />
           </Box>
 
           {/* === DESKTOP LAYOUT === */}
@@ -82,14 +82,14 @@ export default function Home() {
               <Box>
                 {isSignedIn && user?.firstName && (
                   <Typography variant="h3" sx={{ fontSize: '2.5rem', fontWeight: 300, mb: 1, color: 'var(--purple)' }}>
-                    Nice to meet you, {user.firstName}!
+                    {t('home_nice_to_meet')} {user.firstName}!
                   </Typography>
                 )}
                 <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, mb: 1, lineHeight: 1.2 }}>
-                  {isSignedIn ? 'My' : 'Hi, my'}
+                  {isSignedIn ? t('home_my') : t('home_hi_my')}
                 </Typography>
                 <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, lineHeight: 1, whiteSpace: 'nowrap' }}>
-                  name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
+                  {t('home_name_is')} <strong>{t('home_name_anna')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
                 </Typography>
               </Box>
               {/* Right Image */}
@@ -106,9 +106,7 @@ export default function Home() {
             </Box>
             {/* Bottom Row: Bio */}
             <Box>
-              <Typography variant="h3" sx={{ fontSize: '1.5rem', color: 'text', maxWidth: 800 }}>
-                I&apos;m an independent, creative <strong>full-stack web developer</strong>, <strong>designer</strong> and <strong>data analyst</strong> from Ukraine, based in Toronto.
-              </Typography>
+              <Typography variant="h3" sx={{ fontSize: '1.5rem', color: 'text', maxWidth: 800 }} dangerouslySetInnerHTML={{ __html: t('home_bio_desktop') }} />
             </Box>
           </Box>
         </Container>
@@ -122,12 +120,10 @@ export default function Home() {
           alignItems: 'flex-start'
         }}>
           <Typography variant='h3' sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
-            <strong>Let&apos;s work together</strong><span style={{ color: 'var(--blue)' }}>.</span>
+            <strong>{t('home_work_together')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
           </Typography>
           <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
-          <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
-            From crafting intuitive user experiences to building scalable web systems and dynamic single-page applications, I collaborate with passionate people <strong>to bring ambitious ideas to life</strong>, ensuring they are both innovative and accessible.
-          </Typography>
+          <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('home_work_description') }} />
 
           <Button
             href="/cv.pdf"
@@ -179,7 +175,7 @@ export default function Home() {
               }
             }}
           >
-            Download résumé
+            {t('home_download_cv')}
           </Button>
         </Container>
       </Box>

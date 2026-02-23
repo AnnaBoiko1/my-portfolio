@@ -8,6 +8,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import BackgroundCanva from '@/components/BackgroundCanva';
 import Footer from '@/components/Footer';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 config.autoAddCss = false
 
@@ -35,13 +36,15 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <BackgroundCanva>
-            <React.Suspense fallback={null}>
-              {children}
-            </React.Suspense>
-            <Footer />
-          </BackgroundCanva>
-          <HireMe />
+          <LanguageProvider>
+            <BackgroundCanva>
+              <React.Suspense fallback={null}>
+                {children}
+              </React.Suspense>
+              <Footer />
+            </BackgroundCanva>
+            <HireMe />
+          </LanguageProvider>
         </body>
       </html>
     </ClerkProvider>

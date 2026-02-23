@@ -7,30 +7,32 @@ import Button from '@mui/material/Button';
 import { useFormStatus } from 'react-dom';
 import { useState } from 'react';
 import { sendEmail } from '@/app/actions/sendEmail';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactForm() {
     const [submitResult, setSubmitResult] = useState<{ success?: string; error?: string } | null>(null);
+    const { t } = useLanguage();
 
     async function handleSubmit(formData: FormData) {
         const result = await sendEmail(formData);
         if (result?.error) {
-            setSubmitResult({ error: result.error });
+            setSubmitResult({ error: t('contact_form_error') });
         } else {
-            setSubmitResult({ success: 'Message sent successfully!' });
+            setSubmitResult({ success: t('contact_form_success') });
             // Optional: Reset form fields here if needed, though native form reset is tricky with Server Actions without JS
         }
     }
 
     return (
         <form action={handleSubmit}>
-            <Typography variant='h5' sx={{ mb: 2 }}>Name</Typography>
-            <Box component="input" name="name" required placeholder="Your name" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Typography variant='h5' sx={{ mb: 2 }}>{t('contact_form_name')}</Typography>
+            <Box component="input" name="name" required placeholder={t('contact_form_name_placeholder')} sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
 
-            <Typography variant='h5' sx={{ mb: 2 }}>Email</Typography>
-            <Box component="input" name="email" required type="email" placeholder="your@email.com" sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Typography variant='h5' sx={{ mb: 2 }}>{t('contact_form_email')}</Typography>
+            <Box component="input" name="email" required type="email" placeholder={t('contact_form_email_placeholder')} sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
 
-            <Typography variant='h5' sx={{ mb: 2 }}>Message</Typography>
-            <Box component="textarea" name="message" required placeholder="Enter your message" rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Typography variant='h5' sx={{ mb: 2 }}>{t('contact_form_message')}</Typography>
+            <Box component="textarea" name="message" required placeholder={t('contact_form_message_placeholder')} rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
 
             <SubmitButton />
 
@@ -45,6 +47,7 @@ export default function ContactForm() {
 
 function SubmitButton() {
     const { pending } = useFormStatus();
+    const { t } = useLanguage();
 
     return (
         <Button
@@ -94,7 +97,7 @@ function SubmitButton() {
                 }
             }}
         >
-            {pending ? 'Sending...' : 'Submit'}
+            {pending ? t('contact_form_sending') : t('contact_form_send_message')}
         </Button>
     );
 }

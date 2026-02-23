@@ -1,0 +1,297 @@
+export const translations = {
+    EN: {
+        // Navbar
+        nav_home: "Home",
+        nav_about: "About me",
+        nav_projects: "Projects",
+        nav_contact: "Contact",
+        nav_signup: "Sign up",
+        nav_signout: "Sign out",
+
+        // Home Page
+        home_nice_to_meet: "Nice to meet you,",
+        home_hi_my: "Hi, my",
+        home_my: "My",
+        home_name_is: "name is ",
+        home_name_anna: "Anna",
+        home_bio_mobile: "I'm an independent, creative <strong>full-stack web developer</strong> and designer from Ukraine, currently based in Germany.",
+        home_bio_desktop: "I'm an independent, creative <strong>full-stack web developer</strong>, <strong>designer</strong> and <strong>data analyst</strong> from Ukraine, based in Toronto.",
+        home_work_together: "Let's work together",
+        home_work_description: "From crafting intuitive user experiences to building scalable web systems and dynamic single-page applications, I collaborate with passionate people <strong>to bring ambitious ideas to life</strong>, ensuring they are both innovative and accessible.",
+        home_download_cv: "Download résumé",
+
+        // About Page
+        about_about_me: "About me",
+        about_bio_1: "Hi, I'm Anna Boiko, a web developer and designer with a background in <strong>philosophy</strong>, which has shaped my approach to problem-solving and critical thinking. Passionate about innovation and user experience, I've developed my skills through <strong>full-stack projects</strong> and <strong>UI/UX design</strong>, blending creativity with technical expertise.",
+        about_bio_2: "My experience in <strong>sales</strong> and <strong>administration</strong> has sharpened my communication and organizational skills, allowing me to thrive in <strong>team environments</strong>. I'm eager to collaborate on projects that push boundaries and create accessible, user-friendly web solutions.",
+        about_toolbelt: "TOOLBELT",
+        about_languages: "Languages",
+        about_frontend: "Frontend",
+        about_backend: "Backend",
+        about_devops: "DevOps",
+        about_data: "Data",
+        about_certificates: "Certificates",
+        about_create_meaningful: "Let's Create Something Meaningful",
+        about_create_description: "As a developer and designer, I believe that the products we create should contribute positively to the world. I aim to work on projects that align with ethical values and have a lasting impact. If your project involves industries such as online gambling, high-interest loans, or companies that harm the environment through pollution like irresponsible corporations, corporate criminals, corporate predators, or greenwashers I may not be the right fit for your team. However, if your project focuses on sustainability, diversity, or aims to drive positive change, I would love to collaborate with you. Feel free to reach out, and let's build something impactful together!",
+        about_get_in_touch: "Get in touch",
+
+        // Projects Page
+        projects_title: "Projects",
+        projects_link_to_project: "Link to project",
+        projects_feedback: "Feedback",
+
+        // Contact Page
+        contact_header: "Contact",
+        contact_title: "Contact me",
+        contact_based_in: "Based in Toronto, ON Canada",
+        contact_schedule_appointment: "Schedule an Appointment",
+        contact_find_me_on: "Find me on",
+        contact_copy_email: "Copy email",
+        contact_copied: "Copied!",
+
+        // Contact Form
+        contact_form_name: "Name",
+        contact_form_name_placeholder: "Your name",
+        contact_form_email: "Email",
+        contact_form_email_placeholder: "your@email.com",
+        contact_form_message: "Message",
+        contact_form_message_placeholder: "Enter your message",
+        contact_form_send_message: "Submit",
+        contact_form_sending: "Sending...",
+        contact_form_success: "Message sent successfully!",
+        contact_form_error: "Failed to send email. Please try again later.",
+
+        // Additional Elements
+        hire_me: "Hire Me",
+        cert_philo_chip: "Philosophy BA (critical thinking)",
+        cert_philo_tooltip: "<a href=\"https://partner.kubg.edu.ua\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>BA Philosophy</strong></a><br />Borys Grinchenko Kyiv Univ, 2020<br />Critical thinking & analysis<br /><a href=\"/certs/university-diploma.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Diploma PDF</em></a>",
+        cert_npower_chip: "NPower Data Analytics",
+        cert_npower_tooltip: "<a href=\"https://npowercanada.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>NPower Data Analytics</strong></a><br />Junior Data Analyst Program<br />Python, SQL, Power BI<br /><em>[In Progress]</em>",
+        cert_lewagon_chip: "Le Wagon Full Stack",
+        cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Le Wagon Bootcamp</strong></a><br />Full Stack Web Dev<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Batch #1698</em></a>",
+        cert_firstaid_chip: "First Aid CPR/AED Level C",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>First Aid & CPR/AED</strong></a><br />Level C (BL)<br />Valid until 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Safety Certification</em></a>",
+    },
+    UA: {
+        // Navbar
+        nav_home: "Головна",
+        nav_about: "Про мене",
+        nav_projects: "Проєкти",
+        nav_contact: "Контакти",
+        nav_signup: "Реєстрація",
+        nav_signout: "Вихід",
+
+        // Home Page
+        home_nice_to_meet: "Приємно познайомитись,",
+        home_hi_my: "Привіт, мене",
+        home_my: "Мене",
+        home_name_is: "звати ",
+        home_name_anna: "Анна",
+        home_bio_mobile: "Я незалежна, креативна <strong>full-stack веб-розробниця</strong> та дизайнерка з України, зараз перебуваю в Німеччині.",
+        home_bio_desktop: "Я незалежна, креативна <strong>full-stack веб-розробниця</strong>, <strong>дизайнерка</strong> та <strong>аналітикиня даних</strong> з України, наразі у Торонто.",
+        home_work_together: "Давайте працювати разом",
+        home_work_description: "Від створення інтуїтивних інтерфейсів до розробки масштабованих веб-систем та динамічних SPA — я співпрацюю з натхненними людьми, щоб <strong>втілювати амбітні ідеї в життя</strong>, гарантуючи їх інноваційність та доступність.",
+        home_download_cv: "Завантажити резюме",
+
+        // About Page
+        about_about_me: "Про мене",
+        about_bio_1: "Привіт, я Анна Бойко, веб-розробниця та дизайнерка з бекграундом у <strong>філософії</strong>, що сформувало мій підхід до вирішення проблем та критичного мислення. Захоплюючись інноваціями та UX, я розвивала свої навички через <strong>full-stack проєкти</strong> та <strong>UI/UX дизайн</strong>, поєднуючи креативність із технічною експертизою.",
+        about_bio_2: "Мій досвід у <strong>продажах</strong> та <strong>адмініструванні</strong> відточив мої комунікативні та організаторські навички, що дозволяє мені успішно працювати у <strong>командному середовищі</strong>. Я прагну співпрацювати над проєктами, які розширюють межі та створюють доступні веб-рішення.",
+        about_toolbelt: "НАВИЧКИ",
+        about_languages: "Мови",
+        about_frontend: "Фронтенд",
+        about_backend: "Бекенд",
+        about_devops: "DevOps",
+        about_data: "Дані",
+        about_certificates: "Сертифікати",
+        about_create_meaningful: "Давайте створимо щось значуще",
+        about_create_description: "Як розробниця і дизайнерка, я вірю, що наші продукти мають приносити користь світу. Я прагну працювати над проєктами, що резонують з моїми етичними цінностями. Якщо ваш проєкт стосується онлайн-гемблінгу, високопроцентних кредитів або компаній, що шкодять довкіллю (безвідповідальні корпорації, грінвошинг) – я навряд чи підійду для вашої команди. Але якщо ваш проєкт фокусується на стабільному розвитку, різноманітності або прагне позитивних змін, я буду рада співпраці. Звертайтесь, і давайте побудуємо щось важливе разом!",
+        about_get_in_touch: "Зв'язатись",
+
+        // Projects Page
+        projects_title: "Проєкти",
+        projects_link_to_project: "Посилання на проєкт",
+        projects_feedback: "Відгуки",
+
+        // Contact Page
+        contact_header: "Контакти",
+        contact_title: "Зв'яжіться зі мною",
+        contact_based_in: "Знаходжусь у Торонто, Канада",
+        contact_schedule_appointment: "Запланувати зустріч",
+        contact_find_me_on: "Знайдіть мене тут",
+        contact_copy_email: "Копіювати email",
+        contact_copied: "Скопійовано!",
+
+        // Contact Form
+        contact_form_name: "Ім'я",
+        contact_form_name_placeholder: "Ваше ім'я",
+        contact_form_email: "Email",
+        contact_form_email_placeholder: "ваш@email.com",
+        contact_form_message: "Повідомлення",
+        contact_form_message_placeholder: "Ваше повідомлення",
+        contact_form_send_message: "Надіслати",
+        contact_form_sending: "Надсилання...",
+        contact_form_success: "Повідомлення успішно надіслано!",
+        contact_form_error: "Помилка надсилання. Спробуйте пізніше.",
+
+        // Additional Elements
+        hire_me: "Найняти мене",
+        cert_philo_chip: "Бакалавр Філософії (критичне мислення)",
+        cert_philo_tooltip: "<a href=\"https://partner.kubg.edu.ua\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Бакалавр філософії</strong></a><br />Київський ун-т ім. Б. Грінченка, 2020<br />Критичне мислення та аналіз<br /><a href=\"/certs/university-diploma.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Диплом PDF</em></a>",
+        cert_npower_chip: "NPower Аналітика Даних",
+        cert_npower_tooltip: "<a href=\"https://npowercanada.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>NPower Аналітика Даних</strong></a><br />Програма молодшого аналітика даних<br />Python, SQL, Power BI<br /><em>[В процесі]</em>",
+        cert_lewagon_chip: "Le Wagon Full Stack",
+        cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Le Wagon Буткемп</strong></a><br />Full Stack Web-розробка<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Група #1698</em></a>",
+        cert_firstaid_chip: "Перша допомога СЛР/AED Рівень C",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Перша допомога та СЛР/AED</strong></a><br />Рівень C (BL)<br />Дійсний до 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Сертифікат з безпеки</em></a>",
+    },
+    FR: {
+        // Navbar
+        nav_home: "Accueil",
+        nav_about: "À propos",
+        nav_projects: "Projets",
+        nav_contact: "Contact",
+        nav_signup: "S'inscrire",
+        nav_signout: "Déconnexion",
+
+        // Home Page
+        home_nice_to_meet: "Ravi de vous rencontrer,",
+        home_hi_my: "Salut, mon",
+        home_my: "Mon",
+        home_name_is: "nom est ",
+        home_name_anna: "Anna",
+        home_bio_mobile: "Je suis une <strong>développeuse web full-stack</strong> et designer créative indépendante d'Ukraine, actuellement basée en Allemagne.",
+        home_bio_desktop: "Je suis une <strong>développeuse web full-stack</strong>, <strong>designer</strong> et <strong>analyste de données</strong> créative indépendante d'Ukraine, basée à Toronto.",
+        home_work_together: "Travaillons ensemble",
+        home_work_description: "De la création d'expériences utilisateur intuitives à la conception de systèmes web évolutifs et de SPA dynamiques, je collabore avec des passionnés pour <strong>donner vie à des idées ambitieuses</strong>, en m'assurant qu'elles sont à la fois innovantes et accessibles.",
+        home_download_cv: "Télécharger CV",
+
+        // About Page
+        about_about_me: "À propos",
+        about_bio_1: "Bonjour, je suis Anna Boiko, développeuse web et designer avec un bagage en <strong>philosophie</strong>, ce qui a façonné mon approche de la résolution de problèmes et de la pensée critique. Passionnée par l'innovation et l'expérience utilisateur, j'ai développé mes compétences à travers des <strong>projets full-stack</strong> et le <strong>design UI/UX</strong>, alliant créativité et expertise technique.",
+        about_bio_2: "Mon expérience dans <strong>la vente</strong> et <strong>l'administration</strong> a aiguisé mes compétences en communication et en organisation, me permettant de m'épanouir dans des <strong>environnements d'équipe</strong>. J'ai hâte de collaborer sur des projets qui repoussent les limites et créent des solutions web accessibles et conviviales.",
+        about_toolbelt: "COMPÉTENCES",
+        about_languages: "Langages",
+        about_frontend: "Frontend",
+        about_backend: "Backend",
+        about_devops: "DevOps",
+        about_data: "Données",
+        about_certificates: "Certificats",
+        about_create_meaningful: "Créons quelque chose de significatif",
+        about_create_description: "En tant que développeuse et designer, je crois que les produits que nous concevons doivent avoir un impact positif sur le monde. Je vise à travailler sur des projets en accord avec mes valeurs éthiques. Si votre projet implique des industries telles que les jeux d'argent en ligne, les prêts à taux élevés, ou des entreprises qui nuisent à l'environnement par la pollution, je ne suis peut-être pas la bonne personne pour votre équipe. Cependant, si votre projet se concentre sur la durabilité, la diversité ou vise à apporter un changement positif, j'adorerais collaborer avec vous. N'hésitez pas à me contacter !",
+        about_get_in_touch: "Contactez-moi",
+
+        // Projects Page
+        projects_title: "Projets",
+        projects_link_to_project: "Lien vers le projet",
+        projects_feedback: "Avis",
+
+        // Contact Page
+        contact_header: "Contact",
+        contact_title: "Contactez-moi",
+        contact_based_in: "Basée à Toronto, ON Canada",
+        contact_schedule_appointment: "Prendre rendez-vous",
+        contact_find_me_on: "Retrouvez-moi sur",
+        contact_copy_email: "Copier l'email",
+        contact_copied: "Copié !",
+
+        // Contact Form
+        contact_form_name: "Nom",
+        contact_form_name_placeholder: "Votre nom",
+        contact_form_email: "Email",
+        contact_form_email_placeholder: "votre@email.com",
+        contact_form_message: "Message",
+        contact_form_message_placeholder: "Entrez votre message",
+        contact_form_send_message: "Envoyer",
+        contact_form_sending: "Envoi...",
+        contact_form_success: "Email envoyé avec succès !",
+        contact_form_error: "Échec de l'envoi. Veuillez réessayer plus tard.",
+
+        // Additional Elements
+        hire_me: "Engagez-moi",
+        cert_philo_chip: "Licence Philosophie (pensée critique)",
+        cert_philo_tooltip: "<a href=\"https://partner.kubg.edu.ua\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Licence de Philosophie</strong></a><br />Univ. Borys Grinchenko de Kyiv, 2020<br />Pensée critique et analyse<br /><a href=\"/certs/university-diploma.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Diplôme PDF</em></a>",
+        cert_npower_chip: "NPower Analyse de Données",
+        cert_npower_tooltip: "<a href=\"https://npowercanada.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>NPower Analyse de Données</strong></a><br />Programme d'analyste de données junior<br />Python, SQL, Power BI<br /><em>[En cours]</em>",
+        cert_lewagon_chip: "Le Wagon Full Stack",
+        cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Bootcamp Le Wagon</strong></a><br />Développement Web Full Stack<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Promotion #1698</em></a>",
+        cert_firstaid_chip: "Premiers Secours RCR/DEA Niveau C",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Premiers Secours & RCR/DEA</strong></a><br />Niveau C (BL)<br />Valide jusqu'en 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Certificat de sécurité</em></a>",
+    },
+    DE: {
+        // Navbar
+        nav_home: "Startseite",
+        nav_about: "Über mich",
+        nav_projects: "Projekte",
+        nav_contact: "Kontakt",
+        nav_signup: "Registrieren",
+        nav_signout: "Abmelden",
+
+        // Home Page
+        home_nice_to_meet: "Schön dich kennenzulernen,",
+        home_hi_my: "Hallo, mein",
+        home_my: "Mein",
+        home_name_is: "Name ist ",
+        home_name_anna: "Anna",
+        home_bio_mobile: "Ich bin eine unabhängige, kreative <strong>Full-Stack Webentwicklerin</strong> und Designerin aus der Ukraine, derzeit mit Sitz in Deutschland.",
+        home_bio_desktop: "Ich bin eine unabhängige, kreative <strong>Full-Stack Webentwicklerin</strong>, <strong>Designerin</strong> und <strong>Datenanalystin</strong> aus der Ukraine, mit Sitz in Toronto.",
+        home_work_together: "Lass uns zusammenarbeiten",
+        home_work_description: "Von der Gestaltung intuitiver Benutzererlebnisse bis hin zum Aufbau skalierbarer Websysteme und dynamischer SPAs arbeite ich mit leidenschaftlichen Menschen zusammen, <strong>um ehrgeizige Ideen zum Leben zu erwecken</strong> und sicherzustellen, dass sie sowohl innovativ als auch zugänglich sind.",
+        home_download_cv: "Lebenslauf herunterladen",
+
+        // About Page
+        about_about_me: "Über mich",
+        about_bio_1: "Hallo, ich bin Anna Boiko, eine Webentwicklerin und Designerin mit einem Hintergrund in <strong>Philosophie</strong>, was meine Herangehensweise an Problemlösungen und kritisches Denken geprägt hat. Mit einer Leidenschaft für Innovation und Benutzererfahrung habe ich meine Fähigkeiten durch <strong>Full-Stack-Projekte</strong> und <strong>UI/UX-Design</strong> entwickelt und Kreativität mit technischem Know-how verbunden.",
+        about_bio_2: "Meine Erfahrung in <strong>Verkauf</strong> und <strong>Verwaltung</strong> hat meine Kommunikations- und Organisationsfähigkeiten geschärft, sodass ich in <strong>Teamumgebungen</strong> hervorragend arbeiten kann. Ich freue mich darauf, an Projekten mitzuarbeiten, die Grenzen überschreiten und zugängliche Web-Lösungen schaffen.",
+        about_toolbelt: "FÄHIGKEITEN",
+        about_languages: "Sprachen",
+        about_frontend: "Frontend",
+        about_backend: "Backend",
+        about_devops: "DevOps",
+        about_data: "Daten",
+        about_certificates: "Zertifikate",
+        about_create_meaningful: "Lass uns etwas Bedeutungsvolles erschaffen",
+        about_create_description: "Als Entwicklerin und Designerin glaube ich, dass unsere Produkte einen positiven Beitrag zur Welt leisten sollten. Ich möchte an Projekten arbeiten, die mit ethischen Werten übereinstimmen. Wenn Ihr Projekt Branchen wie Online-Glücksspiel, hochverzinsliche Kredite oder umweltschädliche Unternehmen umfasst, bin ich möglicherweise nicht die Richtige für Ihr Team. Wenn sich Ihr Projekt jedoch auf Nachhaltigkeit oder Vielfalt konzentriert oder positive Veränderungen bewirken soll, würde ich gerne mit Ihnen zusammenarbeiten. Zögern Sie nicht, mich zu kontaktieren!",
+        about_get_in_touch: "Kontakt aufnehmen",
+
+        // Projects Page
+        projects_title: "Projekte",
+        projects_link_to_project: "Link zum Projekt",
+        projects_feedback: "Feedback",
+
+        // Contact Page
+        contact_header: "Kontakt",
+        contact_title: "Kontaktiere mich",
+        contact_based_in: "Mit Sitz in Toronto, ON Kanada",
+        contact_schedule_appointment: "Termin vereinbaren",
+        contact_find_me_on: "Finde mich auf",
+        contact_copy_email: "E-Mail kopieren",
+        contact_copied: "Kopiert!",
+
+        // Contact Form
+        contact_form_name: "Name",
+        contact_form_name_placeholder: "Dein Name",
+        contact_form_email: "E-Mail",
+        contact_form_email_placeholder: "deine@email.com",
+        contact_form_message: "Nachricht",
+        contact_form_message_placeholder: "Deine Nachricht eingeben",
+        contact_form_send_message: "Einreichen",
+        contact_form_sending: "Senden...",
+        contact_form_success: "Nachricht erfolgreich gesendet!",
+        contact_form_error: "Fehler beim Senden. Bitte später erneut versuchen.",
+
+        // Additional Elements
+        hire_me: "Mich einstellen",
+        cert_philo_chip: "Philosophie B.A. (kritisches Denken)",
+        cert_philo_tooltip: "<a href=\"https://partner.kubg.edu.ua\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>B.A. Philosophie</strong></a><br />Borys Grintschenko Univ. Kiew, 2020<br />Kritisches Denken & Analyse<br /><a href=\"/certs/university-diploma.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Diplom PDF</em></a>",
+        cert_npower_chip: "NPower Datenanalyse",
+        cert_npower_tooltip: "<a href=\"https://npowercanada.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>NPower Datenanalyse</strong></a><br />Junior Datenanalyst Programm<br />Python, SQL, Power BI<br /><em>[In Bearbeitung]</em>",
+        cert_lewagon_chip: "Le Wagon Full Stack",
+        cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Le Wagon Bootcamp</strong></a><br />Full Stack Web-Entwicklung<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Kohorte #1698</em></a>",
+        cert_firstaid_chip: "Erste Hilfe HLW/AED Stufe C",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Erste Hilfe & HLW/AED</strong></a><br />Stufe C (BL)<br />Gültig bis 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Sicherheitszertifikat</em></a>",
+    }
+};
+
+export type LanguageCode = 'EN' | 'FR' | 'UA' | 'DE';
+export type TranslationKey = keyof typeof translations.EN;

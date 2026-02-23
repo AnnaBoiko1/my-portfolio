@@ -3,9 +3,11 @@ import { useState } from "react";
 import "../app/globals.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCommentDots } from '@fortawesome/free-regular-svg-icons'
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function HireMe() {
   const [isVisible, setIsVisible] = useState<boolean>(true);
+  const { t } = useLanguage();
 
   if (!isVisible) return null;
 
@@ -20,11 +22,11 @@ export default function HireMe() {
       <button
         onClick={handleClick}
         className="w-25 md:w-32 h-10 md:h-12 gap-1 bg-primary-blue hover:bg-primary-red text-white rounded-full transition-all duration-300 flex items-center justify-center p-0"
-        title="Hire Me"
+        title={t('hire_me')}
 
       >
         <span className="text-gray-800 font-semibold text-sm md:text-lg whitespace-nowrap center ">
-          Hire Me
+          {t('hire_me')}
         </span>
         <FontAwesomeIcon icon={faCommentDots} size="2x"
           className="w-8 h-8 md:w-10 md:h-10 bg-(--blue) rounded-[45%] text-(--purple) shadow-md hover:bg-(--purple) hover:text-(--blue) transition-colors duration-300" />

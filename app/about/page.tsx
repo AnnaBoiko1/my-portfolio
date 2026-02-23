@@ -10,12 +10,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 
 import Navbar from '@/components/Navbar';
+import { useLanguage } from '@/context/LanguageContext';
 import { useScrollNavigation } from '../hooks/useScrollNavigation';
 
 export default function AboutPage() {
   const pathname = usePathname();
   const router = useRouter();
   const containerRef = useScrollNavigation('/projects', '/');
+  const { t } = useLanguage();
 
   return (
     <>
@@ -42,17 +44,13 @@ export default function AboutPage() {
           pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
         }}>
           <Typography variant='h3' sx={{ marginTop: '-8px' }}>
-            <strong>About me</strong>
+            <strong>{t('about_about_me')}</strong>
           </Typography>
           <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: -30, lineHeight: 1 }}>
             <span style={{ color: 'var(--blue)' }}>____</span>
           </Typography>
-          <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
-            Hi, I’m Anna Boiko, a web developer and designer with a background in <strong>philosophy</strong>, which has shaped my approach to problem-solving and critical thinking. Passionate about innovation and user experience, I’ve developed my skills through <strong>full-stack projects</strong> and <strong>UI/UX design</strong>, blending creativity with technical expertise.
-          </Typography>
-          <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
-            My experience in <strong>sales</strong> and <strong>administration</strong> has sharpened my communication and organizational skills, allowing me to thrive in <strong>team environments</strong>. I’m eager to collaborate on projects that push boundaries and create accessible, user-friendly web solutions.
-          </Typography>
+          <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('about_bio_1') }} />
+          <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('about_bio_2') }} />
         </Container>
 
         {/* Секція TOOLBELT - друга snap точка */}
@@ -65,7 +63,7 @@ export default function AboutPage() {
           pb: 20
         }}>
           <Typography variant='h3' sx={{ marginTop: { xs: 5, md: 10 } }}>
-            <strong>TOOLBELT</strong>
+            <strong>{t('about_toolbelt')}</strong>
           </Typography>
           <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: -50, lineHeight: 1 }}>
             <span style={{ color: 'var(--blue)' }}>____</span>
@@ -84,7 +82,7 @@ export default function AboutPage() {
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Languages</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_languages')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
@@ -102,7 +100,7 @@ export default function AboutPage() {
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Frontend</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_frontend')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>React</Typography>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Next.js</Typography>
@@ -119,7 +117,7 @@ export default function AboutPage() {
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Backend</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_backend')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Ruby on Rails</Typography>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>ActiveRecord</Typography>
@@ -135,7 +133,7 @@ export default function AboutPage() {
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>DevOps</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_devops')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Git</Typography>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>GitHub</Typography>
@@ -148,7 +146,7 @@ export default function AboutPage() {
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Data</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_data')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Pandas</Typography>
                 <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Power BI</Typography>
@@ -165,21 +163,21 @@ export default function AboutPage() {
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
               {/* Certificates */}
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>Certificates</Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_certificates')}</Typography>
 
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 {/* BA Philosophy */}
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }}><a href="https://partner.kubg.edu.ua" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}><strong>BA Philosophy</strong></a><br />Borys Grinchenko Kyiv Univ, 2020<br />Critical thinking & analysis<br /><a href="/certs/university-diploma.pdf%20.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}><em>Diploma PDF</em></a></Box>} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.1rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>Philosophy BA (critical thinking)</Typography>
+                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_philo_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.1rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_philo_chip')}</Typography>
                 </Tooltip>
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }}><a href="https://npowercanada.ca" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}><strong>NPower Data Analytics</strong></a><br />Junior Data Analyst Program<br />Python, SQL, Power BI<br /><em>[In Progress]</em></Box>} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>NPower Data Analytics</Typography>
+                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_npower_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_npower_chip')}</Typography>
                 </Tooltip>
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }}><a href="https://www.lewagon.com/montreal" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}><strong>Le Wagon Bootcamp</strong></a><br />Full Stack Web Dev<br />Ruby on Rails, JS, SQL<br /><a href="/certs/%20lewagon-fullstack.pdf%20.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}><em>Batch #1698</em></a></Box>} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>Le Wagon Full Stack</Typography>
+                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_lewagon_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_lewagon_chip')}</Typography>
                 </Tooltip>
-                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }}><a href="https://firstaid4everyone.ca" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}><strong>First Aid & CPR/AED</strong></a><br />Level C (BL)<br />Valid until 2026<br /><a href="/certs/%20first-aid-cpr.pdf%20.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}><em>Safety Certification</em></a></Box>} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>First Aid CPR/AED Level C</Typography>
+                <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_firstaid_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
+                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_firstaid_chip')}</Typography>
                 </Tooltip>
               </Box>
             </Box>
@@ -196,14 +194,10 @@ export default function AboutPage() {
           alignItems: 'flex-start'
         }}>
           <Typography variant='h3' sx={{ mt: -6, fontSize: { xs: '1.75rem', md: '2.5rem' } }}>
-            <strong>Let&apos;s Create Something Meaningful</strong><span style={{ color: 'var(--blue)' }}>.</span>
+            <strong>{t('about_create_meaningful')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
           </Typography>
           <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
-          <Typography variant='h5' sx={{ mt: -3, fontSize: { xs: '1rem', md: '1.5rem' } }}>
-            As a developer and designer, I believe that the products we create should contribute positively to the world. I aim to work on projects that align with ethical values and have a lasting impact. If your project involves industries such as online gambling, high-interest loans, or companies that harm the environment through pollution like irresponsible corporations, corporate criminals, corporate predators, or greenwashers I may not be the right fit for your team.
-            However, if your project focuses on sustainability, diversity, or aims to drive positive change, I would love to collaborate with you.
-            Feel free to reach out, and let&apos;s build something impactful together!
-          </Typography>
+          <Typography variant='h5' sx={{ mt: -3, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('about_create_description') }} />
           <Button
             onClick={() => {
               window.location.href = 'mailto:annaboiko1@icloud.com?subject=Let%27s%20work%20together&body=Hi%20Anna,%0A%0AI%20am%20interested%20in%20working%20together.%0A%0ABest%20regards';
@@ -265,7 +259,7 @@ export default function AboutPage() {
               }
             }}
           >
-            Get in touch
+            {t('about_get_in_touch')}
           </Button>
         </Container>
       </Box >

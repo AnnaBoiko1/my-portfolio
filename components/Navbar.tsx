@@ -15,6 +15,8 @@ import {
     UserButton,
     useClerk, // Import useClerk
 } from '@clerk/nextjs'
+import { useLanguage } from '@/context/LanguageContext';
+import { LanguageCode } from '@/lib/translations';
 
 
 
@@ -92,14 +94,14 @@ export default function Navbar() {
 
     // --- Language State ---
     const [languageAnchorEl, setLanguageAnchorEl] = useState<null | HTMLElement>(null);
-    const [language, setLanguage] = useState('EN');
+    const { language, setLanguage, t } = useLanguage();
     const [hoveredLanguage, setHoveredLanguage] = useState<string | null>(null);
     const openLanguageMenu = Boolean(languageAnchorEl);
 
     const handleLanguageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setLanguageAnchorEl(event.currentTarget);
     };
-    const handleLanguageClose = (lang?: string) => {
+    const handleLanguageClose = (lang?: LanguageCode) => {
         setLanguageAnchorEl(null);
         if (lang) setLanguage(lang);
     };
@@ -158,13 +160,13 @@ export default function Navbar() {
 
                 {/* Center: Navigation */}
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
-                    <Button onClick={() => router.push('/')} sx={navLinkStyle('/')}>Home</Button>
+                    <Button onClick={() => router.push('/')} sx={navLinkStyle('/')}>{t('nav_home')}</Button>
                     <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-                    <Button onClick={() => router.push('/about')} sx={navLinkStyle('/about')}>About me</Button>
+                    <Button onClick={() => router.push('/about')} sx={navLinkStyle('/about')}>{t('nav_about')}</Button>
                     <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-                    <Button onClick={() => router.push('/projects')} sx={navLinkStyle('/projects')}>Projects</Button>
+                    <Button onClick={() => router.push('/projects')} sx={navLinkStyle('/projects')}>{t('nav_projects')}</Button>
                     <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
-                    <Button onClick={() => router.push('/contact')} sx={navLinkStyle('/contact')}>Contact</Button>
+                    <Button onClick={() => router.push('/contact')} sx={navLinkStyle('/contact')}>{t('nav_contact')}</Button>
                 </Box>
 
                 {/* Right: Auth, Theme & Language */}
@@ -197,7 +199,7 @@ export default function Navbar() {
                         >
                             <img
                                 src="/log_in.svg"
-                                alt="Sign up"
+                                alt={t('nav_signup')}
                                 width={32}
                                 height={32}
                                 style={{ marginBottom: '0px' }}
@@ -215,7 +217,7 @@ export default function Navbar() {
                                     color: 'transparent'
                                 }}
                             >
-                                Sign up
+                                {t('nav_signup')}
                             </Typography>
                         </Button>
                     </SignedOut>
@@ -245,7 +247,7 @@ export default function Navbar() {
                         >
                             <img
                                 src="/log_out.svg"
-                                alt="Sign out"
+                                alt={t('nav_signout')}
                                 width={32}
                                 height={32}
                                 style={{ marginBottom: '0px' }}
@@ -263,7 +265,7 @@ export default function Navbar() {
                                     color: 'transparent'
                                 }}
                             >
-                                Sign out
+                                {t('nav_signout')}
                             </Typography>
                         </Button>
                     </SignedIn>
@@ -324,7 +326,7 @@ export default function Navbar() {
                             }
                         }}
                     >
-                        {['EN', 'FR', 'UA', 'DE'].map((lang) => (
+                        {(['EN', 'FR', 'UA', 'DE'] as LanguageCode[]).map((lang) => (
                             <MenuItem
                                 key={lang}
                                 onClick={() => handleLanguageClose(lang)}
@@ -378,13 +380,13 @@ export default function Navbar() {
                 pt: 2,
                 height: '80px',
             }}>
-                <Button onClick={() => router.push('/')} sx={mobileNavLinkStyle('/')}>Home</Button>
+                <Button onClick={() => router.push('/')} sx={mobileNavLinkStyle('/')}>{t('nav_home')}</Button>
                 <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-                <Button onClick={() => router.push('/about')} sx={mobileNavLinkStyle('/about')}>About me</Button>
+                <Button onClick={() => router.push('/about')} sx={mobileNavLinkStyle('/about')}>{t('nav_about')}</Button>
                 <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-                <Button onClick={() => router.push('/projects')} sx={mobileNavLinkStyle('/projects')}>Projects</Button>
+                <Button onClick={() => router.push('/projects')} sx={mobileNavLinkStyle('/projects')}>{t('nav_projects')}</Button>
                 <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-                <Button onClick={() => router.push('/contact')} sx={mobileNavLinkStyle('/contact')}>Contact</Button>
+                <Button onClick={() => router.push('/contact')} sx={mobileNavLinkStyle('/contact')}>{t('nav_contact')}</Button>
             </Box>
 
             {/* Mobile Top Bar for Auth/Theme/Lang (Optional, adding since users asked for these features and desktop only shows them) */}
@@ -429,7 +431,7 @@ export default function Navbar() {
                         >
                             <img
                                 src="/log_in.svg"
-                                alt="Sign up"
+                                alt={t('nav_signup')}
                                 width={28}
                                 height={28}
                                 style={{ marginBottom: '0px' }}
@@ -447,7 +449,7 @@ export default function Navbar() {
                                     color: 'transparent'
                                 }}
                             >
-                                Sign up
+                                {t('nav_signup')}
                             </Typography>
                         </Button>
                     </SignedOut>
@@ -477,7 +479,7 @@ export default function Navbar() {
                         >
                             <img
                                 src="/log_out.svg"
-                                alt="Sign out"
+                                alt={t('nav_signout')}
                                 width={28}
                                 height={28}
                                 style={{ marginBottom: '0px' }}
@@ -495,7 +497,7 @@ export default function Navbar() {
                                     color: 'transparent'
                                 }}
                             >
-                                Sign out
+                                {t('nav_signout')}
                             </Typography>
                         </Button>
                     </SignedIn>

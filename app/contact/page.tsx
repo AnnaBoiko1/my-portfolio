@@ -12,6 +12,7 @@ import Link from 'next/link';
 
 import Navbar from '@/components/Navbar';
 import ContactForm from "@/components/ContactForm";
+import { useLanguage } from '@/context/LanguageContext';
 import { useScrollNavigation } from '../hooks/useScrollNavigation';
 
 export default function ContactPage() {
@@ -19,6 +20,7 @@ export default function ContactPage() {
   const pathname = usePathname();
   const router = useRouter();
   const containerRef = useScrollNavigation(null, '/projects');
+  const { t } = useLanguage();
 
   useEffect(() => {
     (async function () {
@@ -59,7 +61,7 @@ export default function ContactPage() {
                 mx: 0            // ✅ Left alignment
               }}>
                 <Typography variant='h3' sx={{ marginTop: { xs: '-8px', md: 15 }, mb: 3 }}>
-                  <strong>Contact me</strong>
+                  <strong>{t('contact_title')}</strong>
                 </Typography>
                 <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: { xs: -30, md: -20 }, lineHeight: 1 }}>
                   <span style={{ color: 'var(--blue)' }}>____</span>
@@ -120,12 +122,12 @@ export default function ContactPage() {
                       }
                     }}
                   >
-                    {copied ? 'Copied!' : 'Copy email'}
+                    {copied ? t('contact_copied') : t('contact_copy_email')}
                   </Typography>
                 </Box>
 
                 <Typography variant='h4' sx={{ mb: 4 }}>
-                  Based in Toronto, ON Canada
+                  {t('contact_based_in')}
                 </Typography>
 
                 {/* Cal.com  */}
@@ -175,14 +177,14 @@ export default function ContactPage() {
                   }}
                 >
                   <Typography variant='h5' sx={{ fontWeight: 600, fontSize: { xs: '1.3rem', sm: '1.6rem', md: '1.9rem' }, whiteSpace: 'nowrap' }}>
-                    Schedule an Appointment
+                    {t('contact_schedule_appointment')}
                   </Typography>
                 </Box>
 
                 {/* Find me on */}
                 <Box sx={{ mt: 6, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <Typography variant='h5' sx={{ mb: 0.5, opacity: 0.8, fontWeight: 600 }}>
-                    Find me on
+                    {t('contact_find_me_on')}
                   </Typography>
                 </Box>
 

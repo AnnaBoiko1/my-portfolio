@@ -13,6 +13,7 @@ import Menu from '@mui/material/Menu';
 import ImageCarousel from '@/components/ImageCarousel';
 
 import Navbar from '@/components/Navbar';
+import { useLanguage } from '@/context/LanguageContext';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
@@ -22,6 +23,7 @@ import { useScrollNavigation } from '../hooks/useScrollNavigation';
 
 
 const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githubUrl: string }) => {
+  const { t } = useLanguage();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -114,7 +116,7 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
         onClick={handleOpen}
         sx={buttonStyles(open)}
       >
-        Link to project
+        {t('projects_link_to_project')}
       </Button>
       <Menu
         anchorEl={anchorEl}
@@ -201,6 +203,7 @@ export default function ProjectsPage() {
   const pathname = usePathname();
   const router = useRouter();
   const containerRef = useScrollNavigation('/contact', '/about');
+  const { t } = useLanguage();
 
   const [projects, setProjects] = React.useState<any[]>([]);
 
@@ -247,7 +250,7 @@ export default function ProjectsPage() {
                 pb: 20
               }}>
                 <Typography variant='h3' sx={{ marginTop: { xs: '60px', md: 15 } }}>
-                  <strong>Projects</strong>
+                  <strong>{t('projects_title')}</strong>
                 </Typography>
                 <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: { xs: -40, md: -20 }, lineHeight: 1 }}>
                   <span style={{ color: 'var(--blue)' }}>____</span>
@@ -288,7 +291,7 @@ export default function ProjectsPage() {
                     {/* Feedback Stars Section */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
                       <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                        Feedback
+                        {t('projects_feedback')}
                       </Typography>
                       <StarRating projectId={project.id} />
                     </Box>
@@ -313,7 +316,7 @@ export default function ProjectsPage() {
                     <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
                       <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                        Feedback
+                        {t('projects_feedback')}
                       </Typography>
                       <StarRating projectId={project.id} />
                     </Box>
@@ -359,7 +362,7 @@ export default function ProjectsPage() {
                   <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
                     <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                      Feedback
+                      {t('projects_feedback')}
                     </Typography>
                     <StarRating projectId={project.id} />
                   </Box>
