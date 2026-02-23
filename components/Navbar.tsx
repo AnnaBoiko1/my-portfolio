@@ -337,12 +337,12 @@ export default function Navbar() {
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
                                     gap: 2,
-                                    fontWeight: language === lang ? 900 : 500,
+                                    fontWeight: 500,
                                     fontSize: { xs: '1rem', md: '1.7rem' },
                                     p: 1,
                                     mt: { xs: -2, md: -2 },
                                     mb: { xs: -2, md: -2 },
-                                    color: language === lang ? 'var(--purple)' : 'var(--text)',
+                                    color: 'var(--text)',
                                     '&:hover': {
                                         color: 'var(--purple)',
                                         fontWeight: 900,
@@ -352,7 +352,7 @@ export default function Navbar() {
                             >
                                 {lang}
                                 <span style={{
-                                    opacity: (language === lang || hoveredLanguage === lang) ? 1 : 0,
+                                    opacity: (hoveredLanguage === lang) ? 1 : 0,
                                     transition: 'opacity 0.2s',
                                     fontSize: '0.9em',
                                     color: 'var(--text)'
