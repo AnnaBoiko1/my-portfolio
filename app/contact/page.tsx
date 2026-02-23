@@ -68,7 +68,7 @@ export default function ContactPage() {
                 </Typography>
                 <Box sx={{ textAlign: 'start' }}>
                   <Typography variant='h4' sx={{ mb: 1 }}>
-                    Anna Boiko
+                    {t('common_full_name')}
                   </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'flex-start' }}>

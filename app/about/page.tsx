@@ -50,6 +50,7 @@ export default function AboutPage() {
             <span style={{ color: 'var(--blue)' }}>____</span>
           </Typography>
           <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('about_bio_1') }} />
+          <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('about_bio_data') }} />
           <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('about_bio_2') }} />
         </Container>
 

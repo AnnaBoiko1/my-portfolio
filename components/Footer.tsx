@@ -1,9 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setMounted(true);
@@ -29,7 +31,7 @@ export default function Footer() {
     >
       <Typography variant="caption"
         sx={{ fontSize: '0.75rem', color: 'var(--footer-text)' }}>
-        © {new Date().getFullYear()} Anna Boiko. All rights reserved.
+        © {new Date().getFullYear()} {t('common_full_name')}. All rights reserved.
       </Typography>
     </Box>
   );
