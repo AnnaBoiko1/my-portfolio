@@ -28,6 +28,10 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+  const hasFigma = Boolean(figmaUrl && figmaUrl.trim() !== '' && figmaUrl !== '#');
+  const hasGithub = Boolean(githubUrl && githubUrl.trim() !== '' && githubUrl !== '#');
+  const linkCount = (hasFigma ? 1 : 0) + (hasGithub ? 1 : 0);
+
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setAnchorEl(event.currentTarget);
@@ -43,6 +47,63 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
+  const buttonStyles = (isOpen: boolean) => ({
+    mt: { xs: 1, md: 4 },
+    width: { xs: "40vh", md: 350 },
+    py: 1,
+    fontSize: '1rem',
+    fontWeight: 600,
+    color: 'var(--purple)',
+    bgcolor: isOpen ? 'var(--blue)' : 'transparent',
+    backgroundImage: isOpen ? 'none' : `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+    textTransform: 'none',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
+    backgroundSize: '15px 15px',
+    position: 'relative',
+    backgroundOrigin: 'padding-box',
+    borderRadius: 3,
+    boxShadow: isOpen ? '0 10px 30px var(--red)' : 'none',
+    transform: isOpen ? 'translateY(-2px)' : 'none',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      borderRadius: 3,
+      padding: '3px',
+      background: 'var(--purple)',
+      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+      WebkitMaskComposite: 'xor',
+      maskComposite: 'exclude',
+      pointerEvents: 'none',
+    },
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 10px 30px var(--red)',
+      bgcolor: 'var(--blue)',
+      backgroundImage: 'none',
+    }
+  });
+
+  if (linkCount === 0) return null;
+
+  if (linkCount === 1) {
+    const singleUrl = hasFigma ? figmaUrl : githubUrl;
+    const singleLabel = hasFigma ? "Figma" : "GitHub";
+
+    return (
+      <Box sx={{ display: 'inline-block' }}>
+        <Button
+          onClick={() => window.open(singleUrl, '_blank', 'noopener,noreferrer')}
+          sx={buttonStyles(false)}
+        >
+          {singleLabel}
+        </Button>
+      </Box>
+    );
+  }
+
   return (
     <Box
       onMouseLeave={handleClose}
@@ -51,44 +112,7 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
       <Button
         onMouseEnter={handleOpen}
         onClick={handleOpen}
-        sx={{
-          mt: { xs: 1, md: 4 },
-          width: { xs: "40vh", md: 350 },
-          py: 1,
-          fontSize: '1rem',
-          fontWeight: 600,
-          color: 'var(--purple)',
-          bgcolor: open ? 'var(--blue)' : 'transparent',
-          backgroundImage: open ? 'none' : `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
-          textTransform: 'none',
-          display: 'inline-flex',
-          justifyContent: 'center',
-          textShadow: '1px 1px 1px rgba(0,0,0,0.3), 0 0 3px rgba(255,255,255,0.4)',
-          backgroundSize: '15px 15px',
-          position: 'relative',
-          backgroundOrigin: 'padding-box',
-          borderRadius: 3,
-          boxShadow: open ? '0 10px 30px var(--red)' : 'none',
-          transform: open ? 'translateY(-2px)' : 'none',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            borderRadius: 3,
-            padding: '3px',
-            background: 'var(--purple)',
-            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-            WebkitMaskComposite: 'xor',
-            maskComposite: 'exclude',
-            pointerEvents: 'none',
-          },
-          '&:hover': {
-            transform: 'translateY(-2px)',
-            boxShadow: '0 10px 30px var(--red)',
-            bgcolor: 'var(--blue)',
-            backgroundImage: 'none',
-          }
-        }}
+        sx={buttonStyles(open)}
       >
         Link to project
       </Button>
