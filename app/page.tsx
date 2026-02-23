@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
+import { useUser } from '@clerk/nextjs';
 
 import { SxProps, Theme } from '@mui/material/styles';
 
@@ -16,6 +17,7 @@ export default function Home() {
   const pathname = usePathname();
   const router = useRouter();
   const containerRef = useScrollNavigation('/about', null);
+  const { user, isSignedIn } = useUser();
 
   return (
     <>
@@ -42,9 +44,14 @@ export default function Home() {
 
           {/* === MOBILE LAYOUT (Original) === */}
           <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+            {isSignedIn && user?.firstName && (
+              <Typography variant="h3" sx={{ fontSize: '1.5rem', fontWeight: 300, mb: 1, color: 'var(--purple)' }}>
+                Nice to meet you, {user.firstName}!
+              </Typography>
+            )}
             <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: 2 }}>
               <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, lineHeight: 1.3, mr: 2 }}>
-                Hi, my
+                {isSignedIn ? 'My' : 'Hi, my'}
               </Typography>
               <Box sx={{ mb: 1 }}>
                 <Image
@@ -73,8 +80,13 @@ export default function Home() {
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               {/* Left Names */}
               <Box>
+                {isSignedIn && user?.firstName && (
+                  <Typography variant="h3" sx={{ fontSize: '2.5rem', fontWeight: 300, mb: 1, color: 'var(--purple)' }}>
+                    Nice to meet you, {user.firstName}!
+                  </Typography>
+                )}
                 <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, mb: 1, lineHeight: 1.2 }}>
-                  Hi, my
+                  {isSignedIn ? 'My' : 'Hi, my'}
                 </Typography>
                 <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, lineHeight: 1, whiteSpace: 'nowrap' }}>
                   name is <strong>Anna</strong><span style={{ color: 'var(--blue)' }}>.</span>
