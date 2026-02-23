@@ -8,21 +8,40 @@
   --purple: #A749D6;
   --blue: #60E7F1;
   --blue-light: #cbecfa;
-  --red: #FFA2B4;
   --bg-blue: rgba(31, 167, 188, 0.15);
+  --bg-primary: #ffffff;
   --border: #ffffff;
+  --btn-text: var(--purple);
+  --btn-stripes: var(--blue);
+  --btn-hover-bg: var(--blue);
+  --toolbelt-cat-bg: var(--blue-light);
+  --toolbelt-item-bg: var(--blue);
+  --copy-email-hover: var(--bg-blue);
+  --form-input-bg: var(--blue-light);
+  --form-input-text: var(--purple);
+  --navbar-bg: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.05) 20%);
 }
 
 [data-theme='dark'],
 .dark {
-  --background: #1e1e50 !important;
-  /* Brighter blue to be visible */
-  --text: #ededed;
-  --blue-light: #2c2c6e;
-  /* Darker background for boxes */
-  --bg-blue: rgba(96, 231, 241, 0.15);
-  --border: #1e1e50 !important;
+  --background: #0f0f23 !important;
+  --text: #7dd3fc;
+  --purple: #c084fc;
+  --blue: #7dd3fc;
+  --blue-light: #f0f9ff;
+  --bg-blue: rgba(22, 22, 69, 0.3);
+  --bg-primary: #0f0f23;
+  --border: #0f0f23 !important;
   color-scheme: dark;
+  --btn-text: #60E7F1;
+  --btn-stripes: #A749D6;
+  --btn-hover-bg: #A749D6;
+  --toolbelt-cat-bg: #A749D6;
+  --toolbelt-item-bg: var(--bg-blue);
+  --copy-email-hover: #A749D6;
+  --form-input-bg: #c084fc;
+  --form-input-text: #0f0f23;
+  --navbar-bg: transparent;
 }
 
 body {
@@ -49,4 +68,9 @@ body {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+::placeholder {
+  color: var(--form-input-text);
+  opacity: 0.8;
 }

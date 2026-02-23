@@ -7,7 +7,7 @@ export default function BackgroundCanva({ children }: { children: React.ReactNod
       style={{
         height: '99.5%', // Fit within body
         width: '99.5%',
-        backgroundColor: 'rgba(31, 167, 188, 0.15)',
+        backgroundColor: 'var(--bg-blue)',
         overflow: 'hidden', // Ensure it contains its children
         position: 'relative'
       }}

@@ -77,87 +77,87 @@ export default function AboutPage() {
           }}>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
               <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_languages')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>TypeScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>TypeScript</Typography>
               </Box>
             </Box>
 
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
               <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_frontend')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>React</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Next.js</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Tailwind</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Bootstrap</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>MUI</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Responsive</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>React</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Next.js</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Tailwind</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Bootstrap</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>MUI</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Responsive</Typography>
               </Box>
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
               <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_backend')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Ruby on Rails</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>ActiveRecord</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>OOP</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>APIs</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Ruby on Rails</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>ActiveRecord</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>OOP</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>APIs</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
               </Box>
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
               <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_devops')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Git</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>GitHub</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Git</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>GitHub</Typography>
               </Box>
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
             }}>
               <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_data')}</Typography>
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Pandas</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Power BI</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Tableau</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Matplotlib</Typography>
-                <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>PostgreSQL</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Pandas</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Power BI</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Tableau</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Matplotlib</Typography>
+                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>PostgreSQL</Typography>
               </Box>
             </Box>
             {/* Languages */}
             <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--blue-light)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
+              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
               display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
               transition: 'all 0.3s ease',
               '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
@@ -168,16 +168,16 @@ export default function AboutPage() {
               <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
                 {/* BA Philosophy */}
                 <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_philo_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.1rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_philo_chip')}</Typography>
+                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.1rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_philo_chip')}</Typography>
                 </Tooltip>
                 <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_npower_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_npower_chip')}</Typography>
+                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_npower_chip')}</Typography>
                 </Tooltip>
                 <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_lewagon_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_lewagon_chip')}</Typography>
+                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_lewagon_chip')}</Typography>
                 </Tooltip>
                 <Tooltip title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_firstaid_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--blue)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_firstaid_chip')}</Typography>
+                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_firstaid_chip')}</Typography>
                 </Tooltip>
               </Box>
             </Box>
@@ -210,7 +210,7 @@ export default function AboutPage() {
               fontSize: '1.3rem',
               fontWeight: 550,
               width: 300,
-              color: 'var(--purple)',
+              color: 'var(--btn-text)',
               bgcolor: 'transparent',
               textTransform: 'none',
               display: 'inline-flex',
@@ -223,11 +223,11 @@ export default function AboutPage() {
               backgroundImage: `linear-gradient(
                 45deg, 
                 transparent 25%, 
-                var(--blue) 25%, 
-                var(--blue)50%, 
+                var(--btn-stripes) 25%, 
+                var(--btn-stripes) 50%, 
                 transparent 50%, 
                 transparent 75%, 
-                var(--blue) 75%
+                var(--btn-stripes) 75%
               )`,
 
               backgroundSize: '15px 15px',
@@ -255,7 +255,7 @@ export default function AboutPage() {
               '&:hover': {
                 transform: 'translateY(-2px)',
                 boxShadow: '0 10px 30px var(--red)',
-                bgcolor: 'var(--red)',
+                bgcolor: 'var(--btn-hover-bg)',
               }
             }}
           >

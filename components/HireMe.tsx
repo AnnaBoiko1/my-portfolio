@@ -25,7 +25,7 @@ export default function HireMe() {
         title={t('hire_me')}
 
       >
-        <span className="text-gray-800 font-semibold text-sm md:text-lg whitespace-nowrap center ">
+        <span className="font-semibold text-sm md:text-lg whitespace-nowrap center" style={{ color: 'var(--text)' }}>
           {t('hire_me')}
         </span>
         <FontAwesomeIcon icon={faCommentDots} size="2x"

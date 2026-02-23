@@ -26,13 +26,13 @@ export default function ContactForm() {
     return (
         <form action={handleSubmit}>
             <Typography variant='h5' sx={{ mb: 2 }}>{t('contact_form_name')}</Typography>
-            <Box component="input" name="name" required placeholder={t('contact_form_name_placeholder')} sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Box component="input" name="name" required placeholder={t('contact_form_name_placeholder')} sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--form-input-text)', backgroundColor: 'var(--form-input-bg)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
 
             <Typography variant='h5' sx={{ mb: 2 }}>{t('contact_form_email')}</Typography>
-            <Box component="input" name="email" required type="email" placeholder={t('contact_form_email_placeholder')} sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Box component="input" name="email" required type="email" placeholder={t('contact_form_email_placeholder')} sx={{ width: '100%', padding: '12px', mb: 2, border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--form-input-text)', backgroundColor: 'var(--form-input-bg)', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
 
             <Typography variant='h5' sx={{ mb: 2 }}>{t('contact_form_message')}</Typography>
-            <Box component="textarea" name="message" required placeholder={t('contact_form_message_placeholder')} rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--purple)', backgroundColor: 'var(--blue-light)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
+            <Box component="textarea" name="message" required placeholder={t('contact_form_message_placeholder')} rows={4} sx={{ width: '100%', padding: '12px', border: '2px solid var(--purple)', borderRadius: '12px', color: 'var(--form-input-text)', backgroundColor: 'var(--form-input-bg)', fontFamily: 'inherit', fontSize: 'inherit', '&:focus': { borderColor: 'var(--blue)', outline: 'none' } }} />
 
             <SubmitButton />
 
@@ -61,9 +61,9 @@ function SubmitButton() {
                 py: 1,
                 fontSize: '1.3rem',
                 fontWeight: 600,
-                color: 'var(--purple)',
+                color: 'var(--btn-text)',
                 bgcolor: 'transparent',
-                backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+                backgroundImage: `linear-gradient(45deg, transparent 25%, var(--btn-stripes) 25%, var(--btn-stripes) 50%, transparent 50%, transparent 75%, var(--btn-stripes) 75%)`,
                 textTransform: 'none',
                 display: 'inline-flex',
                 justifyContent: 'center',
@@ -88,7 +88,7 @@ function SubmitButton() {
                 '&:hover': {
                     transform: 'translateY(-2px)',
                     boxShadow: '0 10px 30px var(--red)',
-                    bgcolor: 'var(--blue)',
+                    bgcolor: 'var(--btn-hover-bg)',
                     backgroundImage: 'none',
                 },
                 '&:disabled': {

@@ -55,9 +55,9 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
     py: 1,
     fontSize: '1rem',
     fontWeight: 600,
-    color: 'var(--purple)',
-    bgcolor: isOpen ? 'var(--blue)' : 'transparent',
-    backgroundImage: isOpen ? 'none' : `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+    color: 'var(--btn-text)',
+    bgcolor: isOpen ? 'var(--btn-stripes)' : 'transparent',
+    backgroundImage: isOpen ? 'none' : `linear-gradient(45deg, transparent 25%, var(--btn-stripes) 25%, var(--btn-stripes) 50%, transparent 50%, transparent 75%, var(--btn-stripes) 75%)`,
     textTransform: 'none',
     display: 'inline-flex',
     justifyContent: 'center',
@@ -83,7 +83,7 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
     '&:hover': {
       transform: 'translateY(-2px)',
       boxShadow: '0 10px 30px var(--red)',
-      bgcolor: 'var(--blue)',
+      bgcolor: 'var(--btn-hover-bg)',
       backgroundImage: 'none',
     }
   });

@@ -70,12 +70,11 @@ export default function Navbar() {
             // Apply to document (simplified for now, assuming global css handles class='dark' or we just toggle variables)
             // For this specific project, let's assume we toggle a class on body or html
             // Disable dark mode application as per user request, but keep logic in case we need it back
-            // if (documentClass === 'dark') {
-            //     document.documentElement.classList.add('dark');
-            // } else {
-            //     document.documentElement.classList.remove('dark');
-            // }
-            document.documentElement.classList.remove('dark');
+            if (documentClass === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         };
 
         applyTheme();
@@ -147,7 +146,7 @@ export default function Navbar() {
                 alignItems: 'center',
                 p: 4,
                 pt: 6,
-                background: 'linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.05) 20%)',
+                background: 'var(--navbar-bg)',
                 backdropFilter: 'blur(5px)',
                 WebkitBackdropFilter: 'blur(5px)',
                 transition: 'background-color 0.3s ease',
@@ -289,7 +288,7 @@ export default function Navbar() {
                         ) : theme === 'dark' ? (
                             <span style={{ fontSize: '2.4rem', marginBottom: '6px' }}>☾</span>
                         ) : (
-                            <img src="/theme_auto2.png" alt="Auto" style={{ width: '28px', height: '28px' }} />
+                            <span style={{ fontSize: '2.4rem', marginBottom: '6px' }}>◐</span>
                         )}
                     </Box>
 
@@ -513,7 +512,7 @@ export default function Navbar() {
                         ) : theme === 'dark' ? (
                             <span style={{ fontSize: '2rem', marginBottom: '4px' }}>☾</span>
                         ) : (
-                            <img src="/theme_auto2.png" alt="Auto" style={{ width: '24px', height: '24px' }} />
+                            <span style={{ fontSize: '2rem', marginBottom: '4px' }}>◐</span>
                         )}
                     </Box>
                     <Button

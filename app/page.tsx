@@ -135,7 +135,7 @@ export default function Home() {
               mb: 15,
               fontSize: { xs: '1.1rem', md: '1.3rem' },
               fontWeight: 600,
-              color: 'var(--purple)',
+              color: 'var(--btn-text)',
               bgcolor: 'transparent',
               textTransform: 'none',
               display: 'inline-flex',
@@ -146,11 +146,11 @@ export default function Home() {
               backgroundImage: `linear-gradient(
                 45deg, 
                 transparent 25%, 
-                var(--blue) 25%, 
-                var(--blue)50%, 
+                var(--btn-stripes) 25%, 
+                var(--btn-stripes) 50%, 
                 transparent 50%, 
                 transparent 75%, 
-                var(--blue) 75%
+                var(--btn-stripes) 75%
               )`,
               backgroundSize: '15px 15px',
               position: 'relative',
@@ -171,7 +171,7 @@ export default function Home() {
               '&:hover': {
                 transform: 'translateY(-2px)',
                 boxShadow: '0 10px 30px var(--red)',
-                bgcolor: 'var(--red)',
+                bgcolor: 'var(--btn-hover-bg)',
               }
             }}
           >

@@ -102,7 +102,7 @@ export default function ContactPage() {
                       textAlign: 'left', // Ensure text starts from left
                       '&:hover': {
                         opacity: 0.7,
-                        color: 'var(--bg-blue)'
+                        color: 'var(--copy-email-hover)'
                       }
                     }}
                     onClick={async () => {
@@ -142,9 +142,9 @@ export default function ContactPage() {
                     py: 1,
                     fontSize: '1.5rem',
                     fontWeight: 600,
-                    color: 'var(--purple)',
+                    color: 'var(--btn-text)',
                     bgcolor: 'transparent',
-                    backgroundImage: `linear-gradient(45deg, transparent 25%, var(--blue) 25%, var(--blue)50%, transparent 50%, transparent 75%, var(--blue) 75%)`,
+                    backgroundImage: `linear-gradient(45deg, transparent 25%, var(--btn-stripes) 25%, var(--btn-stripes) 50%, transparent 50%, transparent 75%, var(--btn-stripes) 75%)`,
                     textTransform: 'none',
                     display: 'inline-flex',
                     justifyContent: 'center',
@@ -170,7 +170,7 @@ export default function ContactPage() {
                     '&:hover': {
                       transform: 'translateY(-2px)',
                       boxShadow: '0 10px 30px var(--red)',
-                      bgcolor: 'var(--blue)',
+                      bgcolor: 'var(--btn-hover-bg)',
                       backgroundImage: 'none',
                       zIndex: 10
                     }
