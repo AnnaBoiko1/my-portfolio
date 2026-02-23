@@ -68,7 +68,7 @@ export default function Home() {
             </Box>
 
             <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 350, mb: 6, lineHeight: 1 }}>
-              {t('home_name_is')} <strong>{t('home_name_anna')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
+              {t('home_name_is')} <strong>{t('home_name_anna')}</strong><span style={{ color: 'var(--dot-color)' }}>.</span>
             </Typography>
 
             <Typography variant="h3" sx={{ fontSize: '1.2rem', color: 'text', mb: 2, maxWidth: 600 }} dangerouslySetInnerHTML={{ __html: t('home_bio_mobile') }} />
@@ -89,7 +89,7 @@ export default function Home() {
                   {isSignedIn ? t('home_my') : t('home_hi_my')}
                 </Typography>
                 <Typography variant="h1" sx={{ fontSize: '7rem', fontWeight: 350, lineHeight: 1, whiteSpace: 'nowrap' }}>
-                  {t('home_name_is')} <strong>{t('home_name_anna')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
+                  {t('home_name_is')} <strong>{t('home_name_anna')}</strong><span style={{ color: 'var(--dot-color)' }}>.</span>
                 </Typography>
               </Box>
               {/* Right Image */}
@@ -120,7 +120,7 @@ export default function Home() {
           alignItems: 'flex-start'
         }}>
           <Typography variant='h3' sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
-            <strong>{t('home_work_together')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
+            <strong>{t('home_work_together')}</strong><span style={{ color: 'var(--dot-color)' }}>.</span>
           </Typography>
           <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
           <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('home_work_description') }} />

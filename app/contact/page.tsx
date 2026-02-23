@@ -93,10 +93,10 @@ export default function ContactPage() {
                     sx={{
                       mt: 0.1,
                       marginLeft: '8px',
-                      width: '120px', // ✅ Increased fixed width
+                      width: { xs: '100px', md: '120px' }, // ✅ Responsive width
                       display: 'inline-block', // ✅ Enforce block behavior for width
                       whiteSpace: 'nowrap', // ✅ Prevent wrapping
-                      fontSize: '0.8rem',
+                      fontSize: { xs: '0.65rem', md: '0.8rem' }, // ✅ Smaller on mobile
                       color: 'var(--blue)',
                       cursor: 'pointer',
                       textAlign: 'left', // Ensure text starts from left
@@ -109,7 +109,6 @@ export default function ContactPage() {
                       try {
                         await navigator.clipboard.writeText('annaboiko1@icloud.com');
                         setCopied(true);
-                        setTimeout(() => setCopied(false), 2000);
                       } catch (err) {
                         const textArea = document.createElement('textarea');
                         textArea.value = 'annaboiko1@icloud.com';
@@ -118,7 +117,6 @@ export default function ContactPage() {
                         document.execCommand('copy');
                         document.body.removeChild(textArea);
                         setCopied(true);
-                        setTimeout(() => setCopied(false), 2000);
                       }
                     }}
                   >

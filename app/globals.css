@@ -21,6 +21,7 @@
   --form-input-text: var(--purple);
   --navbar-bg: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.05) 20%);
   --footer-text: #6b7280;
+  --dot-color: var(--blue);
 }
 
 [data-theme='dark'],
@@ -44,6 +45,7 @@
   --form-input-text: #0f0f23;
   --navbar-bg: transparent;
   --footer-text: var(--purple);
+  --dot-color: var(--purple);
 }
 
 body {

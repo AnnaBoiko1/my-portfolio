@@ -1,7 +1,15 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 
 export default function Footer() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <Box
