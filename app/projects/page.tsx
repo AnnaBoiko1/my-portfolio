@@ -308,24 +308,30 @@ export default function ProjectsPage() {
               <Container key={project.id} maxWidth="lg" sx={{
                 scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
               }}>
-                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
-                  <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Typography variant='h4' sx={{ mt: 5 }}>
-                      <strong>{project.name}</strong>
-                    </Typography>
-                    <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: { xs: 5, md: 15 } }}>
+                  <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
+                    <Box sx={{ order: { xs: 1, md: 1 }, width: '100%', mb: { xs: -3, md: 0 } }}>
+                      <Typography variant='h4' sx={{ mt: { xs: 3, md: 5 } }}>
+                        <strong>{project.name}</strong>
+                      </Typography>
+                      <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    </Box>
+
+                    <Box sx={{ order: { xs: 3, md: 2 }, display: 'flex', alignItems: 'center', gap: 2, mt: { xs: -8, md: 3 }, mb: 1, width: '100%', position: 'relative', zIndex: 10 }}>
                       <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                         {t('projects_feedback')}
                       </Typography>
                       <StarRating projectId={project.id} />
                     </Box>
-                    <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+
+                    <Box sx={{ order: { xs: 4, md: 3 }, width: '100%', mb: { xs: 3, md: 0 } }}>
+                      <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+                    </Box>
                   </Box>
 
-                  <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: -2, width: '100%' }}>
+                  <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, mt: { xs: 0, md: -2 }, width: '100%' }}>
                     {/* MOBILE: Carousel */}
-                    <Box sx={{ display: { xs: 'block', md: 'none' }, width: '100%', mt: 2 }}>
+                    <Box sx={{ order: { xs: 2, md: 2 }, display: { xs: 'block', md: 'none' }, width: '100%', mt: { xs: -4, md: 2 } }}>
                       <ImageCarousel images={project.images} alt={project.name} objectFit="contain" />
                     </Box>
                     {/* DESKTOP: Grid */}
@@ -349,24 +355,30 @@ export default function ProjectsPage() {
             <Container key={project.id} maxWidth="lg" sx={{
               scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
             }}>
-              <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: index % 2 === 0 ? 'row' : 'row-reverse' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
-                <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: { xs: 2, md: 7 }, width: '100%' }}>
-                  <Image src={project.images?.[0] || '/img_placeholder.png'} alt={project.name} width={300} height={300} priority style={{
-                    width: '100%', height: '100%', maxHeight: '50vh', objectFit: 'cover', display: 'block'
-                  }} />
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: { xs: 5, md: 15 } }}>
+                <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, mt: { xs: 0, md: 7 }, width: '100%' }}>
+                  <Box sx={{ order: { xs: 2, md: 1 }, width: '100%', mt: { xs: 2, md: 0 } }}>
+                    <Image src={project.images?.[0] || '/img_placeholder.png'} alt={project.name} width={300} height={300} priority style={{
+                      width: '100%', height: '100%', maxHeight: '50vh', objectFit: 'cover', display: 'block'
+                    }} />
+                  </Box>
                 </Box>
-                <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Typography variant='h4'>
-                    <strong>{project.name}</strong>
-                  </Typography>
-                  <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+                <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
+                  <Box sx={{ order: { xs: 1, md: 2 }, width: '100%', mb: { xs: 2, md: 0 } }}>
+                    <Typography variant='h4' sx={{ mt: { xs: 3, md: 0 } }}>
+                      <strong>{project.name}</strong>
+                    </Typography>
+                    <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                  </Box>
+                  <Box sx={{ order: { xs: 3, md: 3 }, display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 2, md: 3 }, mb: 1, width: '100%', position: 'relative', zIndex: 10 }}>
                     <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                       {t('projects_feedback')}
                     </Typography>
                     <StarRating projectId={project.id} />
                   </Box>
-                  <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+                  <Box sx={{ order: { xs: 4, md: 4 }, width: '100%', mb: { xs: 3, md: 0 } }}>
+                    <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+                  </Box>
                 </Box>
               </Box>
             </Container>
