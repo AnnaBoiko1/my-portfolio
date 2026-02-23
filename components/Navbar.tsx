@@ -7,6 +7,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogActions from '@mui/material/DialogActions';
 // Imports
 import {
     ClerkProvider,
@@ -50,6 +55,24 @@ export default function Navbar() {
     const handleLanguageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setLanguageAnchorEl(event.currentTarget);
     };
+
+    // --- Sign Out Confirmation ---
+    const [showSignOutDialog, setShowSignOutDialog] = useState(false);
+
+    const handleSignOutClick = () => {
+        setShowSignOutDialog(true);
+    };
+
+    const handleSignOutConfirm = async () => {
+        setShowSignOutDialog(false);
+        await signOut();
+        router.push('/');
+    };
+
+    const handleSignOutCancel = () => {
+        setShowSignOutDialog(false);
+    };
+
     const handleLanguageClose = (lang?: LanguageCode) => {
         setLanguageAnchorEl(null);
         if (lang) setLanguage(lang);
@@ -172,7 +195,7 @@ export default function Navbar() {
                     </SignedOut>
                     <SignedIn>
                         <Button
-                            onClick={() => signOut()}
+                            onClick={handleSignOutClick}
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -300,12 +323,17 @@ export default function Navbar() {
                                 }}
                             >
                                 {lang}
-                                <span style={{
-                                    opacity: (hoveredLanguage === lang) ? 1 : 0,
-                                    transition: 'opacity 0.2s',
-                                    fontSize: '0.9em',
-                                    color: 'var(--background)'
-                                }}>✔</span>
+                                <Box
+                                    component="span"
+                                    sx={{
+                                        opacity: hoveredLanguage === lang ? 1 : (language === lang ? { xs: 1, md: 0 } : 0),
+                                        transition: 'opacity 0.2s',
+                                        fontSize: '0.9em',
+                                        color: 'var(--background)'
+                                    }}
+                                >
+                                    ✔
+                                </Box>
                             </MenuItem>
                         ))}
                     </Menu>
@@ -404,7 +432,7 @@ export default function Navbar() {
                     </SignedOut>
                     <SignedIn>
                         <Button
-                            onClick={() => signOut()}
+                            onClick={handleSignOutClick}
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -474,6 +502,65 @@ export default function Navbar() {
 
                 </Box>
             </Box>
+
+            {/* Sign Out Confirmation Dialog */}
+            <Dialog
+                open={showSignOutDialog}
+                onClose={handleSignOutCancel}
+                PaperProps={{
+                    sx: {
+                        bgcolor: 'var(--blue)',
+                        borderRadius: '20px',
+                        border: '3px solid var(--purple)',
+                        p: 2,
+                        color: 'var(--text)'
+                    }
+                }}
+            >
+                <DialogTitle sx={{ fontWeight: 800, fontSize: '1.5rem', color: 'var(--purple)', textAlign: 'center' }}>
+                    {t('nav_signout')}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText sx={{
+                        color: theme === 'dark' ? '#0f0f23' : 'var(--text)',
+                        fontSize: '1.1rem',
+                        fontWeight: 500,
+                        textAlign: 'center'
+                    }}>
+                        {t('signout_confirm_message')}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions sx={{ gap: 2, p: 3, justifyContent: 'center' }}>
+                    <Button
+                        onClick={handleSignOutCancel}
+                        sx={{
+                            bgcolor: '#f0f9ff',
+                            color: 'var(--purple)',
+                            textTransform: 'none',
+                            fontWeight: 700,
+                            borderRadius: '10px',
+                            px: 2,
+                            '&:hover': { bgcolor: '#e0f2fe' }
+                        }}
+                    >
+                        {t('signout_confirm_cancel')}
+                    </Button>
+                    <Button
+                        onClick={handleSignOutConfirm}
+                        variant="contained"
+                        sx={{
+                            bgcolor: 'var(--purple)',
+                            color: '#fff',
+                            textTransform: 'none',
+                            fontWeight: 700,
+                            borderRadius: '10px',
+                            '&:hover': { bgcolor: 'var(--purple)', opacity: 0.9 }
+                        }}
+                    >
+                        {t('signout_confirm_button')}
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </>
     );
 }

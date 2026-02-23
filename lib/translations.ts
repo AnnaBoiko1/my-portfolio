@@ -7,6 +7,9 @@ export const translations = {
         nav_contact: "Contact",
         nav_signup: "Sign up",
         nav_signout: "Sign out",
+        signout_confirm_message: "Are you sure you want to sign out?",
+        signout_confirm_button: "Sign out",
+        signout_confirm_cancel: "Cancel",
 
         // Home Page
         home_nice_to_meet: "Nice to meet you,",
@@ -80,6 +83,9 @@ export const translations = {
         nav_contact: "Контакти",
         nav_signup: "Реєстрація",
         nav_signout: "Вихід",
+        signout_confirm_message: "Ви впевнені, що хочете вийти?",
+        signout_confirm_button: "Вийти",
+        signout_confirm_cancel: "Скасувати",
 
         // Home Page
         home_nice_to_meet: "Приємно познайомитись,",
@@ -153,6 +159,9 @@ export const translations = {
         nav_contact: "Contact",
         nav_signup: "S'inscrire",
         nav_signout: "Déconnexion",
+        signout_confirm_message: "Êtes-vous sûr de vouloir vous déconnecter ?",
+        signout_confirm_button: "Se déconnecter",
+        signout_confirm_cancel: "Annuler",
 
         // Home Page
         home_nice_to_meet: "Ravi de vous rencontrer,",
@@ -226,6 +235,9 @@ export const translations = {
         nav_contact: "Kontakt",
         nav_signup: "Registrieren",
         nav_signout: "Abmelden",
+        signout_confirm_message: "Sind Sie sicher, dass Sie sich abmelden möchten?",
+        signout_confirm_button: "Abmelden",
+        signout_confirm_cancel: "Abbrechen",
 
         // Home Page
         home_nice_to_meet: "Schön dich kennenzulernen,",
