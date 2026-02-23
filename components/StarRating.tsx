@@ -5,7 +5,8 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useUser, useClerk, SignedIn } from '@clerk/nextjs';  // + useClerk
-import { submitRating, getAverageRating } from '@/app/actions/rating';
+import { getAverageRating } from '@/app/actions/rating';
+import { useStars } from '@/lib/supabaseClient';
 
 interface StarRatingProps {
   projectId: string;
@@ -20,10 +21,16 @@ const StarRating = ({ projectId, averageRating }: StarRatingProps) => {
   const [userRating, setUserRating] = React.useState(0);
   const [avgRating, setAvgRating] = React.useState(averageRating || 0);
 
+  const { isSignedIn } = useUser();
+  const { openSignIn } = useClerk();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const { setRating: submitSupabaseRating, getAvgRating } = useStars(projectId);
+
   React.useEffect(() => {
     async function fetchRatings() {
       try {
-        const { average } = await getAverageRating(projectId);
+        const average = await getAvgRating();
         if (average > 0) {
           setAvgRating(average);
         }
@@ -33,11 +40,6 @@ const StarRating = ({ projectId, averageRating }: StarRatingProps) => {
     }
     fetchRatings();
   }, [projectId]);
-
-  const { isSignedIn } = useUser();
-  const { openSignIn } = useClerk();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   React.useEffect(() => {
     if (isVisible) {
@@ -55,7 +57,9 @@ const StarRating = ({ projectId, averageRating }: StarRatingProps) => {
 
     setLoading(true);
     try {
-      await submitRating(projectId, i);
+      const { error: submitError } = await submitSupabaseRating(i);
+      if (submitError) throw submitError;
+
       setRating(i);
       setUserRating(i);
       setIsVisible(true);

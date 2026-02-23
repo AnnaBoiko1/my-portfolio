@@ -177,6 +177,24 @@ export default function ProjectsPage() {
   const pathname = usePathname();
   const router = useRouter();
   const containerRef = useScrollNavigation('/contact', '/about');
+
+  const [projects, setProjects] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    async function fetchProjects() {
+      // @ts-ignore
+      const { supabaseClient } = await import('@/lib/supabaseClient');
+      const { data, error } = await supabaseClient
+        .from('projects')
+        .select('*')
+        .order('position', { ascending: true });
+      if (data) {
+        setProjects(data);
+      }
+    }
+    fetchProjects();
+  }, []);
+
   return (
     <>
       <Box ref={containerRef} sx={{
@@ -190,221 +208,144 @@ export default function ProjectsPage() {
         pb: 5
       }}>
         <Navbar />
-        {/* Секція  - перша snap точка */}
-        <Container maxWidth="lg" sx={{
-          scrollSnapAlign: 'start',
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 2,
-          pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
-        }}>
-          <Typography variant='h3' sx={{ marginTop: { xs: '60px', md: 15 } }}>
-            <strong>Projects</strong>
-          </Typography>
-          <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: { xs: -40, md: -20 }, lineHeight: 1 }}>
-            <span style={{ color: 'var(--blue)' }}>____</span>
-          </Typography>
 
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: -2 }}>
-
-            {/* MOBILE ONLY: Side-by-side layout */}
-            <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', gap: 1, mt: -5, alignItems: 'center' }}>
-              {/* Left: Images (40% width) */}
-              <Box sx={{ width: '50%', ml: -1 }}>
-                <ImageCarousel images={[
-                  '/ping_it_1.png', '/ping_it_2.png', '/ping_it_3.png',
-                  '/ping_it_4.png', '/ping_it_5.png', '/ping_it_6.png'
-                ]} alt="Ping It Project" slideWidth="100%" />
-              </Box>
-              {/* Right: Text (60% width) */}
-              <Box sx={{ width: '60%' }}>
-                <Typography variant='h6' sx={{ mb: 1, fontWeight: 700 }}>
-                  Ping It
+        {projects.map((project, index) => {
+          // == LAYOUT 0 (Ping It style) ==
+          if (index === 0) {
+            return (
+              <Container key={project.id} maxWidth="lg" sx={{
+                scrollSnapAlign: 'start',
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                gap: 2,
+                pb: 20
+              }}>
+                <Typography variant='h3' sx={{ marginTop: { xs: '60px', md: 15 } }}>
+                  <strong>Projects</strong>
                 </Typography>
-                <Typography variant='body2' sx={{ fontSize: '1rem', mr: -2 }}>
-                  A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time.<br />Built with <strong>React</strong> and <strong>Ruby on Rails</strong>, it integrates <strong>APIs</strong> for live map updates and seamless match coordination. I implemented user <strong>authentication</strong>, <strong>UI/UX improvements</strong>, and <strong>mobile-first design</strong> to enhance accessibility and user engagement.
+                <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: { xs: -40, md: -20 }, lineHeight: 1 }}>
+                  <span style={{ color: 'var(--blue)' }}>____</span>
                 </Typography>
-              </Box>
-            </Box>
 
-            {/* DESKTOP: Grid Images */}
-            <Box sx={{ display: { xs: 'none', md: 'block' }, flex: 1, maxWidth: { md: 600 } }}>
-              <Grid container spacing={0} columns={{ xs: 6, md: 6 }}>
-                {[
-                  '/ping_it_1.png', '/ping_it_2.png', '/ping_it_3.png',
-                  '/ping_it_4.png', '/ping_it_5.png', '/ping_it_6.png'
-                ].map((src, i) => (
-                  <Grid size={{ xs: 2, md: 2 }} key={i}>
-                    <Image
-                      src={src}
-                      alt="Ping It Project"
-                      width={200} height={200}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block'
-                      }}
-                      priority
-                    />
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: -2 }}>
+                  {/* MOBILE ONLY: Side-by-side layout */}
+                  <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', gap: 1, mt: -5, alignItems: 'center' }}>
+                    <Box sx={{ width: '50%', ml: -1 }}>
+                      <ImageCarousel images={project.images} alt={project.name} slideWidth="100%" />
+                    </Box>
+                    <Box sx={{ width: '60%' }}>
+                      <Typography variant='h6' sx={{ mb: 1, fontWeight: 700 }}>
+                        {project.name}
+                      </Typography>
+                      <Typography variant='body2' sx={{ fontSize: '1rem', mr: -2 }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    </Box>
+                  </Box>
 
-            {/* Content Text (Right on Desktop, Bottom on Mobile) */}
-            <Box sx={{ flex: 1, minWidth: 0 }}>
-              {/* Desktop Title (Hidden on Mobile) */}
-              <Typography variant='h4' sx={{ display: { xs: 'none', md: 'block' } }}>
-                <strong>Ping It</strong>
-              </Typography>
-
-              <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time.
-              </Typography>
-              <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                Built with <strong>React</strong> and <strong>Ruby on Rails</strong>, it integrates <strong>APIs</strong> for live map updates and seamless match coordination. I implemented user <strong>authentication</strong>, <strong>UI/UX improvements</strong>, and <strong>mobile-first design</strong> to enhance accessibility and user engagement.
-              </Typography>
-
-              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/IdMHUj0lHkEr4KxSYTvVUS/LW--1282-Ping-it?node-id=1-44&p=f&t=ifGl8TuZ8ROcOVUy-0" githubUrl="https://github.com/S00J1NK1M/ping_it" />
-
-              {/* Feedback Stars Section */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
-                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                  Feedback
-                </Typography>
-                <StarRating projectId="ping-it" />
-              </Box>
-            </Box>
-          </Box >
-
-        </Container >
-
-
-
-        {/* Секція  - 2 snap точка */}
-        <Container maxWidth="lg" sx={{
-          scrollSnapAlign: 'start',
-          minHeight: '100vh', // height: '100dvh' is better for mobile but 100vh is safer if d-units not supported? 100vh is fine.
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 2,
-          pb: 20,
-        }}>
-
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
-            <Box sx={{ flex: 1, minWidth: 0 }}>
-              <Typography variant='h4' sx={{ mt: 5 }}>
-                <strong>Lingoda copy cat</strong>
-              </Typography>
-              <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                A user-friendly web platform for discovering and booking language courses with ease. Learners can filter, view, and reserve lessons in just a few clicks while managing their bookings effortlessly.
-              </Typography>
-              <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                Built with <strong>   Ruby on Rails</strong>, <strong>JavaScript (ES6)</strong>, and <strong>SCSS</strong>, the app features <strong> a responsive UI</strong>, <strong>secure user authentication (Devise)</strong>, and <strong>PostgreSQL</strong> for reliable data management. Integrated <strong>Cloudinary</strong> ensures smooth and scalable media storage.
-              </Typography>
-              {/* Feedback Stars Section */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
-                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                  Feedback
-                </Typography>
-                <StarRating projectId="lingoda-copy-cat" />
-              </Box>
-
-              <ProjectLinksDropdown figmaUrl="https://www.figma.com/design/LoJSPqtZcWbeKD6hcOdo0x/Lingoda-Copycat?node-id=1-34&p=f&t=EYlDmZRuMQeVE1Hs-0" githubUrl="https://github.com/S00J1NK1M/lingoda_copycat" />
-            </Box>
-
-            <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: -2, width: '100%' }}>
-              {/* MOBILE: Carousel */}
-              <Box sx={{ display: { xs: 'block', md: 'none' }, width: '100%', mt: 2 }}>
-                <ImageCarousel images={[
-                  '/lingoda_1.png', '/lingoda_2.png', '/lingoda_3.png'
-                ]} alt="Lingoda Project" objectFit="contain" />
-              </Box>
-
-              {/* DESKTOP: Grid */}
-              <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                <Grid container spacing={0} columns={6}>
-                  {[
-                    '/lingoda_1.png', '/lingoda_2.png', '/lingoda_3.png'
-                  ].map((src, i) => (
-                    <Grid size={6} key={i}>
-                      <Image
-                        src={src}
-                        alt="Lingoda Project"
-                        width={300} height={300}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          display: 'block'
-                        }}
-                        priority
-                      />
+                  {/* DESKTOP: Grid Images */}
+                  <Box sx={{ display: { xs: 'none', md: 'block' }, flex: 1, maxWidth: { md: 600 } }}>
+                    <Grid container spacing={0} columns={{ xs: 6, md: 6 }}>
+                      {project.images?.map((src: string, i: number) => (
+                        <Grid size={{ xs: 2, md: 2 }} key={i}>
+                          <Image src={src} alt={project.name} width={200} height={200}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} priority />
+                        </Grid>
+                      ))}
                     </Grid>
-                  ))}
-                </Grid>
+                  </Box>
+
+                  {/* Content Text (Right on Desktop) */}
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant='h4' sx={{ display: { xs: 'none', md: 'block' } }}>
+                      <strong>{project.name}</strong>
+                    </Typography>
+                    <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+                    {/* Feedback Stars Section */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
+                      <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
+                        Feedback
+                      </Typography>
+                      <StarRating projectId={project.id} />
+                    </Box>
+                  </Box>
+                </Box >
+              </Container>
+            );
+          }
+
+          // == LAYOUT 1 (Lingoda style) ==
+          if (index === 1) {
+            return (
+              <Container key={project.id} maxWidth="lg" sx={{
+                scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
+              }}>
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant='h4' sx={{ mt: 5 }}>
+                      <strong>{project.name}</strong>
+                    </Typography>
+                    <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+                      <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
+                        Feedback
+                      </Typography>
+                      <StarRating projectId={project.id} />
+                    </Box>
+                    <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+                  </Box>
+
+                  <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: -2, width: '100%' }}>
+                    {/* MOBILE: Carousel */}
+                    <Box sx={{ display: { xs: 'block', md: 'none' }, width: '100%', mt: 2 }}>
+                      <ImageCarousel images={project.images} alt={project.name} objectFit="contain" />
+                    </Box>
+                    {/* DESKTOP: Grid */}
+                    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                      <Grid container spacing={0} columns={6}>
+                        {project.images?.map((src: string, i: number) => (
+                          <Grid size={6} key={i}>
+                            <Image src={src} alt={project.name} width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} priority />
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </Box>
+                  </Box>
+                </Box>
+              </Container>
+            );
+          }
+
+          // == LAYOUT >= 2 (Watch List style - single full image or defaults) ==
+          return (
+            <Container key={project.id} maxWidth="lg" sx={{
+              scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
+            }}>
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: index % 2 === 0 ? 'row' : 'row-reverse' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
+                <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: { xs: 2, md: 7 }, width: '100%' }}>
+                  <Image src={project.images?.[0] || '/img_placeholder.png'} alt={project.name} width={300} height={300} priority style={{
+                    width: '100%', height: '100%', maxHeight: '50vh', objectFit: 'cover', display: 'block'
+                  }} />
+                </Box>
+                <Box sx={{ flex: 1, minWidth: 0 }}>
+                  <Typography variant='h4'>
+                    <strong>{project.name}</strong>
+                  </Typography>
+                  <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
+                    <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
+                      Feedback
+                    </Typography>
+                    <StarRating projectId={project.id} />
+                  </Box>
+                  <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+                </Box>
               </Box>
-            </Box>
-          </Box>
-        </Container>
-
-        {/* Watch List Project */}
-        <Container maxWidth="lg" sx={{
-          scrollSnapAlign: 'start',
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 2,
-          pb: 20,
-        }}>
-
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, alignItems: 'flex-start', gap: 4, mt: 15 }}>
-            <Box sx={{ flex: 1, maxWidth: { md: 600 }, mt: { xs: 2, md: 7 }, width: '100%' }}>
-
-              <Image
-                src="/watch_list.png"
-                alt="Watch List Project"
-                width={300} height={300}
-                style={{
-                  width: '100%',
-                  height: '100%', // Mobile will adapt
-                  maxHeight: '50vh', // Limit height on mobile
-                  objectFit: 'cover',
-                  display: 'block'
-                }}
-                priority
-              />
-
-            </Box>
-            <Box sx={{ flex: 1, minWidth: 0 }}>
-              <Typography variant='h4' >
-                <strong>Watch List</strong>
-              </Typography>
-              <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                A user-friendly web platform for discovering and booking language courses with ease. Learners can filter, view, and reserve lessons in just a few clicks while managing their bookings effortlessly.
-              </Typography>
-              <Typography variant='h5' sx={{ mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                Built with <strong> Ruby on Rails</strong>, <strong>JavaScript (ES6)</strong>, and <strong>SCSS</strong>, the app features <strong> a responsive UI</strong>, <strong>secure user authentication (Devise)</strong>, and <strong>PostgreSQL</strong> for reliable data management. Integrated <strong>Cloudinary</strong> ensures smooth and scalable media storage.
-              </Typography>
-              {/* Feedback Stars Section */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3, mb: 1 }}>
-                <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                  Feedback
-                </Typography>
-                <StarRating projectId="watch-list" />
-              </Box>
-              <ProjectLinksDropdown figmaUrl="#" githubUrl="https://github.com/AnnaBoiko1/rails-watch-list" />
-            </Box>
-          </Box>
-        </Container >
-      </Box >
-
-
+            </Container>
+          );
+        })}
+      </Box>
     </>
   );
 }
