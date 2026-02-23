@@ -157,7 +157,8 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
             '&:hover': {
               color: 'var(--purple)',
               bgcolor: 'transparent'
-            }
+            },
+            pl: 4
           }}
         >
           <svg width="24" height="24" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -185,7 +186,8 @@ const ProjectLinksDropdown = ({ figmaUrl, githubUrl }: { figmaUrl: string, githu
               color: 'var(--purple)',
               bgcolor: 'transparent'
             },
-            '&:hover svg': { fill: 'var(--purple)' }
+            '&:hover svg': { fill: 'var(--purple)' },
+            pl: 4
           }}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

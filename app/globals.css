@@ -22,6 +22,8 @@
   --navbar-bg: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.05) 20%);
   --footer-text: #6b7280;
   --dot-color: var(--blue);
+  --lang-menu-bg: var(--blue);
+  --lang-menu-text: var(--text);
 }
 
 [data-theme='dark'],
@@ -46,6 +48,8 @@
   --navbar-bg: transparent;
   --footer-text: var(--purple);
   --dot-color: var(--purple);
+  --lang-menu-bg: var(--blue);
+  --lang-menu-text: rgba(31, 167, 188, 0.15);
 }
 
 body {

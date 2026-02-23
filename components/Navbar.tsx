@@ -16,6 +16,7 @@ import {
     useClerk, // Import useClerk
 } from '@clerk/nextjs'
 import { useLanguage } from '@/context/LanguageContext';
+import { useTheme } from '@/context/ThemeContext';
 import { LanguageCode } from '@/lib/translations';
 
 
@@ -30,63 +31,12 @@ export default function Navbar() {
     const { openSignIn, signOut } = useClerk(); // Get methods
 
     // --- Theme State ---
-    const [theme, setTheme] = useState<'light' | 'dark' | 'auto'>('auto');
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const { theme, toggleTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        // Load saved theme or specific preference
-        const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'auto' | null;
-        if (savedTheme) {
-            setTheme(savedTheme);
-        }
     }, []);
-
-    useEffect(() => {
-        const applyTheme = () => {
-            let documentClass = '';
-            if (theme === 'auto') {
-                const hour = new Date().getHours();
-                // 6am to 6pm is Light, otherwise Dark
-                const isDayTime = hour >= 6 && hour < 18;
-                if (isDayTime) {
-                    documentClass = 'light';
-                    setIsDarkMode(false);
-                } else {
-                    documentClass = 'dark';
-                    setIsDarkMode(true);
-                }
-            } else {
-                if (theme === 'dark') {
-                    documentClass = 'dark';
-                    setIsDarkMode(true);
-                } else {
-                    documentClass = 'light';
-                    setIsDarkMode(false);
-                }
-            }
-
-            // Apply to document (simplified for now, assuming global css handles class='dark' or we just toggle variables)
-            // For this specific project, let's assume we toggle a class on body or html
-            // Disable dark mode application as per user request, but keep logic in case we need it back
-            if (documentClass === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        };
-
-        applyTheme();
-        // Save to local storage
-        localStorage.setItem('theme', theme);
-    }, [theme]);
-
-    const toggleTheme = () => {
-        if (theme === 'auto') setTheme('light');
-        else if (theme === 'light') setTheme('dark');
-        else setTheme('auto');
-    };
 
     // --- Auth State ---
 
@@ -341,7 +291,7 @@ export default function Navbar() {
                                     p: 1,
                                     mt: { xs: -2, md: -2 },
                                     mb: { xs: -2, md: -2 },
-                                    color: 'var(--text)',
+                                    color: 'var(--background)',
                                     '&:hover': {
                                         color: 'var(--purple)',
                                         fontWeight: 900,
@@ -354,7 +304,7 @@ export default function Navbar() {
                                     opacity: (hoveredLanguage === lang) ? 1 : 0,
                                     transition: 'opacity 0.2s',
                                     fontSize: '0.9em',
-                                    color: 'var(--text)'
+                                    color: 'var(--background)'
                                 }}>✔</span>
                             </MenuItem>
                         ))}
