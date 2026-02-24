@@ -54,6 +54,9 @@ export const translations = {
         contact_copy_email: "Copy email",
         contact_copied: "Copied!",
 
+        contact_copy: "copy",
+        contact_email: "email",
+
         // Contact Form
         contact_form_name: "Name",
         contact_form_name_placeholder: "Your name",
@@ -131,6 +134,8 @@ export const translations = {
         contact_find_me_on: "Знайдіть мене тут",
         contact_copy_email: "Копіювати email",
         contact_copied: "Скопійовано!",
+        contact_copy: "copy",
+        contact_email: "email",
 
         // Contact Form
         contact_form_name: "Ім'я",
@@ -209,6 +214,8 @@ export const translations = {
         contact_find_me_on: "Retrouvez-moi sur",
         contact_copy_email: "Copier l'email",
         contact_copied: "Copié !",
+        contact_copy: "copy",
+        contact_email: "email",
 
         // Contact Form
         contact_form_name: "Nom",
@@ -287,6 +294,8 @@ export const translations = {
         contact_find_me_on: "Finde mich auf",
         contact_copy_email: "E-Mail kopieren",
         contact_copied: "Kopiert!",
+        contact_copy: "copy",
+        contact_email: "email",
 
         // Contact Form
         contact_form_name: "Name",

@@ -71,57 +71,111 @@ export default function ContactPage() {
                     {t('common_full_name')}
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'flex-start' }}>
-                  <Link href="mailto:annaboiko1@icloud.com" style={{ color: 'var(--purple)' }}>
-                    <Typography variant='h4' sx={{
-                      mb: 1,
-                      fontSize: { xs: '1.4rem', md: '2.125rem' }, // ✅ Fit on screen
-                      textDecoration: 'underline',
-                      textDecorationThickness: '2px',
-                      textUnderlineOffset: '4px',
-                      '&:hover': {
-                        color: 'var(--blue)',
+                <Box sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  width: 'fit-content',
+                  mb: 1,
+                  gap: 1.5,
+                  opacity: 0.9,
+                  minHeight: '60px' // Ensure stable height when merging
+                }}>
+                  {/* Part 1: Email */}
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Link href="mailto:annaboiko1@icloud.com" style={{ color: 'var(--purple)' }}>
+                      <Typography variant='h4' sx={{
+                        textDecoration: 'underline',
                         textDecorationColor: 'var(--blue)',
-                        backgroundImage: 'none',
-                      }
-                    }}>
-                      annaboiko1@icloud.com
-                    </Typography>
-                  </Link>
-                  <Typography
-                    variant='h6'
-                    sx={{
-                      mt: 0.1,
-                      marginLeft: '8px',
-                      width: { xs: '100px', md: '120px' }, // ✅ Responsive width
-                      display: 'inline-block', // ✅ Enforce block behavior for width
-                      whiteSpace: 'nowrap', // ✅ Prevent wrapping
-                      fontSize: { xs: '0.65rem', md: '0.8rem' }, // ✅ Smaller on mobile
-                      color: 'var(--blue)',
-                      cursor: 'pointer',
-                      textAlign: 'left', // Ensure text starts from left
-                      '&:hover': {
-                        opacity: 0.7,
-                        color: 'var(--copy-email-hover)'
-                      }
-                    }}
-                    onClick={async () => {
-                      try {
-                        await navigator.clipboard.writeText('annaboiko1@icloud.com');
-                        setCopied(true);
-                      } catch (err) {
-                        const textArea = document.createElement('textarea');
-                        textArea.value = 'annaboiko1@icloud.com';
-                        document.body.appendChild(textArea);
-                        textArea.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(textArea);
-                        setCopied(true);
-                      }
-                    }}
-                  >
-                    {copied ? t('contact_copied') : t('contact_copy_email')}
-                  </Typography>
+                        textDecorationThickness: '2px',
+                        textUnderlineOffset: '4px',
+                        '&:hover': {
+                          color: 'var(--blue)',
+                          textDecorationColor: 'var(--blue)',
+                        }
+                      }}>
+                        annaboiko1@icloud.com
+                      </Typography>
+                    </Link>
+                  </Box>
+
+                  {/* Part 2: Actions */}
+                  <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    minWidth: { xs: '80px', md: '100px' },
+                    height: '100%'
+                  }}>
+                    {copied ? (
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontSize: { xs: '0.65rem', md: '0.8rem' },
+                          color: 'var(--blue)',
+                          fontWeight: 600,
+                          textAlign: 'center',
+                          whiteSpace: 'nowrap'
+                        }}
+                      >
+                        {t('contact_copied')}
+                      </Typography>
+                    ) : (
+                      <>
+                        {/* Copy Button */}
+                        <Box
+                          onClick={async () => {
+                            try {
+                              await navigator.clipboard.writeText('annaboiko1@icloud.com');
+                              setCopied(true);
+                              setTimeout(() => setCopied(false), 2000);
+                            } catch (err) {
+                              const textArea = document.createElement('textarea');
+                              textArea.value = 'annaboiko1@icloud.com';
+                              document.body.appendChild(textArea);
+                              textArea.select();
+                              document.execCommand('copy');
+                              document.body.removeChild(textArea);
+                              setCopied(true);
+                              setTimeout(() => setCopied(false), 2000);
+                            }
+                          }}
+                          sx={{
+                            cursor: 'pointer',
+                            color: 'var(--blue)',
+                            '&:hover': { opacity: 0.7 },
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'flex-start'
+                          }}
+                        >
+                          <Typography variant="h6" sx={{ fontSize: { xs: '0.65rem', md: '0.8rem' }, fontWeight: 500 }}>
+                            {t('contact_copy')}
+                          </Typography>
+                        </Box>
+
+                        {/* Email Button */}
+                        <Link href="mailto:annaboiko1@icloud.com" style={{ textDecoration: 'none', color: 'var(--blue)', display: 'flex' }}>
+                          <Box
+                            onClick={() => {
+                              setCopied(true);
+                              setTimeout(() => setCopied(false), 2000);
+                            }}
+                            sx={{
+                              cursor: 'pointer',
+                              '&:hover': { opacity: 0.7 },
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'flex-start'
+                            }}
+                          >
+                            <Typography variant="h6" sx={{ fontSize: { xs: '0.65rem', md: '0.8rem' }, fontWeight: 500 }}>
+                              {t('contact_email')}
+                            </Typography>
+                          </Box>
+                        </Link>
+                      </>
+                    )}
+                  </Box>
                 </Box>
 
                 <Typography variant='h4' sx={{ mb: 4 }}>
