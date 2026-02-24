@@ -87,7 +87,6 @@ export default function ContactPage() {
                         try {
                           await navigator.clipboard.writeText('annaboiko1@icloud.com');
                           setCopied(true);
-                          setTimeout(() => setCopied(false), 2000);
                         } catch (err) {
                           const textArea = document.createElement('textarea');
                           textArea.value = 'annaboiko1@icloud.com';
@@ -96,7 +95,6 @@ export default function ContactPage() {
                           document.execCommand('copy');
                           document.body.removeChild(textArea);
                           setCopied(true);
-                          setTimeout(() => setCopied(false), 2000);
                         }
                       }}
                       sx={{ cursor: 'pointer', color: 'var(--purple)' }}
@@ -145,7 +143,7 @@ export default function ContactPage() {
                             try {
                               await navigator.clipboard.writeText('annaboiko1@icloud.com');
                               setCopied(true);
-                              setTimeout(() => setCopied(false), 2000);
+
                             } catch (err) {
                               const textArea = document.createElement('textarea');
                               textArea.value = 'annaboiko1@icloud.com';
@@ -154,7 +152,7 @@ export default function ContactPage() {
                               document.execCommand('copy');
                               document.body.removeChild(textArea);
                               setCopied(true);
-                              setTimeout(() => setCopied(false), 2000);
+
                             }
                           }}
                           sx={{
@@ -177,7 +175,7 @@ export default function ContactPage() {
                             try {
                               await navigator.clipboard.writeText('annaboiko1@icloud.com');
                               setCopied(true);
-                              setTimeout(() => setCopied(false), 2000);
+
                             } catch (err) {
                               const textArea = document.createElement('textarea');
                               textArea.value = 'annaboiko1@icloud.com';
@@ -186,7 +184,7 @@ export default function ContactPage() {
                               document.execCommand('copy');
                               document.body.removeChild(textArea);
                               setCopied(true);
-                              setTimeout(() => setCopied(false), 2000);
+
                             }
                           }}
                           sx={{
