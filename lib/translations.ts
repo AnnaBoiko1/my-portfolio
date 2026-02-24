@@ -21,7 +21,7 @@ export const translations = {
         home_bio_mobile: "I'm an independent, creative <strong>full-stack web developer</strong>, <strong>data analyst</strong> and <strong>designer</strong> from Ukraine, currently based in Toronto.",
         home_bio_desktop: "I'm an independent, creative <strong>full-stack web developer</strong>, <strong>data analyst</strong> and <strong>designer</strong> from Ukraine, currently based in Toronto.",
         home_work_together: "Let's work together",
-        home_work_description: "From crafting intuitive user experiences to building scalable web systems and dynamic single-page applications, I collaborate with passionate people <strong>to bring ambitious ideas to life</strong>, ensuring they are both innovative and accessible.",
+        home_work_description: "From crafting intuitive user experiences and conducting insightful data analysis to building scalable web systems and dynamic single-page applications, I collaborate with passionate people <strong>to bring ambitious ideas to life</strong>, ensuring they are both innovative and accessible.",
         home_download_cv: "Download résumé",
 
         // About Page
@@ -99,7 +99,7 @@ export const translations = {
         home_bio_mobile: "Я незалежна, креативна <strong>full-stack веб-розробниця</strong>, <strong>аналітикиня даних</strong> та <strong>дизайнерка</strong> з України, зараз перебуваю у Торонто.",
         home_bio_desktop: "Я незалежна, креативна <strong>full-stack веб-розробниця</strong>, <strong>аналітикиня даних</strong> та <strong>дизайнерка</strong> з України, наразі у Торонто.",
         home_work_together: "Давайте працювати разом",
-        home_work_description: "Від створення інтуїтивних інтерфейсів до розробки масштабованих веб-систем та веб-додатків. Я співпрацюю з натхненними людьми, щоб <strong>втілювати амбітні ідеї в життя</strong>, гарантуючи їх інноваційність та доступність.",
+        home_work_description: "Від створення інтуїтивних інтерфейсів та проведення глибокого аналізу даних до розробки масштабованих веб-систем та веб-додатків. Я співпрацюю з натхненними людьми, щоб <strong>втілювати амбітні ідеї в життя</strong>, гарантуючи їх інноваційність та доступність.",
         home_download_cv: "Завантажити резюме",
 
         // About Page
@@ -177,7 +177,7 @@ export const translations = {
         home_bio_mobile: "Je suis une <strong>développeuse web full-stack</strong>, <strong>analyste de données</strong> et <strong>designer</strong> créative indépendante d'Ukraine, actuellement basée à Toronto.",
         home_bio_desktop: "Je suis une <strong>développeuse web full-stack</strong>, <strong>analyste de données</strong> et <strong>designer</strong> créative indépendante d'Ukraine, actuellement basée à Toronto.",
         home_work_together: "Travaillons ensemble",
-        home_work_description: "De la création d'expériences utilisateur intuitives à la conception de systèmes web évolutifs et de SPA dynamiques, je collabore avec des passionnés pour <strong>donner vie à des idées ambitieuses</strong>, en m'assurant qu'elles sont à la fois innovantes et accessibles.",
+        home_work_description: "De la création d'expériences utilisateur intuitives et la réalisation d'analyses de données approfondies à la conception de systèmes web évolutifs et de SPA dynamiques, je collabore avec des passionnés pour <strong>donner vie à des idées ambitieuses</strong>, en m'assurant qu'elles sont à la fois innovantes et accessibles.",
         home_download_cv: "Télécharger CV",
 
         // About Page
@@ -255,7 +255,7 @@ export const translations = {
         home_bio_mobile: "Ich bin eine unabhängige, kreative <strong>Full-Stack Webentwicklerin</strong>, <strong>Datenanalystin</strong> und <strong>Designerin</strong> aus der Ukraine, derzeit mit Sitz in Toronto.",
         home_bio_desktop: "Ich bin eine unabhängige, kreative <strong>Full-Stack Webentwicklerin</strong>, <strong>Datenanalystin</strong> und <strong>Designerin</strong> aus der Ukraine, derzeit mit Sitz in Toronto.",
         home_work_together: "Lass uns zusammenarbeiten",
-        home_work_description: "Von der Gestaltung intuitiver Benutzererlebnisse bis hin zum Aufbau skalierbarer Websysteme und dynamischer SPAs arbeite ich mit leidenschaftlichen Menschen zusammen, <strong>um ehrgeizige Ideen zum Leben zu erwecken</strong> und sicherzustellen, dass sie sowohl innovativ als auch zugänglich sind.",
+        home_work_description: "Von der Gestaltung intuitiver Benutzererlebnisse und der Durchführung aussagekräftiger Datenanalysen bis hin zum Aufbau skalierbarer Websysteme und dynamischer SPAs arbeite ich mit leidenschaftlichen Menschen zusammen, <strong>um ehrgeizige Ideen zum Leben zu erwecken</strong> und sicherzustellen, dass sie sowohl innovativ als auch zugänglich sind.",
         home_download_cv: "Lebenslauf herunterladen",
 
         // About Page

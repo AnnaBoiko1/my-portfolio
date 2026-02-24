@@ -205,7 +205,7 @@ export default function ProjectsPage() {
   const pathname = usePathname();
   const router = useRouter();
   const containerRef = useScrollNavigation('/contact', '/about');
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const [projects, setProjects] = React.useState<any[]>([]);
 
@@ -262,13 +262,13 @@ export default function ProjectsPage() {
                   {/* MOBILE ONLY: Side-by-side layout */}
                   <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', gap: 1, mt: -5, alignItems: 'center' }}>
                     <Box sx={{ width: '50%', ml: -1 }}>
-                      <ImageCarousel images={project.images} alt={project.name} slideWidth="100%" />
+                      <ImageCarousel images={project.images} alt={typeof project.name === 'string' ? project.name : (project.name?.EN || "")} slideWidth="100%" />
                     </Box>
                     <Box sx={{ width: '60%' }}>
                       <Typography variant='h6' sx={{ mb: 1, fontWeight: 700 }}>
-                        {project.name}
+                        {typeof project.name === 'string' ? project.name : (project.name?.EN || "")}
                       </Typography>
-                      <Typography variant='body2' sx={{ fontSize: '1rem', mr: -2 }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                      <Typography variant='body2' sx={{ fontSize: '1rem', mr: -2 }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
                     </Box>
                   </Box>
 
@@ -277,7 +277,7 @@ export default function ProjectsPage() {
                     <Grid container spacing={0} columns={{ xs: 6, md: 6 }}>
                       {project.images?.map((src: string, i: number) => (
                         <Grid size={{ xs: 2, md: 2 }} key={i}>
-                          <Image src={src} alt={project.name} width={200} height={200}
+                          <Image src={src} alt={typeof project.name === 'string' ? project.name : (project.name?.EN || "")} width={200} height={200}
                             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} priority />
                         </Grid>
                       ))}
@@ -287,9 +287,9 @@ export default function ProjectsPage() {
                   {/* Content Text (Right on Desktop) */}
                   <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Typography variant='h4' sx={{ display: { xs: 'none', md: 'block' } }}>
-                      <strong>{project.name}</strong>
+                      <strong>{typeof project.name === 'string' ? project.name : (project.name?.EN || "")}</strong>
                     </Typography>
-                    <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
                     {/* Feedback Stars Section */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
                       <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
@@ -314,9 +314,9 @@ export default function ProjectsPage() {
                   <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
                     <Box sx={{ order: { xs: 1, md: 1 }, width: '100%', mb: { xs: -3, md: 0 } }}>
                       <Typography variant='h4' sx={{ mt: { xs: 3, md: 5 } }}>
-                        <strong>{project.name}</strong>
+                        <strong>{typeof project.name === 'string' ? project.name : (project.name?.EN || "")}</strong>
                       </Typography>
-                      <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                      <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
                     </Box>
 
                     <Box sx={{ order: { xs: 3, md: 2 }, display: 'flex', alignItems: 'center', gap: 2, mt: { xs: -8, md: 3 }, mb: 1, width: '100%', position: 'relative', zIndex: 10 }}>
@@ -334,14 +334,14 @@ export default function ProjectsPage() {
                   <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, mt: { xs: 0, md: -2 }, width: '100%' }}>
                     {/* MOBILE: Carousel */}
                     <Box sx={{ order: { xs: 2, md: 2 }, display: { xs: 'block', md: 'none' }, width: '100%', mt: { xs: -4, md: 2 } }}>
-                      <ImageCarousel images={project.images} alt={project.name} objectFit="contain" />
+                      <ImageCarousel images={project.images} alt={typeof project.name === 'string' ? project.name : (project.name?.EN || "")} objectFit="contain" />
                     </Box>
                     {/* DESKTOP: Grid */}
                     <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                       <Grid container spacing={0} columns={6}>
                         {project.images?.map((src: string, i: number) => (
                           <Grid size={6} key={i}>
-                            <Image src={src} alt={project.name} width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} priority />
+                            <Image src={src} alt={typeof project.name === 'string' ? project.name : (project.name?.EN || "")} width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} priority />
                           </Grid>
                         ))}
                       </Grid>
@@ -360,7 +360,7 @@ export default function ProjectsPage() {
               <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: { xs: 5, md: 15 } }}>
                 <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, mt: { xs: 0, md: 7 }, width: '100%' }}>
                   <Box sx={{ order: { xs: 2, md: 1 }, width: '100%', mt: { xs: 2, md: 0 } }}>
-                    <Image src={project.images?.[0] || '/img_placeholder.png'} alt={project.name} width={300} height={300} priority style={{
+                    <Image src={project.images?.[0] || '/img_placeholder.png'} alt={typeof project.name === 'string' ? project.name : (project.name?.EN || "")} width={300} height={300} priority style={{
                       width: '100%', height: '100%', maxHeight: '50vh', objectFit: 'cover', display: 'block'
                     }} />
                   </Box>
@@ -368,9 +368,9 @@ export default function ProjectsPage() {
                 <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
                   <Box sx={{ order: { xs: 1, md: 2 }, width: '100%', mb: { xs: 2, md: 0 } }}>
                     <Typography variant='h4' sx={{ mt: { xs: 3, md: 0 } }}>
-                      <strong>{project.name}</strong>
+                      <strong>{typeof project.name === 'string' ? project.name : (project.name?.EN || "")}</strong>
                     </Typography>
-                    <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
                   </Box>
                   <Box sx={{ order: { xs: 3, md: 3 }, display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 2, md: 3 }, mb: 1, width: '100%', position: 'relative', zIndex: 10 }}>
                     <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
