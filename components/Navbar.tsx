@@ -258,10 +258,8 @@ export default function Navbar() {
                     >
                         {theme === 'light' ? (
                             <span style={{ fontSize: '3rem', marginBottom: '6px' }}>☀</span>
-                        ) : theme === 'dark' ? (
-                            <span style={{ fontSize: '2.4rem', marginBottom: '6px' }}>☾</span>
                         ) : (
-                            <span style={{ fontSize: '2.4rem', marginBottom: '6px' }}>◐</span>
+                            <span style={{ fontSize: '2.4rem', marginBottom: '6px' }}>☾</span>
                         )}
                     </Box>
 
@@ -487,10 +485,8 @@ export default function Navbar() {
                     >
                         {theme === 'light' ? (
                             <span style={{ fontSize: '2.4rem', marginBottom: '4px' }}>☀</span>
-                        ) : theme === 'dark' ? (
-                            <span style={{ fontSize: '2rem', marginBottom: '4px' }}>☾</span>
                         ) : (
-                            <span style={{ fontSize: '2rem', marginBottom: '4px' }}>◐</span>
+                            <span style={{ fontSize: '2rem', marginBottom: '4px' }}>☾</span>
                         )}
                     </Box>
                     <Button

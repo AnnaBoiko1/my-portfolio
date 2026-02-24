@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-type Theme = 'light' | 'dark' | 'auto';
+type Theme = 'light' | 'dark';
 
 interface ThemeContextType {
     theme: Theme;
@@ -13,47 +13,36 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [theme, setThemeState] = useState<Theme>('auto');
+    const [theme, setThemeState] = useState<Theme | null>(null);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
         const savedTheme = localStorage.getItem('theme') as Theme | null;
+
         if (savedTheme) {
             setThemeState(savedTheme);
+        } else {
+            // Default based on current time
+            const hour = new Date().getHours();
+            const isDayTime = hour >= 6 && hour < 18;
+            const initialTheme = isDayTime ? 'light' : 'dark';
+            setThemeState(initialTheme);
+            localStorage.setItem('theme', initialTheme);
         }
     }, []);
 
     useEffect(() => {
-        if (!mounted) return;
+        if (!mounted || !theme) return;
 
         const applyTheme = () => {
-            let documentClass = '';
-            if (theme === 'auto') {
-                const hour = new Date().getHours();
-                const isDayTime = hour >= 6 && hour < 18;
-                if (isDayTime) {
-                    documentClass = 'light';
-                    setIsDarkMode(false);
-                } else {
-                    documentClass = 'dark';
-                    setIsDarkMode(true);
-                }
-            } else {
-                if (theme === 'dark') {
-                    documentClass = 'dark';
-                    setIsDarkMode(true);
-                } else {
-                    documentClass = 'light';
-                    setIsDarkMode(false);
-                }
-            }
-
-            if (documentClass === 'dark') {
+            if (theme === 'dark') {
                 document.documentElement.classList.add('dark');
+                setIsDarkMode(true);
             } else {
                 document.documentElement.classList.remove('dark');
+                setIsDarkMode(false);
             }
         };
 
@@ -66,10 +55,13 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     };
 
     const toggleTheme = () => {
-        if (theme === 'auto') setThemeState('light');
-        else if (theme === 'light') setThemeState('dark');
-        else setThemeState('auto');
+        setThemeState(prev => prev === 'light' ? 'dark' : 'light');
     };
+
+    // Prevent hydration mismatch: render children only after theme is determined on client
+    if (!mounted || !theme) {
+        return null; // Or a loading skeleton if preferred, but null prevents flickering
+    }
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme, isDarkMode, toggleTheme }}>
@@ -82,7 +74,7 @@ export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (context === undefined) {
         return {
-            theme: 'auto' as Theme,
+            theme: 'light' as Theme,
             setTheme: () => { },
             isDarkMode: false,
             toggleTheme: () => { }
