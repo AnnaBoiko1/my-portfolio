@@ -82,10 +82,28 @@ export default function ContactPage() {
                 }}>
                   {/* Part 1: Email */}
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Link href="mailto:annaboiko1@icloud.com" style={{ color: 'var(--purple)' }}>
+                    <Box
+                      onClick={async () => {
+                        try {
+                          await navigator.clipboard.writeText('annaboiko1@icloud.com');
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        } catch (err) {
+                          const textArea = document.createElement('textarea');
+                          textArea.value = 'annaboiko1@icloud.com';
+                          document.body.appendChild(textArea);
+                          textArea.select();
+                          document.execCommand('copy');
+                          document.body.removeChild(textArea);
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        }
+                      }}
+                      sx={{ cursor: 'pointer', color: 'var(--purple)' }}
+                    >
                       <Typography variant='h4' sx={{
                         textDecoration: 'underline',
-                        textDecorationColor: 'var(--blue)',
+                        textDecorationColor: 'var(--purple)',
                         textDecorationThickness: '2px',
                         textUnderlineOffset: '4px',
                         '&:hover': {
@@ -95,7 +113,7 @@ export default function ContactPage() {
                       }}>
                         annaboiko1@icloud.com
                       </Typography>
-                    </Link>
+                    </Box>
                   </Box>
 
                   {/* Part 2: Actions */}
@@ -154,25 +172,36 @@ export default function ContactPage() {
                         </Box>
 
                         {/* Email Button */}
-                        <Link href="mailto:annaboiko1@icloud.com" style={{ textDecoration: 'none', color: 'var(--blue)', display: 'flex' }}>
-                          <Box
-                            onClick={() => {
+                        <Box
+                          onClick={async () => {
+                            try {
+                              await navigator.clipboard.writeText('annaboiko1@icloud.com');
                               setCopied(true);
                               setTimeout(() => setCopied(false), 2000);
-                            }}
-                            sx={{
-                              cursor: 'pointer',
-                              '&:hover': { opacity: 0.7 },
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'flex-start'
-                            }}
-                          >
-                            <Typography variant="h6" sx={{ fontSize: { xs: '0.65rem', md: '0.8rem' }, fontWeight: 500 }}>
-                              {t('contact_email')}
-                            </Typography>
-                          </Box>
-                        </Link>
+                            } catch (err) {
+                              const textArea = document.createElement('textarea');
+                              textArea.value = 'annaboiko1@icloud.com';
+                              document.body.appendChild(textArea);
+                              textArea.select();
+                              document.execCommand('copy');
+                              document.body.removeChild(textArea);
+                              setCopied(true);
+                              setTimeout(() => setCopied(false), 2000);
+                            }
+                          }}
+                          sx={{
+                            cursor: 'pointer',
+                            color: 'var(--blue)',
+                            '&:hover': { opacity: 0.7 },
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'flex-start'
+                          }}
+                        >
+                          <Typography variant="h6" sx={{ fontSize: { xs: '0.65rem', md: '0.8rem' }, fontWeight: 500 }}>
+                            {t('contact_email')}
+                          </Typography>
+                        </Box>
                       </>
                     )}
                   </Box>
